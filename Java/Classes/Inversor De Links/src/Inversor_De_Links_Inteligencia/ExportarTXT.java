@@ -29,7 +29,7 @@ public class ExportarTXT {
 	    
 	}
 
-	public void salvarTXT(String conteudo, JFrame frame) {
+	public boolean salvarTXT(String conteudo, JFrame frame) {
 	
 		String resultado = conteudo.replaceAll("\\n", System.getProperty("line.separator"));
 		
@@ -49,10 +49,12 @@ public class ExportarTXT {
 			arquivo.write(resultado);
 			arquivo.flush();
 	    	arquivo.close();
+	    	return true;
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}   
+		}
+	    return false;
 
 	}
 	
