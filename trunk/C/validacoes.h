@@ -3,53 +3,90 @@
 #include<stdio.h>
 #include<string.h>
 
+void verificaCaracteresInvalidos(char *nome);
+void verificaNumeroDePalavrasNome(char *nome);
+
+
 void validaNomes(char *nome){
 
-    int charsNome, charsComparacao, indice[strlen(nome)], contadorIndice = 0;
+    verificaNumeroDePalavrasNome(nome);
+    verificaCaracteresInvalidos(nome);
+
+}
+
+void verificaCaracteresInvalidos(char *nome)
+{
+    int charsNome, charsComparacao, contadorIndice = 0, contador = 0;
+    char indice[strlen(nome)];
 
     for(charsNome = 0; charsNome < strlen(nome); charsNome++){
 
-        printf("%c\n", nome[charsNome]);
-
-        for(charsComparacao = 0; charsComparacao < 65; charsComparacao++)
+        for(charsComparacao = 65; charsComparacao < 91; charsComparacao++)
         {
-            if(nome[charsNome] == (char) charsComparacao)
+            if(nome[charsNome] != (char)(charsComparacao) )
             {
-                printf("DENTRO NOME: %c\n", nome[charsNome]);
-                printf("DENTRO CHAR: %c\n", charsComparacao);
-                printf("DENTRO CHAR: \n", charsComparacao);
-
-                indice[contadorIndice] = charsNome; contadorIndice++;}
+                contador++;
+            }
         }
 
-        for(charsComparacao = 92; charsComparacao < 97; charsComparacao++)
+        for(charsComparacao = 97; charsComparacao < 123; charsComparacao++)
         {
-            if(nome[charsNome] == (char) charsComparacao)
-            {indice[contadorIndice] = charsNome; contadorIndice++;}
-
+            if(nome[charsNome] != (char)(charsComparacao) )
+            {
+                contador++;
+            }
         }
 
-        for(charsComparacao = 124; charsComparacao < 256; charsComparacao++)
+        if(contador != 51)
         {
-            if(nome[charsNome] == (char) charsComparacao)
-            {indice[contadorIndice] = charsNome; contadorIndice++;}
+            indice[contadorIndice] = nome[charsNome];
+            contadorIndice++;
         }
 
+        contador = 0;
     }
-    printf("%i", contadorIndice);
 
-    for(charsComparacao = 0; charsComparacao < contadorIndice; contadorIndice++)
+    for(charsComparacao = 0; charsComparacao < contadorIndice; charsComparacao++)
+    { printf("%c", indice[charsComparacao]);}
+
+    for(charsComparacao = 0; charsComparacao < contadorIndice; charsComparacao++)
     {
-        if(nome[indice[charsComparacao]] != ' ', nome[indice[charsComparacao]] != '\0')
+        if(indice[charsComparacao] != ' ' )
         {
-            printf("O nome passado é um nome invalido, por favor corriga-o: \n");
-            printf("Char Invalido: %c", nome[charsComparacao]);
-            charsComparacao = contadorIndice;
-            gets(nome);
+            if(indice[charsComparacao] != '\0')
+            {
+                printf("O nome passado é um nome invalido, por favor corriga-o: \n");
+                printf("Char Invalido: %c", indice[charsComparacao]);
+                charsComparacao = contadorIndice;
+                gets(nome);
+
+                validaNomes(nome);
+            }
         }
     }
 }
 
+void verificaNumeroDePalavrasNome(char *nome)
+{
+    int contador = 0, numPalavras = 0;
 
+    if( nome[contador] != ' ' && nome[contador+1] != '\0')
+    {numPalavras = 1;}
+
+    for(contador = 0; contador < strlen(nome); contador++)
+    {
+        if( nome[contador] == ' ' && nome[contador+1] != ' ' && nome[contador+1] != '\0')
+        {
+            numPalavras++;
+        }
+    }
+
+    if(numPalavras == 0)
+    {
+        printf("O Nome passado parece não conter nenhuma palavra, por favor digite-o novamente: \n");
+        gets(nome);
+        verificaNumeroDePalavrasNome(nome);
+    }
+}
 
 #endif // VALIDACOES_H_INCLUDED
