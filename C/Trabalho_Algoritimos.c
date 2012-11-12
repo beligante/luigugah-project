@@ -7,6 +7,8 @@ struct PessoaFisica novoCadastroPessoaFisica();
 struct PessoaJuridica novoCadastroPessoaJuridica();
 main()
 {
+
+    //printf("%i", contador);
     novoCadastroPessoaFisica();
 }
 
