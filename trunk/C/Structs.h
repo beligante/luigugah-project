@@ -17,18 +17,18 @@ struct Telefones{
 };
 
 struct PessoaFisica{
-    char nome[40];
-    int RG, CPF;
+    char nome[40], CPF[12];
+    int RG;
     struct Telefones telefone;
     struct DataDeNascimento nascimento;
-    struct Endereco endereco, enderecoComercial;
+    struct Endereco endereco;
 };
 
 struct PessoaJuridica{
 
     char nomeFantasia[40], rasaoSocial[60];
     int CNPJ;
-    struct DataDeNascimento nascimento;
+    struct DataDeNascimento dataCriacaoEmpresa;
     struct Endereco endereco;
     struct Telefones telefone;
 };
