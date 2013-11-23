@@ -14,9 +14,6 @@ public class Exemplar extends Entity {
 	public Boolean isEmprestado() {
 		return emprestado;
 	}
-	public void setEmprestado(Boolean emprestado) {
-		this.emprestado = emprestado;
-	}
 	
 	public Exemplar obra(Obra obra){
 		this.obra = obra;
