@@ -1,6 +1,10 @@
 package com.entity;
 
 public class Exemplar extends Entity {
+	
+	public Exemplar(){
+		this.emprestado = false;
+	}
 
 	private Obra obra;
 	private Boolean emprestado;
