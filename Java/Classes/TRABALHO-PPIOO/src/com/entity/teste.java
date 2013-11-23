@@ -11,9 +11,8 @@ public class teste {
 	public static void main(String[] args) {
 		
 		Calendar c = Calendar.getInstance();
-		Date d =  new Date();
 		
-		c.add(Calendar.DAY_OF_MONTH, -20);
+		c.add(Calendar.DAY_OF_MONTH, 0);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
