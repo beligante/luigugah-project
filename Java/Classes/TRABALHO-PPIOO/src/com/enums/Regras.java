@@ -8,7 +8,4 @@ public enum Regras {
 	RESERVA,
 	RELATORIO,
 	RECEBER_PAGAMENTO;
-	
-	
-
 }
