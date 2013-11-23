@@ -2,7 +2,7 @@ package com.entity;
 
 import java.util.Date;
 
-import com.enums.Perfil;
+import com.entity.Perfil;
 import com.enums.Sexo;
 
 public class Usuario extends Entity {
