@@ -4,7 +4,7 @@ public class Entity implements Comparable<Entity> {
 
 	protected  Long id;
 
-	private static long INSTANCE_COUNTING = 0;
+	protected static long INSTANCE_COUNTING = 0;
 	
 	public Entity(){
 		this.id = INSTANCE_COUNTING++;
