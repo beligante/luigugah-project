@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.enums.Regras;
 
-public class Perfil {
+public class Perfil extends Entity {
 	
 	private String nome;
 	private List<Regras> regras;
