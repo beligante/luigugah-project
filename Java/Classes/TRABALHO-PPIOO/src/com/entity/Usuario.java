@@ -7,7 +7,7 @@ import com.enums.Sexo;
 
 public class Usuario extends Entity {
 	
-	private String nome, cpf, rg, telefone, endereco;
+	private String nome, cpf, rg, telefone, endereco, login, senha;
 	private Date dataNascimento;
 	private Perfil perfil;
 	private Sexo sexo;
@@ -92,6 +92,18 @@ public class Usuario extends Entity {
 	public Usuario perfil(Perfil perfil){
 		this.perfil = perfil;
 		return this;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 	

@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.crypto.Data;
 
@@ -11,16 +13,13 @@ public class teste {
 
 	public static void main(String[] args) throws ParseException {
 		
-		Calendar c = Calendar.getInstance();
-		Date d =  new Date();
+		HashMap<String, Long> mp =  new HashMap<String, Long>();
 		
-		c.add(Calendar.DAY_OF_MONTH, 90);
+		mp.put("L_L", 1L);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date e =  new Date();
+		System.out.println(mp.get("L_L"));
 		
-		d = sdf.parse(sdf.format(d));
-		e = sdf.parse(sdf.format(e));
+		System.out.println(new Credential().user("L").senha("L").compareTo(new Credential().user("L").senha("L")));
 		
 	}
 	
