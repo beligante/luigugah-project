@@ -6,13 +6,25 @@ import com.repository.Repository;
 public abstract class AbstractController
 			<Entidade extends Entity, Repositorio extends Repository<Entidade>> {
 	
-	Repositorio repository;
+	private Repositorio repository;
 	
-	
-	public AbstractController<Entidade, Repositorio> save(Entidade entidade) {
+	public void save(Entidade entidade) {
 		this.saveImpl(entidade);
-		return this;
 	}
 	
-	protected abstract AbstractController<Entidade, Repositorio> saveImpl(Entidade entidade);
+	public void remove(Entidade entidade){
+		this.removeImpl(entidade);
+	}
+	
+	protected abstract void removeImpl(Entidade entidade);
+
+	protected abstract void saveImpl(Entidade entidade);
+
+	protected Repositorio getRepository() {
+		return repository;
+	}
+
+	protected void setRepository(Repositorio repository) {
+		this.repository = repository;
+	}
 }

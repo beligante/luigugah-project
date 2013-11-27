@@ -1,6 +1,7 @@
 package com.repository;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import com.entity.Entity;
 
 public class Repository<Entidade extends Entity> {
 	
-	private Map<Long, Entidade> repositorio;
+	protected Map<Long, Entidade> repositorio;
 	
 	public Repository<Entidade> merge(Entidade entidade){
 		
@@ -58,5 +59,9 @@ public class Repository<Entidade extends Entity> {
 		}
 	
 		return combinacoes;
+	}
+	
+	public Collection<Entidade> getAll(){
+		return repositorio.values();
 	}
 }

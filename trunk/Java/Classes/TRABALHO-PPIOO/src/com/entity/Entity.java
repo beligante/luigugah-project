@@ -18,5 +18,4 @@ public class Entity implements Comparable<Entity> {
 	public int compareTo(Entity entidade) {
 		return this.id.compareTo(entidade.getId());
 	}
-
 }
