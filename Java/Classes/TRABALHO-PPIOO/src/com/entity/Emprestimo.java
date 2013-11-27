@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Emprestimo {
+public class Emprestimo extends Entity{
 	private Usuario usuario;
 	private Exemplar exemplar;
 	private Date dataEmprestimo, dataDevolucao;

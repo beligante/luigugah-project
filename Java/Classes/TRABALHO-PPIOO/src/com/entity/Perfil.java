@@ -10,6 +10,7 @@ public class Perfil extends Entity {
 	private String nome;
 	private Integer duracaoEmprestimo;
 	private List<Regras> regras;
+	private int cotaEmprestimo;
 
 	Perfil(){
 		regras = new ArrayList<Regras>();
@@ -41,5 +42,13 @@ public class Perfil extends Entity {
 	public Perfil duracaoEmprestimo(Integer duracaoEmprestimo){
 		this.duracaoEmprestimo = duracaoEmprestimo;
 		return this;
+	}
+
+	public int getCotaEmprestimo() {
+		return cotaEmprestimo;
+	}
+
+	public void setCotaEmprestimo(int cotaEmprestimo) {
+		this.cotaEmprestimo = cotaEmprestimo;
 	}
 }
