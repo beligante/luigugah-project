@@ -1,13 +1,14 @@
 package com.repository;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.entity.Credential;
-import com.entity.Entity;
 import com.entity.Usuario;
+import com.interfaces.Filter;
 
-public class UserRepository extends Repository<Usuario> {
+public class UserRepository extends Repository<Usuario> implements Filter<Usuario>{
 	
 	public UserRepository() {
 		super();
@@ -30,5 +31,24 @@ public class UserRepository extends Repository<Usuario> {
 	public Usuario getUsuarioByAutenticacao(String autenticacaoKey){
 		Long id = mapaDeAutenticacao.get(autenticacaoKey);
 		return repositorio.get(id);
+	}
+	
+	public Collection<Usuario> searchByName(String name){
+		
+		Collection<Usuario> usuarios = getAll();
+		if(usuarios != null && usuarios.size() > 0)
+		{
+			Collection<Usuario> query = new ArrayList<Usuario>();
+			for(Usuario usuario : usuarios){
+				
+				if(usuario.getNome().contains(name)){
+					query.add(usuario);
+				}
+				
+			}
+			return query;
+		}
+		
+		return null;
 	}
 }
