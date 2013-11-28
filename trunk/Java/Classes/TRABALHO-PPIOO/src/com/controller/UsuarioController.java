@@ -1,6 +1,5 @@
 package com.controller;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.Collection;
 
 import com.entity.Credential;
@@ -10,15 +9,13 @@ import com.repository.UserRepository;
 public class UsuarioController extends AbstractController<Usuario, UserRepository> {
 
 	@Override
-	protected void removeImpl(Usuario entidade) {
-		
-		
+	protected void removeImpl(Usuario usuario) {
+		getRepository().remove(usuario);		
 	}
 
 	@Override
-	protected void saveImpl(Usuario entidade) {
-		
-		
+	protected void saveImpl(Usuario usuario) {
+		getRepository().merge(usuario);		
 	}
 
 	public void getAutentication(String user, String senha){
