@@ -4,7 +4,7 @@ package com.entity;
 public class Reserva extends Entity {
 	
 	private Usuario usuario;
-	private Exemplar exemplar;
+	private Obra obra;
 	private boolean retirado;
 	private int posicaoFila;
 	
@@ -19,13 +19,7 @@ public class Reserva extends Entity {
 	public int getPosicaoFila(){
 		return posicaoFila;
 	}
-	
-	public Exemplar getExemplar() {
-		return exemplar;
-	}
-	public void setExemplar(Exemplar exemplar) {
-		this.exemplar = exemplar;
-	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -33,8 +27,8 @@ public class Reserva extends Entity {
 		this.usuario = usuario;
 	}
 	
-	public Reserva exemplar(Exemplar exemplar){
-		this.exemplar = exemplar;
+	public Reserva obra(Obra obra){
+		this.setObra(obra);
 		return this;
 	}
 	
@@ -47,6 +41,14 @@ public class Reserva extends Entity {
 	
 	public void retirar(){
 		retirado = true;
+	}
+
+	public Obra getObra() {
+		return obra;
+	}
+
+	public void setObra(Obra obra) {
+		this.obra = obra;
 	}
 
 }
