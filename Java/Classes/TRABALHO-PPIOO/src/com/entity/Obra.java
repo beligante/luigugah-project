@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.enums.Categoria;
 
-public class Obra {
+public class Obra extends Entity{
 	
 	private String nome, ator, editora, isbn;
 	private Categoria categoria;
