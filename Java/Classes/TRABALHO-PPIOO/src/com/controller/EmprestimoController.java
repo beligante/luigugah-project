@@ -60,11 +60,9 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 					
 					return true;
 				}
-				return false;
 			}else if(exemplaresNaoEmprestados.size() > reservasAbertasParaObra.size()){
 				return true;
 			}
-			return false;
 		}
 		return false;
 		
@@ -111,19 +109,6 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 	protected void saveImpl(Emprestimo entidade) {
 		// TODO Auto-generated method stub
 		
-	}
-
-
-	private Collection<Exemplar> filtraExemplaresEmprestados(Collection<Exemplar> exemplares){
-		Collection<Exemplar> listaFiltrada = new ArrayList<Exemplar>();
-		
-		for(Exemplar exemplar : exemplares){
-			if(!exemplar.isEmprestado()){
-				listaFiltrada.add(exemplar);
-			}
-		}
-		
-		return listaFiltrada;
 	}
 	
 	public ExemplarController getExemplarController() {
