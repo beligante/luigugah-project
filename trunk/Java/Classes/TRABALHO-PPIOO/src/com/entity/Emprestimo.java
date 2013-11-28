@@ -30,7 +30,7 @@ public class Emprestimo extends Entity{
 			dataAtual = sdf.parse(sdf.format(dataAtual));
 			dataDev = sdf.parse(sdf.format(dataDev));
 		
-			return dataAtual.after(dataDev);
+			return dataAtual.after(dataDev) && !devolvido;
 		}
 		catch (Exception e){};
 		return new Boolean (false);
