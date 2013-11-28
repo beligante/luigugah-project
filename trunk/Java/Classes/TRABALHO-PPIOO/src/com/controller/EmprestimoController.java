@@ -1,8 +1,11 @@
 package com.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.entity.Emprestimo;
+import com.entity.Exemplar;
+import com.entity.Obra;
 import com.entity.Usuario;
 import com.repository.EmprestimoRepository;
 
@@ -39,6 +42,11 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 		return false;
 	}
 	
+	public boolean isUsurioHabilitadoAEmprestarObra(Obra obra){
+		Collection<Exemplar> exemplaresNaoEmprestados = 
+						filtraExemplaresEmprestados(getRepository().getEmprestimosByObra(obra));
+	}
+	
 	@Override
 	protected void removeImpl(Emprestimo entidade) {
 		// TODO Auto-generated method stub
@@ -51,4 +59,16 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 		
 	}
 
+
+	private Collection<Exemplar> filtraExemplaresEmprestados(Collection<Exemplar> exemplares){
+		Collection<Exemplar> listaFiltrada = new ArrayList<Exemplar>();
+		
+		for(Exemplar exemplar : exemplares){
+			if(!exemplar.isEmprestado()){
+				listaFiltrada.add(exemplar);
+			}
+		}
+		
+		return listaFiltrada;
+	}
 }
