@@ -5,24 +5,26 @@ import java.util.Collection;
 
 import com.entity.Obra;
 import com.entity.Reserva;
-import com.repository.Repository;
+import com.repository.ReservaRepository;
 
-public class ReservaController extends AbstractController<Reserva, Repository<Reserva>>{
+public class ReservaController extends AbstractController<Reserva, ReservaRepository>{
 
-	protected Collection<Reserva> getReservasByObra(Obra obra){
-		Collection<Reserva> reservas = getRepository().getAll();
-		
-		if (reservas != null && reservas.size() > 0){
+	public Collection<Reserva> getReservasAbertasByObra(Obra obra){
+		Collection<Reserva> reservas = getReservasByOra(obra);
+		if(reservas != null && reservas.size() > 0){
 			Collection<Reserva> query = new ArrayList<Reserva>();
-			
-			for (Reserva reserva : reservas){
-				if (reserva.getObra().compareTo(obra) == 0){
+			for(Reserva reserva : reservas){
+				if(!reserva.isRetirado()){
 					query.add(reserva);
 				}
 			}
 			return query;
 		}
 		return null;
+	}
+	
+	private Collection<Reserva> getReservasByOra(Obra obra){
+		return getRepository().getReservasByObra(obra);
 	}
 	
 	@Override
