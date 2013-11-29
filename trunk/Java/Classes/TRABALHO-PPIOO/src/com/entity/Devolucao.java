@@ -5,6 +5,16 @@ import java.util.Date;
 public class Devolucao extends Entity {
 	private Emprestimo emprestimo;
 
+	public Emprestimo getEmprestimo() {
+		return emprestimo;
+	}
+
+	public void setEmprestimo(Emprestimo emprestimo) {
+		this.emprestimo = emprestimo;
+	}
+
+	public Devolucao emprestimo(Emprestimo emprestimo){this.emprestimo = emprestimo; return this;}
+	
 	public Debito registarDevolucao(){
 		if(emprestimo.isAtrasado()){
 			Debito d = new Debito()
