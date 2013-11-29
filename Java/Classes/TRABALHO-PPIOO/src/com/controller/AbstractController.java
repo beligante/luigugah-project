@@ -9,7 +9,7 @@ public abstract class AbstractController
 	private Repositorio repository;
 	
 	public void save(Entidade entidade) {
-		this.saveImpl(entidade);
+		this.saveImpl(entidade); 
 	}
 	
 	public void remove(Entidade entidade){
