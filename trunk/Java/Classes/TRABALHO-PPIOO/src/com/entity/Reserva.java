@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-
 public class Reserva extends Entity {
 	
 	private Usuario usuario;
@@ -22,7 +21,7 @@ public class Reserva extends Entity {
 		retirado = false;
 	}
 	
-	public int getPosicaoFila(){
+	public int getPosicaoFila(){ 
 		return posicaoFila;
 	}
 
