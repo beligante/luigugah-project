@@ -12,7 +12,7 @@ public class Perfil extends Entity {
 	private List<Regras> regras;
 	private int cotaEmprestimo;
 
-	Perfil(){
+	public Perfil(){
 		regras = new ArrayList<Regras>();
 	}
 	
