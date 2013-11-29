@@ -5,7 +5,7 @@ import com.repository.Repository;
 
 public abstract class AbstractController
 			<Entidade extends Entity, Repositorio extends Repository<Entidade>> {
-	
+	 
 	private Repositorio repository;
 	
 	public void save(Entidade entidade) {
