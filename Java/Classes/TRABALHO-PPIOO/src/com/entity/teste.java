@@ -2,18 +2,22 @@ package com.entity;
 
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
+
+import com.repository.Repository;
 
 public class teste {
 
 	public static void main(String[] args) throws ParseException {
 		
-		HashMap<String, Long> mp =  new HashMap<String, Long>();
+		Repository<Obra> repo = new Repository<Obra>();
 		
-		mp.put("L_L", 1L);
+		List<Obra> l;
 		
-		System.out.println(mp.get("L_L"));
+		Obra harry = new Obra();
 		
-		System.out.println(new Credential().user("L").senha("L").compareTo(new Credential().user("L").senha("L")));
+		repo.merge(harry);
+		
 		
 	}
 	

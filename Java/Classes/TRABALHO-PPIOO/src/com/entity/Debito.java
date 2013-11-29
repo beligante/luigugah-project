@@ -5,7 +5,11 @@ public class Debito extends Entity {
 	private Usuario usuario;
 	private Emprestimo emprestimo;
 	private Long diasAtraso;
+	private boolean isPago;
 	
+	public Debito(){
+		isPago = false;
+	}
 	
 	public Float getValor() {
 		return valor;
@@ -45,5 +49,12 @@ public class Debito extends Entity {
 	public Debito diasAtraso(Long dias){
 		this.diasAtraso = dias;
 		return this;
+	}
+	public boolean isPago() {
+		return isPago;
+	}
+	
+	public void pagar(){
+		this.isPago = true;
 	}
 }

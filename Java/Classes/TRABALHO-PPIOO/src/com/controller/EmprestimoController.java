@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.entity.Debito;
 import com.entity.Emprestimo;
 import com.entity.Exemplar;
 import com.entity.Obra;
@@ -16,6 +17,7 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 
 	private ExemplarController exemplarController;
 	private ReservaController reservaController;
+	private DebitoController debitoController;
 	
 	public boolean isUsuarioExcedenteCota(Usuario usuario){
 		
@@ -28,7 +30,11 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 		return false;
 	}
 	
-	public boolean isUsuarioPossuiDebito(Usuario usuario){return false;}
+	public boolean isUsuarioPossuiDebito(Usuario usuario){
+		Collection<Debito> debitos = debitoController.getDebitosEmAbertoByUsuario(usuario);
+		return (debitos != null && debitos.size() > 0);
+			
+	}
 	
 	public boolean isUsuarioPossuiAtrasos(Usuario usuario){
 		Collection<Emprestimo> emprestimos = getRepository().getEmprestimosByUsuario(usuario);
@@ -71,7 +77,7 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 	private boolean isUsuarioOnListaReserva(Usuario usuario, Collection<Reserva> reservas){
 		if(reservas != null && reservas.size() > 0 ){
 			for(Reserva reserva : reservas){
-				if(usuario.compareTo(reserva.getUsuario()) == 0){
+				if(reserva.isExpirado() && usuario.compareTo(reserva.getUsuario()) == 0){
 					return true;
 				}
 			}
@@ -98,6 +104,21 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 		return -1;
 	}
 	
+	/**Retora o Objeto Reserva (se existir) para um determinado usuario, 
+	*supondo que a coleção passada como parametro ja possui os filtros:
+	*  	- De obra
+	*	- Não Estar Expirada
+	*	- Não Estar Retirada**/
+	private Reserva getReservaByUsuarioDadoObra(Usuario usuario, Collection<Reserva> reservas){
+		if(reservas != null && reservas.size() > 0 ){
+			for(Reserva reserva : reservas){
+				if(reserva.getUsuario().compareTo(usuario) == 0){
+					return reserva;
+				}
+			}
+		}
+		return null;
+	}
 	
 	@Override
 	protected void removeImpl(Emprestimo entidade) {
@@ -107,6 +128,28 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 
 	@Override
 	protected void saveImpl(Emprestimo entidade) {
+		
+		Collection<Reserva> reservas= reservaController
+				.getReservasAbertasByObra(entidade.getExemplar().getObra());
+
+		Collection<Exemplar> exemplares = exemplarController.getExemplaresNaoEmprestados(entidade.getExemplar().getObra());
+		
+		if(isUsuarioOnListaReserva(entidade.getUsuario(), reservas)){
+			Reserva reservaDoUsurio = getReservaByUsuarioDadoObra(entidade.getUsuario(), reservas);
+			if(reservaDoUsurio != null){
+				reservaDoUsurio.retirar();
+				reservaController.save(reservaDoUsurio);
+			}
+		}
+		
+		//Se eu possuir exemplares disponiveis, não tem por que eu desativar a contagem
+		if(reservas!= null && reservas.size() > 0 && exemplares != null && exemplares.size() > 0){
+			for(Reserva reserva : reservas){
+				reserva.setDataInicioContagem(null);
+				reservaController.save(reserva);
+			}
+		}
+		
 		getRepository().merge(entidade);
 		
 	}
