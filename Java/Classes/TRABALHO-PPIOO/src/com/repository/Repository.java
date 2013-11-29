@@ -2,6 +2,7 @@ package com.repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,10 @@ import com.entity.Entity;
 public class Repository<Entidade extends Entity> {
 	
 	protected Map<Long, Entidade> repositorio;
+	
+	public Repository(){
+		repositorio = new HashMap<Long, Entidade>();
+	}
 	
 	public Repository<Entidade> merge(Entidade entidade){
 		
