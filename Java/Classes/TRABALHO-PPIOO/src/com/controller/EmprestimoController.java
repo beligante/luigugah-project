@@ -101,13 +101,13 @@ public class EmprestimoController extends AbstractController<Emprestimo, Emprest
 	
 	@Override
 	protected void removeImpl(Emprestimo entidade) {
-		// TODO Auto-generated method stub
+		getRepository().remove(entidade);
 		
 	}
 
 	@Override
 	protected void saveImpl(Emprestimo entidade) {
-		// TODO Auto-generated method stub
+		getRepository().merge(entidade);
 		
 	}
 	

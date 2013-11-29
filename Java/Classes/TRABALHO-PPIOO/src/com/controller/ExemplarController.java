@@ -14,12 +14,12 @@ public class ExemplarController extends AbstractController<Exemplar, ExemplarRep
 	
 	@Override
 	protected void removeImpl(Exemplar entidade) {
-		
+		getRepository().remove(entidade);
 	}
 
 	@Override
 	protected void saveImpl(Exemplar entidade) {
-
+		getRepository().merge(entidade);
 	}
 
 }
