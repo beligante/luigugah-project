@@ -6,6 +6,7 @@ import java.util.Collection;
 import com.entity.Exemplar;
 import com.entity.Obra;
 import com.entity.Reserva;
+import com.entity.Usuario;
 import com.repository.ReservaRepository;
 
 public class ReservaController extends AbstractController<Reserva, ReservaRepository>{
@@ -20,12 +21,24 @@ public class ReservaController extends AbstractController<Reserva, ReservaReposi
 		this.exemplarController = exemplarController;
 	}
 
+	public boolean isUsuarioHabilitadoAReservarObra(Usuario usuario, Obra obra){
+		Collection<Reserva> reservas = getReservasAbertasByObra(obra);
+		if(reservas != null && reservas.size() > 0){
+			for(Reserva reserva : reservas){
+				if(usuario.compareTo(reserva.getUsuario()) == 0){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public Collection<Reserva> getReservasAbertasByObra(Obra obra){
 		Collection<Reserva> reservas = getReservasByOra(obra);
 		if(reservas != null && reservas.size() > 0){
 			Collection<Reserva> query = new ArrayList<Reserva>();
 			for(Reserva reserva : reservas){
-				if(!reserva.isRetirado()){
+				if(!reserva.isRetirado() && !reserva.isExpirado()){
 					query.add(reserva);
 				}
 			}

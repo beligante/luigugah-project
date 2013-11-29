@@ -51,7 +51,7 @@ public class EmprestimoRepository extends Repository<Emprestimo>{
 				
 				Collection<Emprestimo> query = new ArrayList<Emprestimo>();
 				for(Emprestimo emprestimo : emprestimos){
-					if(emprestimo.getExemplar() == exemplar && !emprestimo.getDevolvido()){
+					if((emprestimo.getExemplar().compareTo(exemplar) == 0) && !emprestimo.getDevolvido()){
 						query.add(emprestimo);
 					}
 				return query;	
