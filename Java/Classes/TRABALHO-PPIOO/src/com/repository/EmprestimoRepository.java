@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.entity.Emprestimo;
+import com.entity.Exemplar;
 import com.entity.Obra;
 import com.entity.Usuario;
 

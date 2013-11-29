@@ -18,7 +18,6 @@ public class DevolucaoController extends AbstractController<Devolucao, Repositor
 	@Override
 	protected void removeImpl(Devolucao entidade) {
 		getRepository().merge(entidade);
-		
 	}
 
 	@Override
