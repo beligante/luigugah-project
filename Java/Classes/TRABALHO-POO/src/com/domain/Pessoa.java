@@ -1,5 +1,7 @@
 package com.domain;
 
+import java.util.Date;
+
 import com.enums.Sexo;
 
 public class Pessoa extends Entity{
@@ -7,7 +9,7 @@ public class Pessoa extends Entity{
 	private String nome;
 	private String cpf;
 	private String rg;
-	private String datanasc;
+	private Date dataNascimento;
 	private String endereco;
 	private String telefone;
 	private String email;
@@ -37,12 +39,12 @@ public class Pessoa extends Entity{
 		return this.rg;
 	}
 	
-	public void setDataNasc(String dataNasc) {
-		this.datanasc = dataNasc;
+	public void setDataNascimento(Date dataNasc) {
+		this.dataNascimento = dataNasc;
 	}
 	
-	public String getDataNasc() {
-		return this.datanasc;
+	public Date getDataNascimento() {
+		return this.dataNascimento;
 	}
 	
 	public void setEndereco(String endereco) {
