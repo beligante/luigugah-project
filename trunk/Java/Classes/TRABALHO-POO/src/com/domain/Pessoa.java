@@ -1,6 +1,8 @@
 package com.domain;
 
-public class Pessoa {
+import com.enums.Sexo;
+
+public class Pessoa extends Entity{
 	
 	private String nome;
 	private String cpf;
@@ -9,10 +11,7 @@ public class Pessoa {
 	private String endereco;
 	private String telefone;
 	private String email;
-	
-	public Pessoa() {
-		
-	}
+	private Sexo sexo;
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -68,5 +67,13 @@ public class Pessoa {
 	
 	public String getEmail() {
 		return this.email;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
 	}
 }
