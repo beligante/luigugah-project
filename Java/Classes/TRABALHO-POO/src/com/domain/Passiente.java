@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.enums.TipoAtendimento;
 
-public class Passiente {
+public class Passiente extends Pessoa{
 	
 	private TipoAtendimento tipoAtendimento;
 	private boolean isFumante;
