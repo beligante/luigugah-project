@@ -13,10 +13,6 @@ public abstract class Entity implements Comparable<Entity>{
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-	
 	@Override
 	public int compareTo(Entity entidade) {
 		return this.id.compareTo(entidade.getId());
