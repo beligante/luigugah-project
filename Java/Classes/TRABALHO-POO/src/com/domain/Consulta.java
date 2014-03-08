@@ -2,7 +2,6 @@ package com.domain;
 
 import java.util.Date;
 
-import com.enums.TipoAtendimento;
 import com.enums.TipoConsulta;
 
 public class Consulta extends Entity{
