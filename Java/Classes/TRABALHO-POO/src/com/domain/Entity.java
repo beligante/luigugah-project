@@ -3,7 +3,7 @@ package com.domain;
 public abstract class Entity implements Comparable<Entity>{
 	private static long INSTANCE_COUNT = 0;
 	
-	protected long id;
+	protected Long id;
 	
 	public Entity(){
 		this.id = INSTANCE_COUNT++;
@@ -15,6 +15,11 @@ public abstract class Entity implements Comparable<Entity>{
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	@Override
+	public int compareTo(Entity entidade) {
+		return this.id.compareTo(entidade.getId());
 	}
 	
 }
