@@ -2,6 +2,7 @@ package com.security;
 
 import com.controller.UserController;
 import com.domain.Credencial;
+import com.domain.Usuario;
 import com.repository.UserRepository;
 
 public class UserManager {
@@ -9,8 +10,9 @@ public class UserManager {
 	private UserRepository repository;
 	private Credencial credencial;
 	
-	public void login(Credencial credencial){
+	public Usuario login(Credencial credencial){
 		this.credencial = credencial;
+		return new UserController(this).getLoginByCredencial();
 	}
 
 	public UserRepository getRepository() {
