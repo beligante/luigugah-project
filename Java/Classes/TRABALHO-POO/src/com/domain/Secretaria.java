@@ -1,6 +1,6 @@
 package com.domain;
 
-public class Secretaria extends Pessoa{
+public class Secretaria extends Usuario{
 	
 	public Secretaria() {
 		super();
