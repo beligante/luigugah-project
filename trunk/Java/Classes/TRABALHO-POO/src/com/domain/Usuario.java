@@ -18,6 +18,5 @@ public abstract class Usuario extends Pessoa{
 		this.password = password;
 	}
 	
-	
 
 }
