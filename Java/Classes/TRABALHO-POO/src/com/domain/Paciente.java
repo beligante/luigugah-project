@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.enums.TipoAtendimento;
 
-public class Paciente {
+public class Paciente extends Entity{
 	
 	private TipoAtendimento tipoAtendimento;
 	private boolean isFumante;
