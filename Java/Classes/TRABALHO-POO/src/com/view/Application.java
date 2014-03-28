@@ -46,12 +46,12 @@ public class Application {
         
         Secretaria secretaria = new Secretaria();
                 
-        medico.setNome("Ariadine");
-        medico.setCpf("0000000000");
-        medico.setDataNascimento(new Date());
-        medico.setSexo(Sexo.MASCULINO);
-        medico.setUser("ari");
-        medico.setPassword("rihana");
+        secretaria.setNome("Ariadine");
+        secretaria.setCpf("0000000000");
+        secretaria.setDataNascimento(new Date());
+        secretaria.setSexo(Sexo.MASCULINO);
+        secretaria.setUser("ari");
+        secretaria.setPassword("rihana");
         
         userRepository.merge(medico);
         userRepository.merge(secretaria);
@@ -69,7 +69,7 @@ public class Application {
         
     }
     
-    public void buildLoggedScreen(Usuario sessionUser){
+    public static void buildLoggedScreen(Usuario sessionUser){
     
         PacienteController pacienteController = new PacienteController();
         ProntuarioController prontuarioController = new ProntuarioController();

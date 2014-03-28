@@ -1,6 +1,10 @@
 package com.view;
 
+import com.domain.Credencial;
+import com.domain.Usuario;
 import com.security.UserManager;
+import com.utils.StringUtils;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -50,6 +54,11 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Senha");
 
         buttonLogin.setText("Login");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/image/helth-symbol.png"))); // NOI18N
@@ -102,6 +111,33 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+
+        String user = this.user.getText();
+        String password = new String(this.password.getPassword());
+        
+        if(StringUtils.isBlank(user)){
+            JOptionPane.showMessageDialog(this, "O Campo usuario é obrigatorio");
+            return;
+        }
+        
+        if(StringUtils.isBlank(password)){
+            JOptionPane.showMessageDialog(this, "O Campo Senha é obrigatorio");
+            return;
+        }
+        
+        Credencial credencial = new Credencial(user, password);
+        
+        Usuario usuario = userManager.login(credencial);
+        
+        if(usuario == null){
+            JOptionPane.showMessageDialog(this, "Usuario ou Senha incorreto!");
+        }else{
+            Application.buildLoggedScreen(usuario);
+        }
+        
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments
