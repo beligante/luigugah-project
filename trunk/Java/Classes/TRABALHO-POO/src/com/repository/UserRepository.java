@@ -18,7 +18,7 @@ public class UserRepository extends Repository<Usuario>{
 	}
 	
 	public Repository<Usuario> merge(Usuario usuario){
-		loginMap.put(usuario.getUser(), usuario.getPassword());
+            loginMap.put(usuario.getUser(), usuario.getPassword());
 		userMap.put(usuario.getUser(), usuario.getId());
 		return super.merge(usuario);		
 	}

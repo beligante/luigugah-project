@@ -16,7 +16,8 @@ public class UserController extends AbstractController<Usuario, UserRepository>{
 	
 	public Usuario getLoginByCredencial(){
 		Credencial databaseUser = getRepository().getCredencialByUser(credencial.getUser());
-		if (databaseUser.equals(credencial)){
+                
+                if (databaseUser != null && databaseUser.equals(credencial)){
 			return getRepository().getUsuarioByUser(credencial.getUser());
 		}
 		return null;
