@@ -24,7 +24,7 @@ public abstract class AbstractController
 		return repository;
 	}
 
-	protected void setRepository(Repositorio repository) {
+	public void setRepository(Repositorio repository) {
 		this.repository = repository;
 	}
 }
