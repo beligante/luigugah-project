@@ -26,7 +26,12 @@ public class Login extends javax.swing.JFrame {
     public Login(UserManager userManager) {
         super();
         initComponents();
+        setLocationRelativeTo(null);
         this.userManager = userManager;
+    }
+
+    private Login() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -134,6 +139,7 @@ public class Login extends javax.swing.JFrame {
         if(usuario == null){
             JOptionPane.showMessageDialog(this, "Usuario ou Senha incorreto!");
         }else{
+            setVisible(false);
             Application.buildLoggedScreen(usuario, userManager);
         }
         
@@ -169,7 +175,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new Login().setVisible(true);
+                
             }
         });
     }
