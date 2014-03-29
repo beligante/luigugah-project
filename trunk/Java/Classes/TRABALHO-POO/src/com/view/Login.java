@@ -134,7 +134,7 @@ public class Login extends javax.swing.JFrame {
         if(usuario == null){
             JOptionPane.showMessageDialog(this, "Usuario ou Senha incorreto!");
         }else{
-            Application.buildLoggedScreen(usuario);
+            Application.buildLoggedScreen(usuario, userManager);
         }
         
     }//GEN-LAST:event_buttonLoginActionPerformed
