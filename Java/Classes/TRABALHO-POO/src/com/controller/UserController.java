@@ -1,9 +1,14 @@
 package com.controller;
 
+import com.domain.Credencial;
+import com.domain.Medico;
+import com.domain.Usuario;
 import com.repository.UserRepository;
 import com.security.UserManager;
-import com.domain.Credencial;
-import com.domain.Usuario;
+import com.utils.CollectionUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class UserController extends AbstractController<Usuario, UserRepository>{
 
@@ -23,6 +28,24 @@ public class UserController extends AbstractController<Usuario, UserRepository>{
 		return null;
 	}
 	
+        public Collection<Medico> getAllMedicos(){
+            Collection<Medico> retorno = new ArrayList<Medico>();
+            
+            Collection<Usuario> usuarios = getRepository().getAll();
+            
+            if(CollectionUtils.isNotEmpty(usuarios)){
+            
+                for(Usuario usuario : usuarios){
+                    if(usuario.getClass().isInstance(Medico.class)){
+                        retorno.add((Medico)usuario);
+                    }
+                }
+                return retorno;
+            }
+            
+            return null;
+        }
+        
 	@Override
 	protected void removeImpl(Usuario entidade) {
 		getRepository().remove(entidade);	

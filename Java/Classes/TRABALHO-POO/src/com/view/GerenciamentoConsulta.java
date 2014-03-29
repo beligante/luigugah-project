@@ -8,6 +8,11 @@ package com.view;
 
 import com.enums.TipoConsulta;
 import javax.swing.DefaultComboBoxModel;
+import com.controller.PacienteController;
+import com.controller.UserController;
+import com.domain.Paciente;
+import com.repository.Repository;
+import com.repository.UserRepository;
 
 /**
  *
@@ -15,11 +20,16 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
+    UserController userController;
+    PacienteController pacienteController;
     /**
      * Creates new form GerenciamentoConsulta
      */
-    public GerenciamentoConsulta() {
+    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController) {
+        super();
         initComponents();
+        this.userController = userController;
+        this.pacienteController = pacienteController;
     }
 
     /**
@@ -169,7 +179,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GerenciamentoConsulta().setVisible(true);
+                //new GerenciamentoConsulta().setVisible(true);
             }
         });
     }

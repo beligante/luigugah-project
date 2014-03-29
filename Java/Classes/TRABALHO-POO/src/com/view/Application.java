@@ -69,7 +69,7 @@ public class Application {
         
     }
     
-    public static void buildLoggedScreen(Usuario sessionUser){
+    public static void buildLoggedScreen(Usuario sessionUser, UserManager userManager){
     
         PacienteController pacienteController = new PacienteController();
         ProntuarioController prontuarioController = new ProntuarioController();
@@ -93,6 +93,7 @@ public class Application {
         principal.setConsultaViewController(consultaViewController);
         principal.setPacienteViewController(pacienteViewController);
         principal.setProntuarioViewController(prontuarioViewController);
+        principal.setUserManager(userManager);
         
         principal.setVisible(true);
     }
