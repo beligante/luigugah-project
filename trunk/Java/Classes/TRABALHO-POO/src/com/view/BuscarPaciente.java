@@ -61,6 +61,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         searchResultTable = new javax.swing.JTable();
         searchButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,20 +92,30 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("Cancelar");
+        jButton1.setActionCommand("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(searchButton))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,7 +128,9 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
                     .addComponent(searchButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -135,6 +148,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         int contador = 0;
         DefaultTableModel dtm =  (DefaultTableModel) searchResultTable.getModel();
         
+        cleanResultTable();
         
         for (Paciente paciente : result) {
             rowData = new Object[]{paciente, paciente.getNome(), paciente.getRg(), paciente.getTelefone()};
@@ -143,6 +157,11 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cleanResultTable();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +199,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton searchButton;
@@ -235,6 +255,10 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
                 renderButton.setForeground(table.getForeground());  
                 renderButton.setBackground(UIManager.getColor("Button.background"));  
             }  
+            
+            try{
+                paciente = (Paciente) value;
+            }catch(Exception e){}
    
             renderButton.setText( TITLE  );  
             return renderButton;  
@@ -243,7 +267,10 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         public Component getTableCellEditorComponent(  
             JTable table, Object value, boolean isSelected, int row, int column)  
         {  
-            paciente = (Paciente) value;  
+            try{
+                paciente = (Paciente) value;
+            }catch(Exception e){}
+            
             editButton.setText( TITLE );  
             return editButton;  
         }  
@@ -257,7 +284,17 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         {  
             fireEditingStopped();
             buscarPaciente.setVisible(false);
+            buscarPaciente.cleanResultTable();
             gerenciarPaciente.editarPaciente(paciente);
         }  
+    }
+    
+    public void cleanResultTable(){
+        
+        DefaultTableModel dtm =  (DefaultTableModel) searchResultTable.getModel();
+        
+        for(int index = 0; index < dtm.getRowCount(); index++){
+            dtm.removeRow(index);
+        }
     }
 }

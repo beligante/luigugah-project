@@ -12,6 +12,8 @@ import com.security.UserManager;
 import com.view.controller.ConsultaViewController;
 import com.view.controller.PacienteViewController;
 import com.view.controller.ProntuarioViewController;
+import java.awt.Component;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -191,16 +193,18 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerenciamentoDeConsultaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciamentoDeConsultaMenuItemActionPerformed
+        closeAllInternalFrames();
         gerenciamentoConsulta.refreshFiels();
         gerenciamentoConsulta.setVisible(true);
     }//GEN-LAST:event_gerenciamentoDeConsultaMenuItemActionPerformed
 
     private void gerenciamentoDePacienteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciamentoDePacienteMenuItemActionPerformed
-        gerenciarPaciente.setVisible(true);
+        closeAllInternalFrames();
+        gerenciarPaciente.cadastrarPaciente();
     }//GEN-LAST:event_gerenciamentoDePacienteMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-
+        closeAllInternalFrames();
         buscarPaciente.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -253,4 +257,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
+
+    private void closeAllInternalFrames(){
+        for(Component component : this.container.getComponents()){
+            if(component instanceof JInternalFrame){
+                component.setVisible(false);
+            }
+        }
+    }
 }
