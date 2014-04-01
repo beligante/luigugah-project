@@ -6,13 +6,22 @@
 
 package com.view;
 
-import com.enums.TipoConsulta;
-import javax.swing.DefaultComboBoxModel;
+import com.controller.ConsultaController;
 import com.controller.PacienteController;
 import com.controller.UserController;
+import com.domain.Consulta;
+import com.domain.Medico;
 import com.domain.Paciente;
+import com.enums.TipoConsulta;
 import com.repository.Repository;
 import com.repository.UserRepository;
+import com.utils.StringUtils;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import sun.swing.StringUIClientPropertyKey;
 
 /**
  *
@@ -20,16 +29,18 @@ import com.repository.UserRepository;
  */
 public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
-    UserController userController;
-    PacienteController pacienteController;
+    private UserController userController;
+    private PacienteController pacienteController;
+    private ConsultaController consultaController;
     /**
      * Creates new form GerenciamentoConsulta
      */
-    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController) {
+    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController,ConsultaController  consultaController) {
         super();
-        initComponents();
         this.userController = userController;
         this.pacienteController = pacienteController;
+        this.consultaController = consultaController;
+        initComponents();
     }
 
     /**
@@ -47,13 +58,13 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        dataConsultaTextField = new javax.swing.JFormattedTextField();
+        horaConsultaTextField = new javax.swing.JFormattedTextField();
+        selectMedico = new javax.swing.JComboBox();
+        selectPessoa = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox();
+        selectTipoConsulta = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,15 +81,36 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Tipo Consulta");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        dataConsultaTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        horaConsultaTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+
+        selectMedico.setModel(new DefaultComboBoxModel(userController.getAllMedicos().toArray())
+        );
+
+        selectPessoa.setEditable(true);
+        selectPessoa.setModel(new DefaultComboBoxModel(pacienteController.getAll().toArray()));
+        selectPessoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectPessoaActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setModel(new DefaultComboBoxModel(TipoConsulta.values())
+        selectTipoConsulta.setModel(new DefaultComboBoxModel(TipoConsulta.values())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,11 +139,11 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton2)
-                            .addComponent(jComboBox1, 0, 199, Short.MAX_VALUE)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(jFormattedTextField2)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(selectMedico, 0, 199, Short.MAX_VALUE)
+                            .addComponent(dataConsultaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(horaConsultaTextField)
+                            .addComponent(selectPessoa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectTipoConsulta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,23 +154,23 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataConsultaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horaConsultaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectTipoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -148,6 +180,62 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selectPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPessoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectPessoaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if(isHasEmptyFields()){return;}
+        
+        SimpleDateFormat dataSemHora = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat horaSemData = new SimpleDateFormat("HH:mm");
+        
+        if(!isValidFormatForDataConsulta(dataSemHora)){
+            return;
+        }
+        
+        if(!isValidFormatForHoraConsulta(horaSemData)){
+            //HORA SEM CONSULTA
+            return;
+        }
+        
+        SimpleDateFormat fullDataConsulta = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        
+        Date dataConsulta = null;
+        try{
+            dataConsulta = fullDataConsulta.parse(dataConsultaTextField.getText() + 
+                                                  " " +
+                                                  horaConsultaTextField.getText());
+        }catch(Exception e){}
+        
+        TipoConsulta tipoConsulta = (TipoConsulta) selectTipoConsulta.getModel().getSelectedItem();
+        
+        if(consultaController.isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
+            //JOPTIONPANE MESSAGE AQUI
+            return;
+        }
+        
+        Medico medico = (Medico) selectMedico.getModel().getSelectedItem();
+        Paciente paciente = (Paciente) selectPessoa.getModel().getSelectedItem();
+        
+        Consulta consulta = new Consulta();
+        consulta.setDataConsulta(dataConsulta);
+        consulta.setTipoConsulta(tipoConsulta);
+        consulta.setPaciente(paciente);
+        consulta.setMedico(medico);
+        
+        consultaController.save(consulta);
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(this, "Consulta salva com Sucesso!");
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,18 +273,45 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField dataConsultaTextField;
+    private javax.swing.JFormattedTextField horaConsultaTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JComboBox selectMedico;
+    private javax.swing.JComboBox selectPessoa;
+    private javax.swing.JComboBox selectTipoConsulta;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isHasEmptyFields() {
+        //TODO IMPLEMENTAR PARA OS OUTROS CAMPOS
+        
+        if(StringUtils.isBlank(this.dataConsultaTextField.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique a data da Consulta");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidFormatForDataConsulta(SimpleDateFormat dataSemHora) {
+        
+        //TODO IMPLEMENTAR A VALIDACAO
+        return true;
+    }
+
+    private boolean isValidFormatForHoraConsulta(SimpleDateFormat horaSemData) {
+        //TODO IMPLEMENTAR VALIDACAO
+        return true;
+    }
+
+    void refreshFiels() {
+        selectPessoa.setModel(new DefaultComboBoxModel(pacienteController.getAll().toArray()));
+        selectMedico.setModel(new DefaultComboBoxModel(userController.getAllMedicos().toArray()));
+
+    }
 }

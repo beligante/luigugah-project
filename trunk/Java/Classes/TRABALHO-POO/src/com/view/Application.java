@@ -88,13 +88,7 @@ public class Application {
         ConsultaViewController  consultaViewController = 
                 new ConsultaViewController(consultaController, sessionUser);
         
-        Principal principal = new Principal();
-        
-        principal.setConsultaViewController(consultaViewController);
-        principal.setPacienteViewController(pacienteViewController);
-        principal.setProntuarioViewController(prontuarioViewController);
-        principal.setUserManager(userManager);
-        
+        Principal principal = new Principal(consultaViewController,pacienteViewController, prontuarioViewController, userManager);        
         principal.setVisible(true);
     }
 }

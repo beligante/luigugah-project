@@ -6,17 +6,40 @@
 
 package com.view;
 
+import com.domain.Paciente;
+import com.utils.CollectionUtils;
+import com.view.controller.PacienteViewController;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collection;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 /**
  *
  * @author Junior
  */
-public class BuscarPaciente extends javax.swing.JFrame {
+public class BuscarPaciente extends javax.swing.JInternalFrame {
+    
+    PacienteViewController pacienteViewController;
 
     /**
      * Creates new form BuscarPaciente
      */
-    public BuscarPaciente() {
+    public BuscarPaciente(PacienteViewController pacienteViewController) {
+        
+        this.pacienteViewController = pacienteViewController;
         initComponents();
+        
+        searchResultTable.getColumn("Opções").setCellRenderer(new ButtonRenderer());
+        searchResultTable.getColumn("Opções").setCellEditor(new ButtonEditor(new JCheckBox()));
     }
 
     /**
@@ -29,23 +52,21 @@ public class BuscarPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        searchInput = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        searchResultTable = new javax.swing.JTable();
+        searchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Nome do Paciente");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        searchResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Editar Paciente", "Nome", "RG", "Telefone"
+                "Opções", "Nome", "RG", "Telefone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -56,7 +77,14 @@ public class BuscarPaciente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(searchResultTable);
+
+        searchButton.setText("Buscar");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,9 +96,11 @@ public class BuscarPaciente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +108,8 @@ public class BuscarPaciente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -86,6 +117,27 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        
+        Collection<Paciente> result = pacienteViewController.getController().searchByName(searchInput.getText());
+        
+        if(CollectionUtils.isEmpty(result)){
+            return;
+        }
+        
+        Object[] rowData;
+        int contador = 0;
+        DefaultTableModel dtm =  (DefaultTableModel) searchResultTable.getModel();
+        
+        
+        for (Paciente paciente : result) {
+            rowData = new Object[]{paciente, paciente.getNome(), paciente.getRg(), paciente.getTelefone()};
+            dtm.addRow(rowData);
+        }
+        
+        
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +169,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarPaciente().setVisible(true);
+//                new BuscarPaciente().setVisible(true);
             }
         });
     }
@@ -125,7 +177,83 @@ public class BuscarPaciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchInput;
+    private javax.swing.JTable searchResultTable;
     // End of variables declaration//GEN-END:variables
+
+    class ButtonEditor extends DefaultCellEditor {
+        protected JButton button;
+
+        private Paciente paciente;
+
+        private boolean isPushed;
+
+        public ButtonEditor(JCheckBox checkBox) {
+          super(checkBox);
+          button = new JButton();
+          button.setOpaque(true);
+          button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              fireEditingStopped();
+            }
+          });
+        }
+
+        public Component getTableCellEditorComponent(JTable table, Object value,
+            boolean isSelected, int row, int column) {
+          if (isSelected) {
+            button.setForeground(table.getSelectionForeground());
+            button.setBackground(table.getSelectionBackground());
+          } else {
+            button.setForeground(table.getForeground());
+            button.setBackground(table.getBackground());
+          }
+          
+          paciente = (Paciente) value;
+          
+          button.setText("Editar");
+          isPushed = true;
+          return button;
+        }
+
+        public Object getCellEditorValue() {
+          if (isPushed) {
+
+              JOptionPane.showMessageDialog(null, paciente.getNome());
+
+          }
+          isPushed = false;
+          return new String("Editar");
+        }
+
+        public boolean stopCellEditing() {
+          isPushed = false;
+          return super.stopCellEditing();
+        }
+
+        protected void fireEditingStopped() {
+          super.fireEditingStopped();
+        }
+    }
+    
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+
+        public ButtonRenderer() {
+          setOpaque(true);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+          if (isSelected) {
+            setForeground(table.getSelectionForeground());
+            setBackground(table.getSelectionBackground());
+          } else {
+            setForeground(table.getForeground());
+            setBackground(UIManager.getColor("Button.background"));
+          }
+          setText((value == null) ? "" : value.toString());
+          return this;
+        }
+    }
 }
