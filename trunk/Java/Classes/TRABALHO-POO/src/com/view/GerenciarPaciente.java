@@ -10,6 +10,8 @@ import com.controller.PacienteController;
 import com.domain.Paciente;
 import com.enums.Sexo;
 import com.enums.TipoAtendimento;
+import com.utils.CollectionUtils;
+import com.view.controller.PacienteViewController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,13 +28,28 @@ import javax.swing.text.MaskFormatter;
  */
 public class GerenciarPaciente extends javax.swing.JInternalFrame {
 
-    private PacienteController pacienteController;
+    private PacienteViewController pacienteViewController;
+    private Paciente paciente;
+    private boolean isEditing;
+    private static final SimpleDateFormat DATA_NASCIMENTO_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
+    
     /**
      * Creates new form GerenciarPaciente
      */
-    public GerenciarPaciente(PacienteController pacienteController) {
-        this.pacienteController = pacienteController;
+    public GerenciarPaciente(PacienteViewController pacienteViewController) {
+        this.pacienteViewController = pacienteViewController;
         initComponents();
+        isEditing = false;
+    }
+    
+    public GerenciarPaciente(PacienteViewController pacienteViewController, Paciente paciente) {
+        this.pacienteViewController = pacienteViewController;
+        initComponents();
+        
+        if(paciente != null){
+            isEditing = true;
+            editarPaciente(paciente);
+        }
     }
 
     /**
@@ -420,11 +437,9 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         String telefone = pacienteTelefone.getText();
         Sexo sexo = (Sexo) pacienteSexo.getModel().getSelectedItem();
         String email = pacienteEmail.getText();
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dataNascimento = null;
         try{
-            dataNascimento = sdf.parse(pacienteDataNascimento.getText());
+            dataNascimento = DATA_NASCIMENTO_FORMAT.parse(pacienteDataNascimento.getText());
         }catch(Exception e){}
         
         String endereco = pacienteEndereco.getText();
@@ -442,7 +457,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         List<String> alergias = getAlergias();
         List<String> cirurgias = getCirurgias();
         
-        Paciente paciente = new Paciente();
+        Paciente paciente = (isEditing) ? this.paciente : new Paciente();
         paciente.setAlergias(alergias);
         paciente.setCirurgias(cirurgias);
         paciente.setIsAlcolatra(isAlcolatra);
@@ -458,8 +473,12 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         paciente.setEmail(email);
         paciente.setDataNascimento(dataNascimento);
         
-        pacienteController.save(paciente);
-        JOptionPane.showMessageDialog(this, "Paciente salvo com sucesso!");
+        pacienteViewController.getController().save(paciente);
+        if(isEditing){ 
+        JOptionPane.showMessageDialog(this, "Paciente editado com sucesso!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Paciente salvo com sucesso!");
+        }
         this.setVisible(false);
         
     }//GEN-LAST:event_pacienteButtomSalvarActionPerformed
@@ -579,4 +598,42 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         
         return cirurgias;
     }
+    
+    public void editarPaciente(Paciente paciente){
+        if(paciente == null){isEditing = false;return;}
+        
+        isEditing = true;
+        
+        pacienteName.setText(paciente.getNome());
+        pacienteCPF.setText(paciente.getCpf());
+        pacienteRG.setText(paciente.getRg());
+        pacienteTelefone.setText(paciente.getTelefone());
+        pacienteSexo.setSelectedItem(paciente.getSexo());
+        pacienteDataNascimento.setText(DATA_NASCIMENTO_FORMAT.format(paciente.getDataNascimento()));
+        pacienteEndereco.setText(paciente.getEndereco());
+        pacienteEmail.setText(paciente.getEmail());
+        pacienteTipoAtendimento.setSelectedItem(paciente.getTipoAtendimento());
+        pacienteIsFumante.setSelected(paciente.getIsFumante());
+        pacienteIsCardiaco.setSelected(paciente.getIsCardiaco());
+        pacienteIsDiabetico.setSelected(paciente.getIsDiabetico());
+        pacienteIsAlcolatra.setSelected(paciente.getIsAlcolatra());
+        
+        if(CollectionUtils.isNotEmpty(paciente.getAlergias())){
+            DefaultTableModel alergiasModel = (DefaultTableModel) pacienteAlergias.getModel();
+            alergiasModel.addRow(paciente.getAlergias().toArray());
+        }
+        
+        if(CollectionUtils.isNotEmpty(paciente.getAlergias())){
+            DefaultTableModel cirurgiasModel = (DefaultTableModel) pacienteCirurgias.getModel();
+            cirurgiasModel.addRow(paciente.getCirurgias().toArray());
+        }
+        
+        this.setVisible(true);
+        
+    }
+    
+    public void cadastrarPaciente(){
+        isEditing = false;
+    }
 }
+

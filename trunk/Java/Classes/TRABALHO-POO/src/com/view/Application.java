@@ -42,7 +42,7 @@ public class Application {
         medico.setDataNascimento(new Date());
         medico.setSexo(Sexo.OUTROS);
         medico.setUser("jao");
-        medico.setPassword("batata");
+        medico.setPassword("a");
         
         Secretaria secretaria = new Secretaria();
                 
@@ -76,6 +76,16 @@ public class Application {
         ConsultaController consultaController = new ConsultaController();
         
         pacienteController.setRepository(new Repository<Paciente>());
+        
+        Paciente paciente = new Paciente();
+        paciente.setNome("Luis");
+        paciente.setDataNascimento(new Date());
+        paciente.setColesterol(10F);
+        paciente.setRg("1010101");
+        paciente.setTelefone("000000");
+        
+        pacienteController.save(paciente);
+        
         prontuarioController.setRepository(new Repository<Prontuario>());
         consultaController.setRepository(new Repository<Consulta>());
 

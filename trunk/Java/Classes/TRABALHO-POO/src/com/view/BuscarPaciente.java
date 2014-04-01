@@ -7,12 +7,15 @@
 package com.view;
 
 import com.domain.Paciente;
+import com.domain.Pessoa;
 import com.utils.CollectionUtils;
 import com.view.controller.PacienteViewController;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
+import java.util.Date;
+import javax.swing.AbstractCellEditor;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -20,7 +23,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -33,13 +38,13 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
     /**
      * Creates new form BuscarPaciente
      */
-    public BuscarPaciente(PacienteViewController pacienteViewController) {
+
+    BuscarPaciente(PacienteViewController pacienteViewController, GerenciarPaciente gerenciarPaciente) {
         
         this.pacienteViewController = pacienteViewController;
         initComponents();
         
-        searchResultTable.getColumn("Opções").setCellRenderer(new ButtonRenderer());
-        searchResultTable.getColumn("Opções").setCellEditor(new ButtonEditor(new JCheckBox()));
+        new ButtonColumn(searchResultTable, 0, gerenciarPaciente, this);
     }
 
     /**
@@ -57,7 +62,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         searchResultTable = new javax.swing.JTable();
         searchButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome do Paciente");
 
@@ -70,7 +75,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                true, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -182,78 +187,77 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JTable searchResultTable;
     // End of variables declaration//GEN-END:variables
 
-    class ButtonEditor extends DefaultCellEditor {
-        protected JButton button;
+    class ButtonColumn extends AbstractCellEditor  
+        implements TableCellRenderer, TableCellEditor, ActionListener  {  
+        JTable table;  
+        JButton renderButton;  
+        JButton editButton;  
+        String text;  
+        Paciente paciente;
+        GerenciarPaciente gerenciarPaciente;
+        BuscarPaciente buscarPaciente;
+        
+        private static final String TITLE = "Editar"; 
 
-        private Paciente paciente;
-
-        private boolean isPushed;
-
-        public ButtonEditor(JCheckBox checkBox) {
-          super(checkBox);
-          button = new JButton();
-          button.setOpaque(true);
-          button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              fireEditingStopped();
-            }
-          });
+        private ButtonColumn(JTable table, int column, GerenciarPaciente gerenciarPaciente, BuscarPaciente buscarPaciente) {
+            
+            super();  
+            this.table = table;  
+            renderButton = new JButton();  
+   
+            editButton = new JButton();  
+            editButton.setFocusPainted( false );  
+            editButton.addActionListener( this );  
+   
+            TableColumnModel columnModel = table.getColumnModel();  
+            columnModel.getColumn(column).setCellRenderer( this );  
+            columnModel.getColumn(column).setCellEditor( this );
+            
+            this.gerenciarPaciente = gerenciarPaciente;
+            this.buscarPaciente = buscarPaciente;
         }
-
-        public Component getTableCellEditorComponent(JTable table, Object value,
-            boolean isSelected, int row, int column) {
-          if (isSelected) {
-            button.setForeground(table.getSelectionForeground());
-            button.setBackground(table.getSelectionBackground());
-          } else {
-            button.setForeground(table.getForeground());
-            button.setBackground(table.getBackground());
-          }
-          
-          paciente = (Paciente) value;
-          
-          button.setText("Editar");
-          isPushed = true;
-          return button;
-        }
-
-        public Object getCellEditorValue() {
-          if (isPushed) {
-
-              JOptionPane.showMessageDialog(null, paciente.getNome());
-
-          }
-          isPushed = false;
-          return new String("Editar");
-        }
-
-        public boolean stopCellEditing() {
-          isPushed = false;
-          return super.stopCellEditing();
-        }
-
-        protected void fireEditingStopped() {
-          super.fireEditingStopped();
-        }
-    }
-    
-    class ButtonRenderer extends JButton implements TableCellRenderer {
-
-        public ButtonRenderer() {
-          setOpaque(true);
-        }
-
-        public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-          if (isSelected) {
-            setForeground(table.getSelectionForeground());
-            setBackground(table.getSelectionBackground());
-          } else {
-            setForeground(table.getForeground());
-            setBackground(UIManager.getColor("Button.background"));
-          }
-          setText((value == null) ? "" : value.toString());
-          return this;
-        }
+   
+        public Component getTableCellRendererComponent(  
+            JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
+        {  
+            if (hasFocus)  
+            {  
+                renderButton.setForeground(table.getForeground());  
+                renderButton.setBackground(UIManager.getColor("Button.background"));  
+            }  
+            else if (isSelected)  
+            {  
+                renderButton.setForeground(table.getSelectionForeground());  
+                 renderButton.setBackground(table.getSelectionBackground());  
+            }  
+            else  
+            {  
+                renderButton.setForeground(table.getForeground());  
+                renderButton.setBackground(UIManager.getColor("Button.background"));  
+            }  
+   
+            renderButton.setText( TITLE  );  
+            return renderButton;  
+        }  
+   
+        public Component getTableCellEditorComponent(  
+            JTable table, Object value, boolean isSelected, int row, int column)  
+        {  
+            paciente = (Paciente) value;  
+            editButton.setText( TITLE );  
+            return editButton;  
+        }  
+   
+        public Object getCellEditorValue()  
+        {  
+            return TITLE;  
+        }  
+   
+        public void actionPerformed(ActionEvent e)  
+        {  
+            fireEditingStopped();
+            buscarPaciente.setVisible(false);
+            gerenciarPaciente.editarPaciente(paciente);
+        }  
     }
 }
