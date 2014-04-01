@@ -137,7 +137,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu3.setText("Paciente");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, 0));
         jMenuItem1.setText("Pesquisar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +145,6 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
-        gerenciamentoDePacienteMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
         gerenciamentoDePacienteMenuItem.setText("Cadastrar");
         gerenciamentoDePacienteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,11 +157,9 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu4.setText("Consulta");
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, 0));
         jMenuItem3.setText("Pesquisar");
         jMenu4.add(jMenuItem3);
 
-        gerenciamentoDeConsultaMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
         gerenciamentoDeConsultaMenuItem.setText("Cadastrar");
         gerenciamentoDeConsultaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
