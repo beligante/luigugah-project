@@ -23,6 +23,9 @@ public class Principal extends javax.swing.JFrame {
     private ProntuarioViewController prontuarioViewController;
     private ConsultaViewController consultaViewController;
     private UserManager userManager;
+    GerenciamentoConsulta gerenciamentoConsulta;
+    GerenciarPaciente gerenciarPaciente;
+    BuscarPaciente buscarPaciente;
 
     public UserManager getUserManager() {
         return userManager;
@@ -61,11 +64,37 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    public Principal(ConsultaViewController consultaViewController, 
+                     PacienteViewController pacienteViewController, 
+                     ProntuarioViewController prontuarioViewController, 
+                     UserManager userManager) {
+        
+        this.consultaViewController = consultaViewController;
+        this.pacienteViewController = pacienteViewController;
+        this.prontuarioViewController = prontuarioViewController;
+        this.userManager = userManager;
+        
         initComponents();
+        buildMenuItens();
         setLocationRelativeTo(null);
     }
 
+    private void buildMenuItens(){        
+        
+        gerenciamentoConsulta = new GerenciamentoConsulta(new UserController(userManager), pacienteViewController.getController(), consultaViewController.getController());
+        try{gerenciamentoConsulta.setMaximum(true);}catch(Exception e){}
+        this.container.add(gerenciamentoConsulta);
+        
+        gerenciarPaciente = new GerenciarPaciente(pacienteViewController.getController());
+        try{gerenciarPaciente.setMaximum(true);}catch(Exception e){}
+        this.container.add(gerenciarPaciente);
+        
+        buscarPaciente = new BuscarPaciente(pacienteViewController);
+        try{buscarPaciente.setMaximum(true);}catch(Exception e){}
+        this.container.add(buscarPaciente);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,10 +111,10 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        gerenciamentoDePacienteMenuItem = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        gerenciamentoDeConsultaMenuItem = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -99,27 +128,32 @@ public class Principal extends javax.swing.JFrame {
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGap(0, 644, Short.MAX_VALUE)
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGap(0, 689, Short.MAX_VALUE)
         );
 
         jMenu3.setText("Paciente");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, 0));
         jMenuItem1.setText("Pesquisar");
-        jMenu3.add(jMenuItem1);
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
-        jMenuItem2.setText("Cadastrar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenu3.add(jMenuItem1);
+
+        gerenciamentoDePacienteMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        gerenciamentoDePacienteMenuItem.setText("Cadastrar");
+        gerenciamentoDePacienteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerenciamentoDePacienteMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu3.add(gerenciamentoDePacienteMenuItem);
 
         jMenuBar2.add(jMenu3);
 
@@ -129,14 +163,14 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem3.setText("Pesquisar");
         jMenu4.add(jMenuItem3);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
-        jMenuItem4.setText("Cadastrar");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        gerenciamentoDeConsultaMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        gerenciamentoDeConsultaMenuItem.setText("Cadastrar");
+        gerenciamentoDeConsultaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                gerenciamentoDeConsultaMenuItemActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenu4.add(gerenciamentoDeConsultaMenuItem);
 
         jMenuBar2.add(jMenu4);
 
@@ -146,7 +180,9 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,23 +194,20 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
-        
-        
-        GerenciamentoConsulta gerenciamentoConsulta = new GerenciamentoConsulta(new UserController(userManager), pacienteViewController.getController());
+    private void gerenciamentoDeConsultaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciamentoDeConsultaMenuItemActionPerformed
+        gerenciamentoConsulta.refreshFiels();
         gerenciamentoConsulta.setVisible(true);
-        try{
-            gerenciamentoConsulta.setMaximum(true);
-        }catch(Exception e){}
+    }//GEN-LAST:event_gerenciamentoDeConsultaMenuItemActionPerformed
+
+    private void gerenciamentoDePacienteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciamentoDePacienteMenuItemActionPerformed
+        gerenciarPaciente.setVisible(true);
+    }//GEN-LAST:event_gerenciamentoDePacienteMenuItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        buscarPaciente.setVisible(true);
         
-        this.container.add(gerenciamentoConsulta);
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,13 +239,15 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+               // new Principal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel container;
+    private javax.swing.JMenuItem gerenciamentoDeConsultaMenuItem;
+    private javax.swing.JMenuItem gerenciamentoDePacienteMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -220,8 +255,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

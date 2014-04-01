@@ -36,7 +36,7 @@ public class UserController extends AbstractController<Usuario, UserRepository>{
             if(CollectionUtils.isNotEmpty(usuarios)){
             
                 for(Usuario usuario : usuarios){
-                    if(usuario.getClass().isInstance(Medico.class)){
+                    if(usuario instanceof Medico){
                         retorno.add((Medico)usuario);
                     }
                 }

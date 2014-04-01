@@ -78,4 +78,9 @@ public class Pessoa extends Entity{
 	public Sexo getSexo() {
 		return sexo;
 	}
+        
+        @Override
+        public String toString(){
+            return this.nome;
+        }
 }

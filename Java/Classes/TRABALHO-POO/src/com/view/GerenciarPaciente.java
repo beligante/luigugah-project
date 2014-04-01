@@ -6,10 +6,17 @@
 
 package com.view;
 
+import com.controller.PacienteController;
+import com.domain.Paciente;
 import com.enums.Sexo;
 import com.enums.TipoAtendimento;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
@@ -17,12 +24,14 @@ import javax.swing.text.MaskFormatter;
  *
  * @author Junior
  */
-public class GerenciarPaciente extends javax.swing.JFrame {
+public class GerenciarPaciente extends javax.swing.JInternalFrame {
 
+    private PacienteController pacienteController;
     /**
      * Creates new form GerenciarPaciente
      */
-    public GerenciarPaciente() {
+    public GerenciarPaciente(PacienteController pacienteController) {
+        this.pacienteController = pacienteController;
         initComponents();
     }
 
@@ -196,6 +205,11 @@ public class GerenciarPaciente extends javax.swing.JFrame {
         });
 
         pacienteButtomCancelar.setText("Cancelar");
+        pacienteButtomCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pacienteButtomCancelarActionPerformed(evt);
+            }
+        });
 
         pacienteButtomCirurgiasAdicionar.setText("Adicionar");
         pacienteButtomCirurgiasAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -397,7 +411,57 @@ public class GerenciarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_pacienteDataNascimentoActionPerformed
 
     private void pacienteButtomSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomSalvarActionPerformed
-        // TODO add your handling code here:
+
+        //VALIDATION CODES HERE
+        
+        String nome = pacienteName.getText();
+        String cpf = pacienteCPF.getText();
+        String rg = pacienteRG.getText();
+        String telefone = pacienteTelefone.getText();
+        Sexo sexo = (Sexo) pacienteSexo.getModel().getSelectedItem();
+        String email = pacienteEmail.getText();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataNascimento = null;
+        try{
+            dataNascimento = sdf.parse(pacienteDataNascimento.getText());
+        }catch(Exception e){}
+        
+        String endereco = pacienteEndereco.getText();
+        
+        TipoAtendimento tipoAtendimento = 
+                (TipoAtendimento) pacienteTipoAtendimento.getModel().getSelectedItem();
+        
+        boolean isFumante = pacienteIsFumante.isSelected();
+        boolean isCardiaco = pacienteIsCardiaco.isSelected();
+        boolean isAlcolatra = pacienteIsAlcolatra.isSelected();
+        boolean isDiabetico = pacienteIsDiabetico.isSelected();
+        
+        float colesterol= Float.parseFloat(pacienteColesterol.getText());
+        
+        List<String> alergias = getAlergias();
+        List<String> cirurgias = getCirurgias();
+        
+        Paciente paciente = new Paciente();
+        paciente.setAlergias(alergias);
+        paciente.setCirurgias(cirurgias);
+        paciente.setIsAlcolatra(isAlcolatra);
+        paciente.setIsCardiaco(isCardiaco);
+        paciente.setIsDiabetico(isDiabetico);
+        paciente.setIsFumante(isFumante);
+        paciente.setColesterol(colesterol);
+        paciente.setNome(nome);
+        paciente.setRg(rg);
+        paciente.setCpf(cpf);
+        paciente.setSexo(sexo);
+        paciente.setTelefone(telefone);
+        paciente.setEmail(email);
+        paciente.setDataNascimento(dataNascimento);
+        
+        pacienteController.save(paciente);
+        JOptionPane.showMessageDialog(this, "Paciente salvo com sucesso!");
+        this.setVisible(false);
+        
     }//GEN-LAST:event_pacienteButtomSalvarActionPerformed
 
     private void pacienteButtomCirurgiasAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomCirurgiasAdicionarActionPerformed
@@ -411,6 +475,12 @@ public class GerenciarPaciente extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) pacienteAlergias.getModel();
         modelo.addRow(dados);
     }//GEN-LAST:event_pacienteButtomAlergiasAdicionarActionPerformed
+
+    private void pacienteButtomCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomCancelarActionPerformed
+
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_pacienteButtomCancelarActionPerformed
 
     /**   
      * @param args the command line arguments
@@ -442,7 +512,7 @@ public class GerenciarPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GerenciarPaciente().setVisible(true);
+                //new GerenciarPaciente().setVisible(true);
             }
         });
     }
@@ -487,4 +557,26 @@ public class GerenciarPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField pacienteTelefone;
     private javax.swing.JComboBox pacienteTipoAtendimento;
     // End of variables declaration//GEN-END:variables
+
+    private List<String> getAlergias() {
+        int numeroDeLinhas = pacienteAlergias.getModel().getRowCount();
+        
+        List<String> alergias = new ArrayList<String>();
+        for(int linha = 0 ; linha < numeroDeLinhas; linha++){
+           alergias.add((String) pacienteAlergias.getModel().getValueAt(linha, 0));
+        }
+        
+        return alergias;
+    }
+
+    private List<String> getCirurgias() {
+        int numeroDeLinhas = pacienteCirurgias.getModel().getRowCount();
+        
+        List<String> cirurgias = new ArrayList<String>();
+        for(int linha = 0 ; linha < numeroDeLinhas; linha++){
+           cirurgias.add((String) pacienteCirurgias.getModel().getValueAt(linha, 0));
+        }
+        
+        return cirurgias;
+    }
 }
