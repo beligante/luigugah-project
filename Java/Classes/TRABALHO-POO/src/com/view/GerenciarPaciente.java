@@ -488,7 +488,10 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         boolean isAlcolatra = pacienteIsAlcolatra.isSelected();
         boolean isDiabetico = pacienteIsDiabetico.isSelected();
         
-        float colesterol= Float.parseFloat(pacienteColesterol.getText());
+        float colesterol = 0F;
+        try{
+            colesterol= Float.parseFloat(pacienteColesterol.getText());
+        }catch(Exception e){}
         
         List<String> alergias = getAlergias();
         List<String> cirurgias = getCirurgias();
@@ -640,6 +643,8 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         
         isEditing = true;
         
+        this.paciente = paciente;
+        
         pacienteName.setText(paciente.getNome());
         pacienteCPF.setText(paciente.getCpf());
         pacienteRG.setText(paciente.getRg());
@@ -653,6 +658,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         pacienteIsCardiaco.setSelected(paciente.getIsCardiaco());
         pacienteIsDiabetico.setSelected(paciente.getIsDiabetico());
         pacienteIsAlcolatra.setSelected(paciente.getIsAlcolatra());
+        pacienteColesterol.setText(paciente.getColesterol().toString());
         
         if(CollectionUtils.isNotEmpty(paciente.getAlergias())){
             DefaultTableModel alergiasModel = (DefaultTableModel) pacienteAlergias.getModel();
@@ -669,7 +675,9 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     }
     
     public void cadastrarPaciente(){
+        initComponents();
         isEditing = false;
+        this.setVisible(true);
     }
 }
 
