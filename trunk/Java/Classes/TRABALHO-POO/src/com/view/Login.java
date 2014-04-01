@@ -27,6 +27,7 @@ public class Login extends javax.swing.JFrame {
         super();
         initComponents();
         setLocationRelativeTo(null);
+        this.getRootPane().setDefaultButton(buttonLogin);
         this.userManager = userManager;
     }
 

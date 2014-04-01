@@ -191,20 +191,17 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        if(isHasEmptyFields()){return;}
         
-        SimpleDateFormat dataSemHora = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat horaSemData = new SimpleDateFormat("HH:mm");
-        
-        if(!isValidFormatForDataConsulta(dataSemHora)){
+        //START VALIDATION CODE
+        if(StringUtils.isBlank(this.dataConsultaTextField.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique a data da consulta.");
             return;
         }
-        
-        if(!isValidFormatForHoraConsulta(horaSemData)){
-            //HORA SEM CONSULTA
+        if(StringUtils.isBlank(this.horaConsultaTextField.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique a hora da consulta.");
             return;
         }
+        //END VALIDATION CODE
         
         SimpleDateFormat fullDataConsulta = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         
@@ -287,27 +284,6 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox selectPessoa;
     private javax.swing.JComboBox selectTipoConsulta;
     // End of variables declaration//GEN-END:variables
-
-    private boolean isHasEmptyFields() {
-        //TODO IMPLEMENTAR PARA OS OUTROS CAMPOS
-        
-        if(StringUtils.isBlank(this.dataConsultaTextField.getText())){
-            JOptionPane.showMessageDialog(this, "Especifique a data da Consulta");
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isValidFormatForDataConsulta(SimpleDateFormat dataSemHora) {
-        
-        //TODO IMPLEMENTAR A VALIDACAO
-        return true;
-    }
-
-    private boolean isValidFormatForHoraConsulta(SimpleDateFormat horaSemData) {
-        //TODO IMPLEMENTAR VALIDACAO
-        return true;
-    }
 
     void refreshFiels() {
         selectPessoa.setModel(new DefaultComboBoxModel(pacienteController.getAll().toArray()));
