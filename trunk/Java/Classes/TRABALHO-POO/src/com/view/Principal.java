@@ -7,6 +7,7 @@
 package com.view;
 
 import com.controller.UserController;
+import com.domain.Medico;
 import com.repository.UserRepository;
 import com.security.UserManager;
 import com.view.controller.ConsultaViewController;
@@ -14,6 +15,7 @@ import com.view.controller.PacienteViewController;
 import com.view.controller.ProntuarioViewController;
 import java.awt.Component;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,8 +81,11 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         buildMenuItens();
         setLocationRelativeTo(null);
+
     }
 
+    
+    
     private void buildMenuItens(){        
         
         gerenciamentoConsulta = new GerenciamentoConsulta(new UserController(userManager), pacienteViewController.getController(), consultaViewController.getController());
@@ -265,4 +270,5 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
+
 }

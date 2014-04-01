@@ -26,4 +26,6 @@ abstract class AbstractViewController<Controller extends AbstractController> {
     public Controller getController(){
         return this.controller;
     }
+    
+    public Usuario getSessionUser(){return sessionUser;}
 }

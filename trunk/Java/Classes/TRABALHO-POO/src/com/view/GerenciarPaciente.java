@@ -511,6 +511,8 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         paciente.setTelefone(telefone);
         paciente.setEmail(email);
         paciente.setDataNascimento(dataNascimento);
+        paciente.setTipoAtendimento(tipoAtendimento);
+        paciente.setEndereco(endereco);
         
         pacienteViewController.getController().save(paciente);
         if(isEditing){ 
