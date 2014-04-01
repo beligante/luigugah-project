@@ -85,11 +85,11 @@ public class Principal extends javax.swing.JFrame {
         try{gerenciamentoConsulta.setMaximum(true);}catch(Exception e){}
         this.container.add(gerenciamentoConsulta);
         
-        gerenciarPaciente = new GerenciarPaciente(pacienteViewController.getController());
+        gerenciarPaciente = new GerenciarPaciente(pacienteViewController);
         try{gerenciarPaciente.setMaximum(true);}catch(Exception e){}
         this.container.add(gerenciarPaciente);
         
-        buscarPaciente = new BuscarPaciente(pacienteViewController);
+        buscarPaciente = new BuscarPaciente(pacienteViewController, gerenciarPaciente);
         try{buscarPaciente.setMaximum(true);}catch(Exception e){}
         this.container.add(buscarPaciente);
         
