@@ -11,6 +11,7 @@ import com.domain.Paciente;
 import com.enums.Sexo;
 import com.enums.TipoAtendimento;
 import com.utils.CollectionUtils;
+import com.utils.StringUtils;
 import com.view.controller.PacienteViewController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -126,7 +127,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pacienteTipoAtendimento.setModel(new DefaultComboBoxModel(TipoAtendimento.values()));
 
@@ -178,6 +179,8 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane4.setViewportView(pacienteAlergias);
+
+        pacienteColesterol.setText("0");
 
         jLabel3.setText("Colesterol");
 
@@ -429,7 +432,40 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
 
     private void pacienteButtomSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomSalvarActionPerformed
 
-        //VALIDATION CODES HERE
+        //START VALIDATION CODES
+        if(StringUtils.isBlank(this.pacienteName.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o nome do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteCPF.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o CPF do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteRG.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o RG do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteName.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o nome do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteTelefone.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o telefone do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteEmail.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o e-mail do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteDataNascimento.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique a data de nascimento do paciente.");
+            return;
+        }
+        if(StringUtils.isBlank(this.pacienteEndereco.getText())){
+            JOptionPane.showMessageDialog(this, "Especifique o endereço do paciente.");
+            return;
+        }
+        //END VALIDATION CODES
         
         String nome = pacienteName.getText();
         String cpf = pacienteCPF.getText();
