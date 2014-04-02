@@ -692,5 +692,27 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
             pacienteButtomCirurgiasAdicionar.setEnabled(false);
         }
     }
+
+    @Override
+    public void setVisible(boolean bln) {
+        super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
+        
+        this.pacienteName.setText("");
+        this.pacienteCPF.setText("");
+        this.pacienteRG.setText("");
+        this.pacienteTelefone.setText("");
+        this.pacienteSexo.setSelectedIndex(-1);
+        this.pacienteEmail.setText("");
+        this.pacienteDataNascimento.setText("");
+        this.pacienteEndereco.setText("");
+        this.pacienteTipoAtendimento.setSelectedIndex(-1);
+        this.pacienteColesterol.setText("");
+        this.pacienteIsAlcolatra.setSelected(false);
+        this.pacienteIsCardiaco.setSelected(false);
+        this.pacienteIsDiabetico.setSelected(false);
+        this.pacienteIsFumante.setSelected(false);        
+    }
+    
+    
 }
 
