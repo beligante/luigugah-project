@@ -30,7 +30,7 @@ public class Principal extends javax.swing.JFrame {
     GerenciamentoConsulta gerenciamentoConsulta;
     GerenciarPaciente gerenciarPaciente;
     BuscarPaciente buscarPaciente;
-    BuscarConsulta buscarConsulta;
+    BuscaConsulta buscarConsulta;
 
     public UserManager getUserManager() {
         return userManager;
@@ -101,7 +101,7 @@ public class Principal extends javax.swing.JFrame {
         try{buscarPaciente.setMaximum(true);}catch(Exception e){}
         this.container.add(buscarPaciente);
         
-        buscarConsulta = new BuscarConsulta(consultaViewController, gerenciamentoConsulta);
+        buscarConsulta = new BuscaConsulta(consultaViewController, gerenciamentoConsulta);
         try{buscarConsulta.setMaximum(true);}catch(Exception e){}
         this.container.add(buscarConsulta);
         
@@ -209,8 +209,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void gerenciamentoDeConsultaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciamentoDeConsultaMenuItemActionPerformed
         closeAllInternalFrames();
-        gerenciamentoConsulta.refreshFiels();
-        gerenciamentoConsulta.setVisible(true);
+        gerenciamentoConsulta.cadastrarConsulta();
     }//GEN-LAST:event_gerenciamentoDeConsultaMenuItemActionPerformed
 
     private void gerenciamentoDePacienteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciamentoDePacienteMenuItemActionPerformed

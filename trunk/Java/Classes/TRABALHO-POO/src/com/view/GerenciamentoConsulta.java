@@ -34,6 +34,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     private PacienteController pacienteController;
     private ConsultaViewController consultaViewController;
     private boolean isEditing;
+    private boolean isInitialized;
     private Consulta consulta;
     
     private static final SimpleDateFormat DATA_SEM_HORA_SDF = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,6 +49,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         this.pacienteController = pacienteController;
         this.consultaViewController = consultaViewController;
         initComponents();
+        isInitialized = true;
     }
 
     /**
@@ -72,6 +74,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         selectTipoConsulta = new javax.swing.JComboBox();
+        removeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -120,6 +123,13 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         selectTipoConsulta.setModel(new DefaultComboBoxModel(TipoConsulta.values())
         );
 
+        removeButton.setText("Remover");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,7 +155,10 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(removeButton))
                             .addComponent(selectMedico, 0, 199, Short.MAX_VALUE)
                             .addComponent(dataConsultaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                             .addComponent(horaConsultaTextField)
@@ -181,7 +194,8 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(removeButton))
                 .addGap(33, 33, 33))
         );
 
@@ -233,7 +247,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         
         TipoConsulta tipoConsulta = (TipoConsulta) selectTipoConsulta.getModel().getSelectedItem();
         
-        if(consultaViewController.getController().isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
+        if(!isEditing && consultaViewController.getController().isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
             JOptionPane.showMessageDialog(this, "Já existe uma consulta marcada para este horario.");
             return;
         }
@@ -255,6 +269,19 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Consulta salva com Sucesso!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        if(this.consulta == null){return;}
+        
+        int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir esta consulta?");
+        if(resposta == 0){
+            consultaViewController.getController().remove(consulta);       
+            JOptionPane.showMessageDialog(this, "Consulta removida com Sucesso!");
+            this.consulta = null;
+            this.isEditing = false;
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_removeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +329,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton removeButton;
     private javax.swing.JComboBox selectMedico;
     private javax.swing.JComboBox selectPessoa;
     private javax.swing.JComboBox selectTipoConsulta;
@@ -315,7 +343,8 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
     void editarConsulta(Consulta consulta) {
         if(consulta == null){isEditing = false; return;}
-        
+        cleanupFields();
+        this.isEditing = true;
         this.consulta = consulta;
         
         dataConsultaTextField.setText(DATA_SEM_HORA_SDF.format(consulta.getDataConsulta()));
@@ -332,8 +361,29 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
     @Override
     public void setVisible(boolean bln) {
+        
         super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
         
+        if(isInitialized){
+        
+            if(isEditing){
+                removeButton.setVisible(true);
+                removeButton.setEnabled(true);
+            }else{
+                removeButton.setVisible(false);
+                removeButton.setEnabled(false);
+            }
+        }
+    }
+    
+    public void cadastrarConsulta(){
+        cleanupFields();
+        refreshFiels();
+        setVisible(true);
+        isEditing = false;
+    }
+    
+    private void cleanupFields(){
         this.dataConsultaTextField.setText("");
         this.horaConsultaTextField.setText("");
         this.selectMedico.setSelectedIndex(-1);

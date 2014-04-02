@@ -33,6 +33,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private PacienteViewController pacienteViewController;
     private Paciente paciente;
     private boolean isEditing;
+    private boolean isInitialized;
     private static final SimpleDateFormat DATA_NASCIMENTO_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
     
     /**
@@ -43,6 +44,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         initComponents();
         isEditing = false;
         disableFieldsByUser();
+        isInitialized = true;
     }
     
     public GerenciarPaciente(PacienteViewController pacienteViewController, Paciente paciente) {
@@ -102,6 +104,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         pacienteButtomCancelar = new javax.swing.JButton();
         pacienteButtomCirurgiasAdicionar = new javax.swing.JButton();
         pacienteButtomAlergiasAdicionar = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -241,6 +244,13 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
             }
         });
 
+        removeButton.setText("Remover");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -316,7 +326,9 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
                         .addGap(122, 122, 122)
                         .addComponent(pacienteButtomSalvar)
                         .addGap(18, 18, 18)
-                        .addComponent(pacienteButtomCancelar))
+                        .addComponent(pacienteButtomCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLabel4)
@@ -407,7 +419,8 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
                         .addGap(0, 49, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pacienteButtomCancelar)
-                            .addComponent(pacienteButtomSalvar))))
+                            .addComponent(pacienteButtomSalvar)
+                            .addComponent(removeButton))))
                 .addContainerGap())
         );
 
@@ -538,6 +551,21 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_pacienteButtomCancelarActionPerformed
 
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+
+        if(paciente == null){return;}
+        
+        int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir este Paciente?");
+        if(resposta == 0){
+            pacienteViewController.getController().remove(paciente);       
+            JOptionPane.showMessageDialog(this, "Paciente removida com Sucesso!");
+            this.paciente = null;
+            this.isEditing = false;
+            this.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_removeButtonActionPerformed
+
     /**   
      * @param args the command line arguments
      */
@@ -612,6 +640,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox pacienteSexo;
     private javax.swing.JTextField pacienteTelefone;
     private javax.swing.JComboBox pacienteTipoAtendimento;
+    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 
     private List<String> getAlergias() {
@@ -640,6 +669,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         if(paciente == null){isEditing = false;return;}
         
         isEditing = true;
+        cleanupFields();
         
         this.paciente = paciente;
         
@@ -673,7 +703,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     }
     
     public void cadastrarPaciente(){
-        //initComponents();
+        cleanupFields();
         isEditing = false;
         this.setVisible(true);
     }
@@ -693,10 +723,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         }
     }
 
-    @Override
-    public void setVisible(boolean bln) {
-        super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
-        
+    private void cleanupFields(){
         this.pacienteName.setText("");
         this.pacienteCPF.setText("");
         this.pacienteRG.setText("");
@@ -710,7 +737,23 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         this.pacienteIsAlcolatra.setSelected(false);
         this.pacienteIsCardiaco.setSelected(false);
         this.pacienteIsDiabetico.setSelected(false);
-        this.pacienteIsFumante.setSelected(false);        
+        this.pacienteIsFumante.setSelected(false);
+    }
+    
+    @Override
+    public void setVisible(boolean bln) {
+        super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
+        
+        if(isInitialized){
+
+            if(isEditing){
+                removeButton.setVisible(true);
+                removeButton.setEnabled(true);
+            }else{
+                removeButton.setVisible(false);
+                removeButton.setEnabled(false);
+            }
+        }
     }
     
     
