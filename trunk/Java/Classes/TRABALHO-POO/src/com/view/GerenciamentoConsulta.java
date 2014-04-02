@@ -208,6 +208,18 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Especifique a hora da consulta.");
             return;
         }
+        if(this.selectMedico.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Especifique o medico da consulta.");
+            return;
+        }
+        if(this.selectPessoa.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Especifique a pessoa da consulta.");
+            return;
+        }if(this.selectTipoConsulta.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Especifique o tipo da consulta.");
+            return;
+        }
+        
         //END VALIDATION CODE
         
         SimpleDateFormat fullDataConsulta = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -222,7 +234,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         TipoConsulta tipoConsulta = (TipoConsulta) selectTipoConsulta.getModel().getSelectedItem();
         
         if(consultaViewController.getController().isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
-            //JOPTIONPANE MESSAGE AQUI
+            JOptionPane.showMessageDialog(this, "Já existe uma consulta marcada para este horario.");
             return;
         }
         
@@ -317,4 +329,17 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         
         this.setVisible(true);
     }
+
+    @Override
+    public void setVisible(boolean bln) {
+        super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
+        
+        this.dataConsultaTextField.setText("");
+        this.horaConsultaTextField.setText("");
+        this.selectMedico.setSelectedIndex(-1);
+        this.selectPessoa.setSelectedIndex(-1);
+        this.selectTipoConsulta.setSelectedIndex(-1);
+    }
+    
+    
 }
