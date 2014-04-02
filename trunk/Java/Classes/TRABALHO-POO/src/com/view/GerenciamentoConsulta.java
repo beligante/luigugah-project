@@ -229,7 +229,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         Medico medico = (Medico) selectMedico.getModel().getSelectedItem();
         Paciente paciente = (Paciente) selectPessoa.getModel().getSelectedItem();
         
-        Consulta consulta = new Consulta();
+        Consulta consulta = (isEditing) ? this.consulta :new Consulta();
         consulta.setDataConsulta(dataConsulta);
         consulta.setTipoConsulta(tipoConsulta);
         consulta.setPaciente(paciente);
@@ -237,8 +237,11 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         
         consultaViewController.getController().save(consulta);
         this.setVisible(false);
-        JOptionPane.showMessageDialog(this, "Consulta salva com Sucesso!");
-
+        if(isEditing){
+            JOptionPane.showMessageDialog(this, "Consulta editada com Sucesso!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Consulta salva com Sucesso!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

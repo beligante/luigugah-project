@@ -30,6 +30,7 @@ public class Principal extends javax.swing.JFrame {
     GerenciamentoConsulta gerenciamentoConsulta;
     GerenciarPaciente gerenciarPaciente;
     BuscarPaciente buscarPaciente;
+    BuscarConsulta buscarConsulta;
 
     public UserManager getUserManager() {
         return userManager;
@@ -88,7 +89,7 @@ public class Principal extends javax.swing.JFrame {
     
     private void buildMenuItens(){        
         
-        gerenciamentoConsulta = new GerenciamentoConsulta(new UserController(userManager), pacienteViewController.getController(), consultaViewController.getController());
+        gerenciamentoConsulta = new GerenciamentoConsulta(new UserController(userManager), pacienteViewController.getController(), consultaViewController);
         try{gerenciamentoConsulta.setMaximum(true);}catch(Exception e){}
         this.container.add(gerenciamentoConsulta);
         
@@ -99,6 +100,10 @@ public class Principal extends javax.swing.JFrame {
         buscarPaciente = new BuscarPaciente(pacienteViewController, gerenciarPaciente);
         try{buscarPaciente.setMaximum(true);}catch(Exception e){}
         this.container.add(buscarPaciente);
+        
+        buscarConsulta = new BuscarConsulta(consultaViewController, gerenciamentoConsulta);
+        try{buscarConsulta.setMaximum(true);}catch(Exception e){}
+        this.container.add(buscarConsulta);
         
     }
     
@@ -165,6 +170,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu4.setText("Consulta");
 
         jMenuItem3.setText("Pesquisar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem3);
 
         gerenciamentoDeConsultaMenuItem.setText("Cadastrar");
@@ -213,6 +223,11 @@ public class Principal extends javax.swing.JFrame {
         buscarPaciente.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        closeAllInternalFrames();
+        buscarConsulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
