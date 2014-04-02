@@ -20,13 +20,13 @@ public class ConsultaController extends AbstractController<Consulta, Repository<
 
 	@Override
 	protected void saveImpl(Consulta entidade) {
-		getRepository().remove(entidade);
+		getRepository().merge(entidade);
 		
 	}
         
         public boolean isExisteConsultaMarcadaParaHorario(Date data, TipoConsulta tipoConsulta){
             Collection<Consulta> consultasNoDia = getAllConsultasDadoDia(data);
-            if(CollectionUtils.isEmpty(consultasNoDia)){return true;}
+            if(CollectionUtils.isEmpty(consultasNoDia)){return false;}
             
             for (Consulta consulta : consultasNoDia) {
                 Date fimConsulta = getHoraFimConsulta(consulta.getDataConsulta(), 
