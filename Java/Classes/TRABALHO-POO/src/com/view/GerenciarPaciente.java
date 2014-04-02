@@ -474,6 +474,14 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Especifique o endereço do paciente.");
             return;
         }
+        if(this.pacienteSexo.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Especifique o sexo do paciente.");
+            return;
+        }
+        if(this.pacienteTipoAtendimento.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Especifique o tipo de atendimento do paciente.");
+            return;
+        }
         //END VALIDATION CODES
         
         String nome = pacienteName.getText();
@@ -733,7 +741,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         this.pacienteDataNascimento.setText("");
         this.pacienteEndereco.setText("");
         this.pacienteTipoAtendimento.setSelectedIndex(-1);
-        this.pacienteColesterol.setText("");
+        this.pacienteColesterol.setText("0");
         this.pacienteIsAlcolatra.setSelected(false);
         this.pacienteIsCardiaco.setSelected(false);
         this.pacienteIsDiabetico.setSelected(false);
