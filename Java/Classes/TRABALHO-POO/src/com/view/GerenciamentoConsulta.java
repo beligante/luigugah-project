@@ -16,6 +16,7 @@ import com.enums.TipoConsulta;
 import com.repository.Repository;
 import com.repository.UserRepository;
 import com.utils.StringUtils;
+import com.view.controller.ConsultaViewController;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
@@ -31,15 +32,21 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
 
     private UserController userController;
     private PacienteController pacienteController;
-    private ConsultaController consultaController;
+    private ConsultaViewController consultaViewController;
+    private boolean isEditing;
+    private Consulta consulta;
+    
+    private static final SimpleDateFormat DATA_SEM_HORA_SDF = new SimpleDateFormat("dd/MM/yyyy");
+    private static final SimpleDateFormat HORA_SDF = new SimpleDateFormat("HH:mm");
+    
     /**
      * Creates new form GerenciamentoConsulta
      */
-    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController,ConsultaController  consultaController) {
+    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController,ConsultaViewController  consultaViewController) {
         super();
         this.userController = userController;
         this.pacienteController = pacienteController;
-        this.consultaController = consultaController;
+        this.consultaViewController = consultaViewController;
         initComponents();
     }
 
@@ -214,7 +221,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         
         TipoConsulta tipoConsulta = (TipoConsulta) selectTipoConsulta.getModel().getSelectedItem();
         
-        if(consultaController.isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
+        if(consultaViewController.getController().isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
             //JOPTIONPANE MESSAGE AQUI
             return;
         }
@@ -228,7 +235,7 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         consulta.setPaciente(paciente);
         consulta.setMedico(medico);
         
-        consultaController.save(consulta);
+        consultaViewController.getController().save(consulta);
         this.setVisible(false);
         JOptionPane.showMessageDialog(this, "Consulta salva com Sucesso!");
 
@@ -289,5 +296,22 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
         selectPessoa.setModel(new DefaultComboBoxModel(pacienteController.getAll().toArray()));
         selectMedico.setModel(new DefaultComboBoxModel(userController.getAllMedicos().toArray()));
 
+    }
+
+    void editarConsulta(Consulta consulta) {
+        if(consulta == null){isEditing = false; return;}
+        
+        this.consulta = consulta;
+        
+        dataConsultaTextField.setText(DATA_SEM_HORA_SDF.format(consulta.getDataConsulta()));
+        horaConsultaTextField.setText(HORA_SDF.format(consulta.getDataConsulta()));
+        
+        refreshFiels();
+        
+        selectMedico.setSelectedItem(consulta.getMedico());
+        selectPessoa.setSelectedItem(consulta.getPaciente());
+        selectTipoConsulta.setSelectedItem(consulta.getTipoConsulta());
+        
+        this.setVisible(true);
     }
 }

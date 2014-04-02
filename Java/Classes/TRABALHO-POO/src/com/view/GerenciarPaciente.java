@@ -8,6 +8,7 @@ package com.view;
 
 import com.controller.PacienteController;
 import com.domain.Paciente;
+import com.domain.Secretaria;
 import com.enums.Sexo;
 import com.enums.TipoAtendimento;
 import com.utils.CollectionUtils;
@@ -41,6 +42,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         this.pacienteViewController = pacienteViewController;
         initComponents();
         isEditing = false;
+        disableFieldsByUser();
     }
     
     public GerenciarPaciente(PacienteViewController pacienteViewController, Paciente paciente) {
@@ -148,10 +150,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
 
         pacienteCirurgias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Cirurgias"
@@ -169,10 +168,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
 
         pacienteAlergias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Alergias"
@@ -677,9 +673,24 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     }
     
     public void cadastrarPaciente(){
-        initComponents();
+        //initComponents();
         isEditing = false;
         this.setVisible(true);
+    }
+    
+    private void disableFieldsByUser() {
+    
+        if(pacienteViewController.getSessionUser() instanceof Secretaria){
+            pacienteIsFumante.setEnabled(false);
+            pacienteIsCardiaco.setEnabled(false);
+            pacienteIsDiabetico.setEnabled(false);
+            pacienteIsAlcolatra.setEnabled(false);
+            pacienteColesterol.setEnabled(false);
+            pacienteAlergias.setEnabled(false);
+            pacienteCirurgias.setEnabled(false);
+            pacienteButtomAlergiasAdicionar.setEnabled(false);
+            pacienteButtomCirurgiasAdicionar.setEnabled(false);
+        }
     }
 }
 
