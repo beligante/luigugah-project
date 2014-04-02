@@ -86,4 +86,8 @@ public class ConsultaController extends AbstractController<Consulta, Repository<
             return terminoConsultaAtual.after(inicioConsultaASerMarcada);
         }
 
+    public Collection<Consulta> searchByData(Date query) {
+        return getAllConsultasDadoDia(query);
+    }
+
 }

@@ -8,11 +8,17 @@ package com.view;
 
 import com.domain.Consulta;
 import com.domain.Paciente;
+import com.utils.CollectionUtils;
+import com.view.controller.ConsultaViewController;
+import com.view.controller.PacienteViewController;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Collection;
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -24,13 +30,20 @@ import javax.swing.table.TableColumnModel;
  *
  * @author Junior
  */
-public class BuscarConsulta extends javax.swing.JPanel {
+public class BuscarConsulta extends javax.swing.JInternalFrame {
 
+    ConsultaViewController consultaViewController;
+    GerenciamentoConsulta gerenciamentoConsulta;
+    
+    private static final SimpleDateFormat DATA_CONSULTA = new SimpleDateFormat("dd/MM/yyyy");
     /**
      * Creates new form BuscarConsulta
      */
-    public BuscarConsulta() {
+    public BuscarConsulta(ConsultaViewController consultaViewController, GerenciamentoConsulta gerenciamentoConsulta) {
         initComponents();
+        this.consultaViewController = consultaViewController; 
+        this.gerenciamentoConsulta = gerenciamentoConsulta;
+        new ButtonColumn(searchResultTable, 0, this.gerenciamentoConsulta, this);
     }
 
     /**
@@ -43,12 +56,12 @@ public class BuscarConsulta extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        searchTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         searchResultTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
 
-        jLabel1.setText("Nome do Paciente");
+        jLabel1.setText("Data Consulta");
 
         searchResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,7 +81,12 @@ public class BuscarConsulta extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(searchResultTable);
 
-        jButton1.setText("Buscar");
+        searchButton.setText("Buscar");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,9 +98,9 @@ public class BuscarConsulta extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(searchButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -92,21 +110,47 @@ public class BuscarConsulta extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        
+        Collection<Consulta> result;
+        try{
+            result = consultaViewController.getController().searchByData(DATA_CONSULTA.parse(searchTextField.getText()));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Data de busca invalida!");
+            return;
+        }
+        
+        if(CollectionUtils.isEmpty(result)){
+            return;
+        }
+        
+        Object[] rowData;
+        int contador = 0;
+        DefaultTableModel dtm =  (DefaultTableModel) searchResultTable.getModel();
+        
+        cleanResultTable();
+        
+        for (Consulta consulta : result) {
+            rowData = new Object[]{consulta, consulta.getPaciente().getNome(), consulta.getDataConsulta(), consulta.getMedico().getNome()};
+            dtm.addRow(rowData);
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTable searchResultTable;
+    private javax.swing.JTextField searchTextField;
     // End of variables declaration//GEN-END:variables
 
     class ButtonColumn extends AbstractCellEditor  
