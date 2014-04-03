@@ -292,8 +292,9 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         
         DefaultTableModel dtm =  (DefaultTableModel) searchResultTable.getModel();
         
-        for(int index = 0; index < dtm.getRowCount(); index++){
-            dtm.removeRow(index);
-        }
+//        for(int index = 0; index < dtm.getRowCount(); index++){
+//            dtm.removeRow(index);
+//        }
+        dtm.setNumRows(0);
     }
 }

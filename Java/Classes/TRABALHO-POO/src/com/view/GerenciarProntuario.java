@@ -171,6 +171,7 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         prontuarioViewController.getController().save(prontuario);
         
         JOptionPane.showMessageDialog(this, "Prontuario salvo com sucesso!");
+        setVisible(false);
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed

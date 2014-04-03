@@ -89,5 +89,12 @@ public class ConsultaController extends AbstractController<Consulta, Repository<
     public Collection<Consulta> searchByData(Date query) {
         return getAllConsultasDadoDia(query);
     }
+    
+    public Collection<Consulta> getAllConsultasDiaSeguinte(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 1);
+        
+        return getAllConsultasDadoDia(calendar.getTime());
+    }
 
 }
