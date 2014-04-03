@@ -8,6 +8,7 @@ package com.view;
 
 import com.controller.UserController;
 import com.domain.Medico;
+import com.domain.Secretaria;
 import com.repository.UserRepository;
 import com.security.UserManager;
 import com.view.controller.ConsultaViewController;
@@ -27,10 +28,13 @@ public class Principal extends javax.swing.JFrame {
     private ProntuarioViewController prontuarioViewController;
     private ConsultaViewController consultaViewController;
     private UserManager userManager;
+    
     GerenciamentoConsulta gerenciamentoConsulta;
     GerenciarPaciente gerenciarPaciente;
+    GerenciarProntuario gerenciarProntuario;
     BuscarPaciente buscarPaciente;
     BuscaConsulta buscarConsulta;
+    BuscaProntuario buscaProntuario;
 
     public UserManager getUserManager() {
         return userManager;
@@ -77,11 +81,13 @@ public class Principal extends javax.swing.JFrame {
         this.consultaViewController = consultaViewController;
         this.pacienteViewController = pacienteViewController;
         this.prontuarioViewController = prontuarioViewController;
+        
         this.userManager = userManager;
         
         initComponents();
         buildMenuItens();
         setLocationRelativeTo(null);
+        disableMenuItemForLoggedCustomer();
 
     }
 
@@ -97,6 +103,10 @@ public class Principal extends javax.swing.JFrame {
         try{gerenciarPaciente.setMaximum(true);}catch(Exception e){}
         this.container.add(gerenciarPaciente);
         
+        gerenciarProntuario = new GerenciarProntuario(prontuarioViewController);
+        try{gerenciarProntuario.setMaximum(true);}catch(Exception e){}
+        this.container.add(gerenciarProntuario);
+        
         buscarPaciente = new BuscarPaciente(pacienteViewController, gerenciarPaciente);
         try{buscarPaciente.setMaximum(true);}catch(Exception e){}
         this.container.add(buscarPaciente);
@@ -104,6 +114,10 @@ public class Principal extends javax.swing.JFrame {
         buscarConsulta = new BuscaConsulta(consultaViewController, gerenciamentoConsulta);
         try{buscarConsulta.setMaximum(true);}catch(Exception e){}
         this.container.add(buscarConsulta);
+        
+        buscaProntuario = new BuscaProntuario(gerenciarProntuario, prontuarioViewController);
+        try{buscaProntuario.setMaximum(true);}catch(Exception e){}
+        this.container.add(buscaProntuario);        
         
     }
     
@@ -119,6 +133,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         container = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -127,12 +143,19 @@ public class Principal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         gerenciamentoDeConsultaMenuItem = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        buscarProntuarioMenuItem = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +210,18 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu4);
 
+        jMenu5.setText("Prontuario");
+
+        buscarProntuarioMenuItem.setText("Buscar Prontuario");
+        buscarProntuarioMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProntuarioMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu5.add(buscarProntuarioMenuItem);
+
+        jMenuBar2.add(jMenu5);
+
         setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,6 +263,11 @@ public class Principal extends javax.swing.JFrame {
         buscarConsulta.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void buscarProntuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProntuarioMenuItemActionPerformed
+        closeAllInternalFrames();
+        buscaProntuario.setVisible(true);
+    }//GEN-LAST:event_buscarProntuarioMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,16 +304,20 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem buscarProntuarioMenuItem;
     private javax.swing.JPanel container;
     private javax.swing.JMenuItem gerenciamentoDeConsultaMenuItem;
     private javax.swing.JMenuItem gerenciamentoDePacienteMenuItem;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 
@@ -282,6 +326,12 @@ public class Principal extends javax.swing.JFrame {
             if(component instanceof JInternalFrame){
                 component.setVisible(false);
             }
+        }
+    }
+
+    private void disableMenuItemForLoggedCustomer() {
+        if(prontuarioViewController.getSessionUser() instanceof Secretaria){
+            buscarProntuarioMenuItem.setEnabled(false);
         }
     }
 

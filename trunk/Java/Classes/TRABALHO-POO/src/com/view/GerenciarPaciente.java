@@ -7,6 +7,7 @@
 package com.view;
 
 import com.controller.PacienteController;
+import com.controller.ProntuarioController;
 import com.domain.Paciente;
 import com.domain.Secretaria;
 import com.enums.Sexo;
@@ -35,6 +36,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private boolean isEditing;
     private boolean isInitialized;
     private static final SimpleDateFormat DATA_NASCIMENTO_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
+    private ProntuarioController prontuarioController;
     
     /**
      * Creates new form GerenciarPaciente
@@ -656,7 +658,10 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         
         List<String> alergias = new ArrayList<String>();
         for(int linha = 0 ; linha < numeroDeLinhas; linha++){
-           alergias.add((String) pacienteAlergias.getModel().getValueAt(linha, 0));
+            String toAdd = (String) pacienteAlergias.getModel().getValueAt(linha, 0);
+            if(StringUtils.isNotBlank(toAdd)){
+                alergias.add(toAdd);
+            }
         }
         
         return alergias;
@@ -667,7 +672,11 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         
         List<String> cirurgias = new ArrayList<String>();
         for(int linha = 0 ; linha < numeroDeLinhas; linha++){
-           cirurgias.add((String) pacienteCirurgias.getModel().getValueAt(linha, 0));
+            String toAdd = (String) pacienteCirurgias.getModel().getValueAt(linha, 0);
+            
+            if(StringUtils.isNotBlank(toAdd)){
+                cirurgias.add(toAdd);
+            }
         }
         
         return cirurgias;

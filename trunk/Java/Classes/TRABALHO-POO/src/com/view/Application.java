@@ -71,10 +71,13 @@ public class Application {
     
     public static void buildLoggedScreen(Usuario sessionUser, UserManager userManager){
     
-        PacienteController pacienteController = new PacienteController();
+        
         ProntuarioController prontuarioController = new ProntuarioController();
+        prontuarioController.setRepository(new Repository<Prontuario>());
+        
         ConsultaController consultaController = new ConsultaController();
         
+        PacienteController pacienteController = new PacienteController(prontuarioController);
         pacienteController.setRepository(new Repository<Paciente>());
         
         Paciente paciente = new Paciente();
@@ -86,7 +89,6 @@ public class Application {
         
         pacienteController.save(paciente);
         
-        prontuarioController.setRepository(new Repository<Prontuario>());
         consultaController.setRepository(new Repository<Consulta>());
 
         PacienteViewController pacienteViewController = 
