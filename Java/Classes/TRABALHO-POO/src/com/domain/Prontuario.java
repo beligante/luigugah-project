@@ -6,7 +6,7 @@ import java.util.List;
 public class Prontuario extends Entity{
 	
 	private Paciente paciente;
-	private List<String> sintomas;
+	private String sintomas;
 	private String diagnosticoDaDoenca;
 	private String prescricaoDeTratamento;
 	private Date dataModificacao;
@@ -16,10 +16,10 @@ public class Prontuario extends Entity{
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-	public List<String> getSintomas() {
+	public String getSintomas() {
 		return sintomas;
 	}
-	public void setSintomas(List<String> sintomas) {
+	public void setSintomas(String sintomas) {
 		this.sintomas = sintomas;
 	}
 	public String getDiagnosticoDaDoenca() {
@@ -39,13 +39,5 @@ public class Prontuario extends Entity{
 	}
 	public void setDataModificacao(Date dataModificacao) {
 		this.dataModificacao = dataModificacao;
-	}
-	
-	public boolean addSintoma(String sintoma){
-		if(sintomas != null){
-			this.sintomas.add(sintoma);
-			return true;
-		}
-		return false;
 	}
 }
