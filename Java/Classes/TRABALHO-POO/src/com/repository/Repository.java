@@ -69,4 +69,10 @@ public class Repository<Entidade extends Entity> {
 	public Collection<Entidade> getAll(){
 		return repositorio.values();
 	}
+        
+        public boolean exists(Entidade entidade){
+            
+            if(entidade == null){return false;}
+            return repositorio.containsValue(entidade.getId());
+        }
 }
