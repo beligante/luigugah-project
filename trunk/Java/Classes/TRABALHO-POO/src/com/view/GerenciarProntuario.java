@@ -44,9 +44,6 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        sintomasTable = new javax.swing.JTable();
-        sintomasAddButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         diagnosticoTextArea = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
@@ -57,36 +54,14 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         cancelarButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         nomePacienteLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        sintomasTextField = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Gerenciar Prontuario");
-
-        sintomasTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Sintomas"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(sintomasTable);
-
-        sintomasAddButton.setText("Adicionar");
-        sintomasAddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sintomasAddButtonActionPerformed(evt);
-            }
-        });
 
         diagnosticoTextArea.setColumns(20);
         diagnosticoTextArea.setRows(5);
@@ -119,6 +94,12 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
 
         nomePacienteLabel.setText("NOME_PACIENTE");
 
+        sintomasTextField.setColumns(20);
+        sintomasTextField.setRows(5);
+        jScrollPane4.setViewportView(sintomasTextField);
+
+        jLabel5.setText("Sintomas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,24 +114,23 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nomePacienteLabel))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(nomePacienteLabel))
-                                    .addComponent(jLabel3)
-                                    .addComponent(sintomasAddButton)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 8, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,11 +140,11 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomePacienteLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sintomasAddButton)
-                .addGap(23, 23, 23)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,15 +162,9 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sintomasAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sintomasAddButtonActionPerformed
-        Object [] dados = {""};
-        DefaultTableModel modelo = (DefaultTableModel) sintomasTable.getModel();
-        modelo.addRow(dados);
-    }//GEN-LAST:event_sintomasAddButtonActionPerformed
-
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         prontuario.setDataModificacao(new Date());
-        prontuario.setSintomas(getSintomas());
+        prontuario.setSintomas(sintomasTextField.getText());
         
         prontuario.setDiagnosticoDaDoenca(diagnosticoTextArea.getText());
         prontuario.setPrescricaoDeTratamento(tratamentoTextArea.getText());
@@ -203,21 +177,6 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         cleanupFields();
         setVisible(false);
     }//GEN-LAST:event_cancelarButtonActionPerformed
-
-        private List<String> getSintomas() {
-        int numeroDeLinhas = sintomasTable.getModel().getRowCount();
-        
-        List<String> sintomas = new ArrayList<String>();
-        for(int linha = 0 ; linha < numeroDeLinhas; linha++){
-            String toAdd = (String) sintomasTable.getModel().getValueAt(linha, 0);
-            
-            if(StringUtils.isNotBlank(toAdd)){
-                sintomas.add(toAdd);
-            }
-        }
-        
-        return sintomas;
-    }
     
     /**
      * @param args the command line arguments
@@ -261,13 +220,13 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel nomePacienteLabel;
     private javax.swing.JButton saveButton;
-    private javax.swing.JButton sintomasAddButton;
-    private javax.swing.JTable sintomasTable;
+    private javax.swing.JTextArea sintomasTextField;
     private javax.swing.JTextArea tratamentoTextArea;
     // End of variables declaration//GEN-END:variables
 
@@ -278,11 +237,7 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         this.diagnosticoTextArea.setText(prontuario.getDiagnosticoDaDoenca());
         this.tratamentoTextArea.setText(prontuario.getPrescricaoDeTratamento());
         
-        if(CollectionUtils.isNotEmpty(prontuario.getSintomas())){
-            DefaultTableModel cirurgiasModel = (DefaultTableModel) sintomasTable.getModel();
-            cirurgiasModel.addRow(prontuario.getSintomas().toArray());
-        }
-        
+        this.sintomasTextField.setText(prontuario.getSintomas());
         this.nomePacienteLabel.setText(prontuario.getPaciente().getNome());
         this.setVisible(true);
     }
@@ -290,7 +245,7 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
     private void cleanupFields(){
         this.diagnosticoTextArea.setText("");
         this.tratamentoTextArea.setText("");
-        cleanTable(sintomasTable);
+        this.sintomasTextField.setText("");
     }
     
     private void cleanTable(JTable tabela){
