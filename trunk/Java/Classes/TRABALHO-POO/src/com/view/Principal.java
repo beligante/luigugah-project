@@ -7,14 +7,17 @@
 package com.view;
 
 import com.controller.UserController;
+import com.domain.Consulta;
 import com.domain.Medico;
 import com.domain.Secretaria;
 import com.repository.UserRepository;
 import com.security.UserManager;
+import com.utils.CollectionUtils;
 import com.view.controller.ConsultaViewController;
 import com.view.controller.PacienteViewController;
 import com.view.controller.ProntuarioViewController;
 import java.awt.Component;
+import java.util.Collection;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -143,6 +146,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         gerenciamentoDeConsultaMenuItem = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         buscarProntuarioMenuItem = new javax.swing.JMenuItem();
 
@@ -208,6 +212,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu4.add(gerenciamentoDeConsultaMenuItem);
 
+        jMenuItem4.setText("Enviar emails");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
         jMenuBar2.add(jMenu4);
 
         jMenu5.setText("Prontuario");
@@ -268,6 +280,22 @@ public class Principal extends javax.swing.JFrame {
         buscaProntuario.setVisible(true);
     }//GEN-LAST:event_buscarProntuarioMenuItemActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Collection<Consulta> consultasDiaSeguinte = consultaViewController.getController().getAllConsultasDiaSeguinte();
+        int numeroConsultas = 0;
+        
+        if(CollectionUtils.isNotEmpty(consultasDiaSeguinte)){numeroConsultas = consultasDiaSeguinte.size();}
+        if(numeroConsultas != 0){
+            int opt = JOptionPane.showConfirmDialog(this, "Você tem " + numeroConsultas + " consultas para amanhã\n Deseja enviar um aviso?");
+        
+            if(opt == 0){
+                JOptionPane.showMessageDialog(this, "Emails enviados!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Você não tem consultas para amanhã!");
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +347,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 
     private void closeAllInternalFrames(){

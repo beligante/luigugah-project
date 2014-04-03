@@ -97,6 +97,11 @@ public class BuscaProntuario extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(searchResultTable);
 
         cancelButton.setText("Cancelar");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,6 +166,11 @@ public class BuscaProntuario extends javax.swing.JInternalFrame {
             dtm.addRow(rowData);
         }
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        cleanTable(searchResultTable);
+        setVisible(false);
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,10 +315,10 @@ public class BuscaProntuario extends javax.swing.JInternalFrame {
         
         DefaultTableModel dtm =  (DefaultTableModel) tabela.getModel();
         
-        for(int index = 0; index < dtm.getRowCount(); index++){
-            dtm.removeRow(index);
-        }
-        
+//        for(int index = 0; index < dtm.getRowCount(); index++){
+//            dtm.removeRow(index);
+//        }
+        dtm.setNumRows(0);
         tabela.setModel(dtm);
     }
 }
