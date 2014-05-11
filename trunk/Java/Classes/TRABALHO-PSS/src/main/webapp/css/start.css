@@ -1,0 +1,66 @@
+@CHARSET "ISO-8859-1";
+@font-face {
+  font-family: 'Elsie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Elsie'), local('Elsie-Regular'), url(http://themes.googleusercontent.com/static/fonts/elsie/v2/GwrPfukf41qtIWgG_HoiUA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Elsie';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Elsie Black'), local('ElsieBlack-Regular'), url(http://themes.googleusercontent.com/static/fonts/elsie/v2/3e1NWyfE2dItrmow-Woe3_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+body{color: #FFF;}
+/**div#house-bg{background-image: url('../img/house.jpg'); background-size: 1386px; background-repeat: no-repeat;}**/
+.mini-banner div{height: 200px}
+
+
+* {margin:0; padding: 0;}
+html, body,.header, .body{height:100%;}
+
+/** formata elementos que tem backgrounds parallax **/
+.bgParallax {
+	font-family: 'Elsie', cursive;
+	color:white;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1920px;
+	position: relative;
+	min-height: 100%;
+	text-shadow:0 0 10px rgba(0,0,0,0.7);
+
+	background-position: 50% 0;
+	background-repeat: repeat;
+	background-attachment: fixed;
+}
+
+/* Define backgrounds dos divs */
+.body{background-color: #FFF;}
+#house-bg {
+	background-image: url('../img/a.jpg');
+	background-repeat: no-repeat;
+	-webkit-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
+	-moz-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
+	-ms-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
+	-o-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
+	box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
+}
+
+.color-bg{background-image: url('../img/b.jpg');}
+
+/** Formata o article que vai o texto **/
+ .center-context{
+  width: 70%;
+  text-align: center;
+  margin:0 auto;
+  padding:20% 0 0;
+}
+
+/** formata texto **/
+.header h1 {font-size:40px;}
+.header p {line-height: 30px; font-size:20px; margin-top:15px;}
+.header p a {color:#FFF; text-decoration:none; font-size:30px;}
+
+.body #home{color:black;}

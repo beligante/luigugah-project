@@ -1,4 +1,4 @@
-<%@include file="Taglibs.jsp" %>
+<%@include file="../comum/Taglibs.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 5.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,11 +9,11 @@
 	</title>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/client.js"></script>
+	<script type="text/javascript" src="js/start.js"></script>
 	
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css">
-	<link type="text/css" rel="stylesheet" href="css/client.css">
+	<link type="text/css" rel="stylesheet" href="css/start.css">
 </head>
 <body>	
 	<div class="top-bar">
