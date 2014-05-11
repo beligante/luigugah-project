@@ -8,14 +8,16 @@
 
 	<definition name="baseLayout" template="jsp/comum/BaseLayout.jsp">
 		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="top-bar" value="jsp/comum/empty.jsp" />
 		<put-attribute name="header" value="jsp/comum/empty.jsp" />
 		<put-attribute name="menu" value="jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="jsp/comum/empty.jsp" />
 		<put-attribute name="footer" value="jsp/comum/empty.jsp" />
 	</definition>
 
-	<definition name="start.page" extends="baseLayout">
+	<definition name="start.page" template="jsp/start/BaseLayout.jsp">
 		<put-attribute name="title" value="Welcome to SAEI" />
+		<put-attribute name="top-bar" value="/jsp/comum/top-bar-login.jsp" />
 		<put-attribute name="header" value="/jsp/start/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/start/body.jsp" />
