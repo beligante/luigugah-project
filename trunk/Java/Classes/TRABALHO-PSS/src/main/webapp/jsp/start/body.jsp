@@ -1,6 +1,7 @@
 <%@include file="../comum/Taglibs.jsp"%>
 <%@include file="../comum/Taglibs.jsp"%>
-<div style="" class="center-contex tcolor-bg bgParallax" data-speed="15">
+<div class="color-bg bgParallax" data-speed="15">
+<div id="home" class="center-context">
 	<div class="container-fluid">
 		<!-- Example row of columns -->
 		<div class="row mini-banner">
@@ -40,4 +41,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
