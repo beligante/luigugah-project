@@ -23,5 +23,13 @@
 		<put-attribute name="body" value="/jsp/start/body.jsp" />
 		<put-attribute name="footer" value="/jsp/start/footer.jsp" />
 	</definition>
+	
+	<definition name="funcionario.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
 
 </tiles-definitions>

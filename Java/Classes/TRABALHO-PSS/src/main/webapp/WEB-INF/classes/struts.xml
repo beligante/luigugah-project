@@ -18,5 +18,10 @@
 			class="com.saei.WellcomeAction">
 			<result name="SUCCESS" type="tiles">start.page</result>
 		</action>
+		
+		<action name="funcionario" 
+			class="com.saei.FuncionarioAction">
+			<result name="SUCCESS" type="tiles">funcionario.page</result>
+		</action>
 	</package>
 </struts>
