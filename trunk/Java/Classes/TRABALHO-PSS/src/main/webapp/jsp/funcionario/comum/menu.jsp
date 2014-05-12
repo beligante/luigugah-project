@@ -2,16 +2,17 @@
     pageEncoding="ISO-8859-1"%>
 
 <ul class="nav nav-pills">
-	<li class="active"><a href="#">Home</a></li>
+	<li class="active"><a href="funcionario">Home</a></li>
 
 	<li class="dropdown">
 	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 		Cadastros <span class="caret"></span>
 	</a>
 	<ul class="dropdown-menu" role="menu">
-		<li><a href="#">Cliente</a></li>
-		<li><a href="#">Fornecedor</a></li>
-		<li><a href="#">Produto</a></li>
+		<li><a href="cadastrocliente">Cliente</a></li>
+		<li><a href="cadastrofornecedor">Fornecedor</a></li>
+		<li><a href="cadastrofuncionario">Funcionario</a></li>
+		<li><a href="cadastroproduto">Produto</a></li>
 	</ul>
 	</li>
 
