@@ -18,6 +18,10 @@
 			class="com.saei.WellcomeAction">
 			<result name="SUCCESS" type="tiles">start.page</result>
 		</action>
+		<action name="register" 
+			class="com.saei.RegisterAction">
+			<result name="SUCCESS" type="tiles">register.page</result>
+		</action>
 		
 		<action name="funcionario" 
 			class="com.saei.FuncionarioAction">
