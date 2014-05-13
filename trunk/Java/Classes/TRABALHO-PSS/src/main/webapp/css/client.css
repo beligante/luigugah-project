@@ -1,1 +1,9 @@
 @CHARSET "ISO-8859-1";
+.header-funcionario{
+	padding: 20px;
+}
+
+.destaque-text{
+	font-size: 14px;
+	font-weight: bold;
+}

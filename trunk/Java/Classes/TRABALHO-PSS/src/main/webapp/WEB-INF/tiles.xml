@@ -99,5 +99,55 @@
 		<put-attribute name="body" value="/jsp/funcionario/cadastros/bodyProduto.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
+	
+	<definition name="agendamento.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyAgendamento.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="agendamento.detail.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyAgendamentoDetail.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+
+	
+	<definition name="compra.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyCompra.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="compra.detail.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyCompraDetail.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+
+	
+	<definition name="venda.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyVenda.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="venda.detail.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyVendaDetail.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
 
 </tiles-definitions>
