@@ -37,6 +37,17 @@
 			</label>
 		</div>
 	</div>
+	<div class="form-group">
+		<label for="inputPassword3" class="col-sm-2 control-label">Tipo pessoa</label>
+		<div class="col-sm-10">
+			<label>
+				<input type="radio" name="optionsRadios" id="optionsRadios1" value="F" checked> Fisica
+			</label>
+			<label>
+				<input type="radio" name="optionsRadios" id="optionsRadios1" value="J" checked> Juridica
+			</label>
+		</div>
+	</div>
 	
 	<BR><BR>
 	
