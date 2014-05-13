@@ -18,12 +18,10 @@
 
 /* Define backgrounds dos divs */
 .body{background-color: #FFF;}
-.login-header {
+.register-header {
 	background-image: url('../img/c.jpg');
 	background-repeat: no-repeat;
-	-webkit-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
-	-moz-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
-	-ms-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
-	-o-box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
-	box-shadow:-20px 0 20px 5px rgba(0,0,0,0.7);
+
 }
+
+.body, .header{max-width:1000px; margin: 0 auto;}

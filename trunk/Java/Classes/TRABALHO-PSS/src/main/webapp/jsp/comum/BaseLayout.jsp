@@ -15,21 +15,23 @@
 	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css">
 	<link type="text/css" rel="stylesheet" href="css/client.css">
 </head>
-<body>	
-	<div class="top-bar">
-		<tiles:insertAttribute name="top-bar" />
-	</div>
-	<div class="header">
-		<tiles:insertAttribute name="header" />
-	</div>
-	<div class="menu">
-		<tiles:insertAttribute name="menu" />
-	</div>
-	<div class="body">
-		<tiles:insertAttribute name="body" />
-	</div>
-	<div class="footer">
-		<tiles:insertAttribute name="footer" />
+<body>
+	<div id="main-container" class="container">
+		<div class="top-bar">
+			<tiles:insertAttribute name="top-bar" />
+		</div>
+		<div class="header">
+			<tiles:insertAttribute name="header" />
+		</div>
+		<div class="menu">
+			<tiles:insertAttribute name="menu" />
+		</div>
+		<div class="body">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div class="footer">
+			<tiles:insertAttribute name="footer" />
+		</div>
 	</div>
 </body>
 </html>

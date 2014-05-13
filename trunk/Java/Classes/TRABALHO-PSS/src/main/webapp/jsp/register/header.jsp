@@ -1,5 +1,5 @@
 <%@include file="../comum/Taglibs.jsp"%>
-<div class="login-header jumbotron bgParallax">
+<div class="jumbotron register-header bgParallax">
 	<div class="container">
 		<h1>Cadastre-se</h1>
 		<p>
