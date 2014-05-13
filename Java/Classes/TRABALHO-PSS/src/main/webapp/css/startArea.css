@@ -18,10 +18,9 @@
 
 /* Define backgrounds dos divs */
 .body{background-color: #FFF;}
-.register-header {
-	background-image: url('../img/c.jpg');
-	background-repeat: no-repeat;
-
-}
+.register-header {background-image: url('../img/c.jpg');}
+.simulation-header{background-image: url('../img/d.jpg');}
+.venda-header{background-image: url('../img/e.jpg');}
+.venda-header, .simulation-header, .register-header{background-repeat: no-repeat;, }
 
 .body, .header{max-width:1000px; margin: 0 auto;}

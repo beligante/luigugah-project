@@ -18,5 +18,37 @@
 			class="com.saei.WellcomeAction">
 			<result name="SUCCESS" type="tiles">start.page</result>
 		</action>
+		<action name="register" 
+			class="com.saei.RegisterAction">
+			<result name="SUCCESS" type="tiles">register.page</result>
+		</action>
+		<action name="simulation" 
+			class="com.saei.SimulateAction">
+			<result name="SUCCESS" type="tiles">simulation.page</result>
+		</action>
+		<action name="saletous" 
+			class="com.saei.SaleAction">
+			<result name="SUCCESS" type="tiles">venda.page</result>
+		</action>
+		<action name="funcionario" 
+			class="com.saei.FuncionarioAction">
+			<result name="SUCCESS" type="tiles">funcionario.page</result>
+		</action>
+		<action name="cadastrocliente" 
+			class="com.saei.CadastroClienteAction">
+			<result name="SUCCESS" type="tiles">cadastroCliente.page</result>
+		</action>
+		<action name="cadastrofornecedor" 
+			class="com.saei.CadastroFornecedorAction">
+			<result name="SUCCESS" type="tiles">cadastroFornecedor.page</result>
+		</action>
+		<action name="cadastrofuncionario" 
+			class="com.saei.CadastroFuncionarioAction">
+			<result name="SUCCESS" type="tiles">cadastroFuncionario.page</result>
+		</action>
+		<action name="cadastroproduto" 
+			class="com.saei.CadastroProdutoAction">
+			<result name="SUCCESS" type="tiles">cadastroProduto.page</result>
+		</action>
 	</package>
 </struts>
