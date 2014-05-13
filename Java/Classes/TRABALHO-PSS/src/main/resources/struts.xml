@@ -28,7 +28,7 @@
 		</action>
 		<action name="saletous" 
 			class="com.saei.SaleAction">
-			<result name="SUCCESS" type="tiles">venda.page</result>
+			<result name="SUCCESS" type="tiles">sale.page</result>
 		</action>
 		<action name="funcionario" 
 			class="com.saei.FuncionarioAction">
