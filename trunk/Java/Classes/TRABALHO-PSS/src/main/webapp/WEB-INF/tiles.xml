@@ -121,7 +121,7 @@
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyCompra.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/compra/bodyCompra.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	
@@ -129,7 +129,7 @@
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyCompraDetail.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/compra/bodyCompraDetail.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 
@@ -138,7 +138,7 @@
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyVenda.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVenda.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	
@@ -146,7 +146,7 @@
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyVendaDetail.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaDetail.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 
