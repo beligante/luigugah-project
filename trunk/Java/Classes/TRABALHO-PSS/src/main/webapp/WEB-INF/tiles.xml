@@ -24,12 +24,39 @@
 		<put-attribute name="footer" value="/jsp/start/footer.jsp" />
 	</definition>
 	
-	<definition name="register.page" template="jsp/register/BaseLayout.jsp">
+	<definition name="startAreaLayout" template="jsp/start/comum/BaseLayout.jsp">
+		<put-attribute name="title" value="Welcome to SAEI" />
+		<put-attribute name="top-bar" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="header" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="register.page" extends="startAreaLayout">
 		<put-attribute name="title" value="Welcome to SAEI" />
 		<put-attribute name="top-bar" value="/jsp/comum/top-bar-login.jsp" />
 		<put-attribute name="header" value="/jsp/register/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/cadastros/bodyCliente.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="simulation.page" extends="startAreaLayout">
+		<put-attribute name="title" value="Welcome to SAEI" />
+		<put-attribute name="top-bar" value="/jsp/comum/top-bar-login.jsp" />
+		<put-attribute name="header" value="/jsp/start/headerSimulacao.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="body" value="/jsp/start/bodySimulacao.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="venda.page" extends="startAreaLayout">
+		<put-attribute name="title" value="Welcome to SAEI" />
+		<put-attribute name="top-bar" value="/jsp/comum/top-bar-login.jsp" />
+		<put-attribute name="header" value="/jsp/start/headerVenda.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="body" value="/jsp/start/bodyVenda.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	
