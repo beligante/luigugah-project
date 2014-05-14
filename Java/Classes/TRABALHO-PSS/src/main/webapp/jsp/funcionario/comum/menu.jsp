@@ -18,9 +18,15 @@
 
 	<li><a href="agendamento">Agendamento</a></li>
 
-	<li><a href="compra">Compra</a></li>
-
-	<li><a href="venda">Venda</a></li>
+	<li class="dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		Venda <span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="vendaEfetuada">Vendas Efetuadas</a></li>
+		<li><a href="venda">Catalogo</a></li>
+	</ul>
+	</li>
 
 	<li class="dropdown">
 	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
