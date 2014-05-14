@@ -68,6 +68,14 @@
 			class="com.saei.VendaDetailAction">
 			<result name="SUCCESS" type="tiles">venda.detail.page</result>
 		</action>
+		<action name="VendaDetailSimulacao" 
+			class="com.saei.VendaDetailSimulacaoAction">
+			<result name="SUCCESS" type="tiles">venda.detail.simulacao.page</result>
+		</action>
+		<action name="VendaFinalizada" 
+			class="com.saei.VendaDetailSimulacaoAction">
+			<result name="SUCCESS" type="tiles">venda.finalizada.page</result>
+		</action>
 		
 		<action name="compra" 
 			class="com.saei.CompraAction">

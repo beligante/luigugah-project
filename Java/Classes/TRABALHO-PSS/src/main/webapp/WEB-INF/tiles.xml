@@ -165,6 +165,22 @@
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaDetail.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
+	
+	<definition name="venda.detail.simulacao.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaDetailSimulacao.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="venda.finalizada.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaFinalizada.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
 
 	<definition name="product.detail.page" extends="baseLayout">
 		<put-attribute name="title" value="SAEI" />
