@@ -115,5 +115,10 @@
 			<result name="SUCCESS" type="tiles">login.page</result>
 		</action>
 		
+		<action name="pagamentos" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">pagamentos.page</result>
+		</action>
+		
 	</package>
 </struts>
