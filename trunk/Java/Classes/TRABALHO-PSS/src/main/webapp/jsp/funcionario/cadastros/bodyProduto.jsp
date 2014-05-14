@@ -49,7 +49,7 @@
 			<select class="form-control">
 				<option value="">Maringá</option>
 				<option value="">Paiçandu</option>
-				<option value="">Saraindi</option>
+				<option value="">Sarandi</option>
 			</select>
 		</div>
 	</div>
@@ -67,12 +67,15 @@
 		<label for="inputName" class="col-sm-2 control-label">Tipo</label>
 		<div class="col-xs-5">
 			<select class="form-control">
-				<option value="">Terreno</option>
-				<option value="">Casa</option>
-				<option value="">Sobrado</option>
 				<option value="">Apartamento</option>
+				<option value="">Apartamento Duplex</option>
 				<option value="">Apartamento kitnet</option>
-				<option value="">Apartamento Duplex</option>				
+				<option value="">Casa</option>
+				<option value="">Galpão (Industrial)</option>
+				<option value="">Predio</option>
+				<option value="">Salão Comercial</option>
+				<option value="">Sobrado</option>
+				<option value="">Terreno</option>				
 			</select>
 		</div>
 	</div>

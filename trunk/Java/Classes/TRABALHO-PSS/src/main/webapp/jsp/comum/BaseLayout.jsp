@@ -10,10 +10,13 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/client.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
 	
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css">
 	<link type="text/css" rel="stylesheet" href="css/client.css">
+	<link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.css">
 </head>
 <body>
 	<div id="main-container" class="container">
