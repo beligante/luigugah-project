@@ -57,7 +57,7 @@
 			<select class="form-control">
 				<option value="">Maringá</option>
 				<option value="">Paiçandu</option>
-				<option value="">Saraindi</option>
+				<option value="">Sarandi</option>
 			</select>
 		</div>
 	</div>
