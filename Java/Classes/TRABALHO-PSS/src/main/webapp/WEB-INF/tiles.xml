@@ -174,4 +174,42 @@
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 
+	<definition name="product.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/comum/product/bodyDetail.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="product.cliente.detail.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/cliente/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/cliente/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/comum/product/bodyProductDetail.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+
+	<definition name="product.cliente.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/cliente/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/cliente/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/comum/product/bodyProduto.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+
+	<definition name="cliente.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/cliente/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/cliente/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+
+	<definition name="login.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="body" value="/jsp/comum/login.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+
 </tiles-definitions>

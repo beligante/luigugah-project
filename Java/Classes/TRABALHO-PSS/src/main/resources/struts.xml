@@ -87,10 +87,32 @@
 			<result name="SUCCESS" type="tiles">agendamento.detail.page</result>
 		</action>
 		
-		
 		<action name="productDetail" 
 			class="com.saei.AgendamentoDetailAction">
 			<result name="SUCCESS" type="tiles">product.detail.page</result>
+		</action>
+		<action name="product" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">product.page</result>
+		</action>
+		
+		<action name="productClienteDetail" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">product.cliente.detail.page</result>
+		</action>
+		<action name="productCliente" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">product.cliente.page</result>
+		</action>
+		
+		<action name="cliente" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">cliente.page</result>
+		</action>
+		
+		<action name="login" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">login.page</result>
 		</action>
 		
 	</package>
