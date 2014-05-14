@@ -51,6 +51,15 @@
 			<result name="SUCCESS" type="tiles">cadastroProduto.page</result>
 		</action>
 		
+		<action name="vendaEfetuada" 
+			class="com.saei.VendaAction">
+			<result name="SUCCESS" type="tiles">venda.efetuada.page</result>
+		</action>
+		<action name="vendaEfetuadaDetail" 
+			class="com.saei.VendaDetailAction">
+			<result name="SUCCESS" type="tiles">venda.efetuada.detail.page</result>
+		</action>
+		
 		<action name="venda" 
 			class="com.saei.VendaAction">
 			<result name="SUCCESS" type="tiles">venda.page</result>
@@ -76,6 +85,12 @@
 		<action name="agendamentoDetail" 
 			class="com.saei.AgendamentoDetailAction">
 			<result name="SUCCESS" type="tiles">agendamento.detail.page</result>
+		</action>
+		
+		
+		<action name="productDetail" 
+			class="com.saei.AgendamentoDetailAction">
+			<result name="SUCCESS" type="tiles">product.detail.page</result>
 		</action>
 		
 	</package>
