@@ -228,5 +228,10 @@
 		<put-attribute name="menu" value="/jsp/cliente/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/cliente/bodyPagamentos.jsp" />
 	</definition>
+	
+		<definition name="login.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="body" value="/jsp/comum/login.jsp" />
+	</definition>
 
 </tiles-definitions>
