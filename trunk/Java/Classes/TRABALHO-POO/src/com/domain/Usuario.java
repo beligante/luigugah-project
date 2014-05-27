@@ -1,9 +1,19 @@
 package com.domain;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+
+@javax.persistence.Entity
+@Table(name = "usuario")
+@MappedSuperclass
 public abstract class Usuario extends Pessoa{
 	
+        @Column(name="user")
 	protected String user;
-	protected String password;
+	
+        @Column(name="password")
+        protected String password;
 	
 	public String getUser() {
 		return user;

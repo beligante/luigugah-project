@@ -3,13 +3,36 @@ package com.domain;
 import java.util.Date;
 
 import com.enums.TipoConsulta;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@javax.persistence.Entity
+@Table(name = "consulta")
 public class Consulta extends Entity{
 	
+        @Column(name = "dataConsulta")
 	private Date dataConsulta;
+        
+        @Column(name = "medicoId")
+        @ManyToOne
+        @JoinColumn(name = "id")
 	private Medico medico;
-	private Paciente paciente;
+        
+        @ManyToOne
+        @JoinColumn(name="id")
+	@Column(name="pacienteId")
+        private Paciente paciente;
+        
+        @Column(name="tipoCosulta")
+        @Enumerated(EnumType.STRING)
 	private TipoConsulta tipoConsulta;
+        
 	public Date getDataConsulta() {
 		return dataConsulta;
 	}

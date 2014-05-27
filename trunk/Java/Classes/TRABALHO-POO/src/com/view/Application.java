@@ -40,7 +40,7 @@ public class Application {
         medico.setNome("Joao");
         medico.setCpf("0000000000");
         medico.setDataNascimento(new Date());
-        medico.setSexo(Sexo.OUTROS);
+        medico.setSexo(Sexo.MASCULINO);
         medico.setUser("jao");
         medico.setPassword("a");
         
@@ -49,9 +49,9 @@ public class Application {
         secretaria.setNome("Ariadine");
         secretaria.setCpf("0000000000");
         secretaria.setDataNascimento(new Date());
-        secretaria.setSexo(Sexo.MASCULINO);
-        secretaria.setUser("ari");
-        secretaria.setPassword("rihana");
+        secretaria.setSexo(Sexo.OUTROS);
+        secretaria.setUser("ariadne");
+        secretaria.setPassword("rihanna");
         
         userRepository.merge(medico);
         userRepository.merge(secretaria);
@@ -79,15 +79,6 @@ public class Application {
         
         PacienteController pacienteController = new PacienteController(prontuarioController);
         pacienteController.setRepository(new Repository<Paciente>());
-        
-        Paciente paciente = new Paciente();
-        paciente.setNome("Luis");
-        paciente.setDataNascimento(new Date());
-        paciente.setColesterol(10F);
-        paciente.setRg("1010101");
-        paciente.setTelefone("000000");
-        
-        pacienteController.save(paciente);
         
         consultaController.setRepository(new Repository<Consulta>());
 

@@ -2,14 +2,36 @@ package com.domain;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@javax.persistence.Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "prontuario")
 public class Prontuario extends Entity{
 	
-	private Paciente paciente;
+	@Column(name="paciente")
+        @OneToOne(fetch = FetchType.EAGER)
+        private Paciente paciente;
+        
+        @Column(name="sintomas")
 	private String sintomas;
+	
+        @Column(name="diagnosticoDaDoenca")
 	private String diagnosticoDaDoenca;
+	
+        @Column(name="prescricaoDeTratamento")
 	private String prescricaoDeTratamento;
+	
+        @Column(name="dataModificacao")
 	private Date dataModificacao;
+        
 	public Paciente getPaciente() {
 		return paciente;
 	}
