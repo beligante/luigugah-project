@@ -3,16 +3,37 @@ package com.domain;
 import java.util.Date;
 
 import com.enums.Sexo;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public class Pessoa extends Entity{
 	
+        @Column(name="nome")
 	private String nome;
+        
+	@Column(name="cpf")
 	private String cpf;
+	
+        @Column(name="rg")
 	private String rg;
+	
+        @Column(name="dataNascimento")
 	private Date dataNascimento;
+	
+        @Column(name="endereco")
 	private String endereco;
+	
+        @Column(name="telefone")
 	private String telefone;
+	
+        @Column(name="email")
 	private String email;
+	
+        @Enumerated(EnumType.STRING)
+        @Column(name="sexo")
 	private Sexo sexo;
 	
 	public void setNome(String nome) {

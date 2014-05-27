@@ -3,16 +3,38 @@ package com.domain;
 import java.util.List;
 
 import com.enums.TipoAtendimento;
+import javax.persistence.Column;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
+@javax.persistence.Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "paciente")
 public class Paciente extends Pessoa{
 	
+        @Column(name="tipoAtendimento")
 	private TipoAtendimento tipoAtendimento;
+	
+        @Column(name="isFumante")
 	private boolean isFumante;
+	
+        @Column(name="isAlcolatra")
 	private boolean isAlcolatra;
+	
+        @Column(name="isDiabetico")
 	private boolean isDiabetico;
+	
+        @Column(name="isCardiaco")
 	private boolean isCardiaco;
+	
+        @Column(name="cirurgias")
 	private List<String> cirurgias;
+	
+        @Column(name="alergias")
 	private List<String> alergias;
+	
+        @Column(name="colesterol")
 	private float colesterol;
 	
 	public Paciente() {
