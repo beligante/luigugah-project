@@ -31,17 +31,19 @@ public class BuscaConsulta extends javax.swing.JInternalFrame {
 
     ConsultaViewController consultaViewController;
     GerenciamentoConsulta gerenciamentoConsulta;
-    
+
     private static final SimpleDateFormat DATA_CONSULTA = new SimpleDateFormat("dd/MM/yyyy");
+
     /**
      * Creates new form BuscarConsulta
      */
     public BuscaConsulta(ConsultaViewController consultaViewController, GerenciamentoConsulta gerenciamentoConsulta) {
         initComponents();
-        this.consultaViewController = consultaViewController; 
+        this.consultaViewController = consultaViewController;
         this.gerenciamentoConsulta = gerenciamentoConsulta;
         new ButtonColumn(searchResultTable, 0, this.gerenciamentoConsulta, this);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -201,7 +203,7 @@ public class BuscaConsulta extends javax.swing.JInternalFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new BuscaConsulta().setVisible(true);
+                // new BuscaConsulta().setVisible(true);
             }
         });
     }
@@ -215,93 +217,87 @@ public class BuscaConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField searchTextField;
     // End of variables declaration//GEN-END:variables
 
-    class ButtonColumn extends AbstractCellEditor  
-        implements TableCellRenderer, TableCellEditor, ActionListener  {  
-        JTable table;  
-        JButton renderButton;  
-        JButton editButton;  
-        String text;  
+    class ButtonColumn extends AbstractCellEditor
+            implements TableCellRenderer, TableCellEditor, ActionListener {
+
+        JTable table;
+        JButton renderButton;
+        JButton editButton;
+        String text;
         Consulta consulta;
         GerenciamentoConsulta gerenciamentoConsulta;
         BuscaConsulta buscaConsulta;
-        
-        private static final String TITLE = "Editar"; 
+
+        private static final String TITLE = "Editar";
 
         private ButtonColumn(JTable table, int column, GerenciamentoConsulta gerenciamentoConsulta, BuscaConsulta buscarConsulta) {
-            
-            super();  
-            this.table = table;  
-            renderButton = new JButton();  
-   
-            editButton = new JButton();  
-            editButton.setFocusPainted( false );  
-            editButton.addActionListener( this );  
-   
-            TableColumnModel columnModel = table.getColumnModel();  
-            columnModel.getColumn(column).setCellRenderer( this );  
-            columnModel.getColumn(column).setCellEditor( this );
-            
+
+            super();
+            this.table = table;
+            renderButton = new JButton();
+
+            editButton = new JButton();
+            editButton.setFocusPainted(false);
+            editButton.addActionListener(this);
+
+            TableColumnModel columnModel = table.getColumnModel();
+            columnModel.getColumn(column).setCellRenderer(this);
+            columnModel.getColumn(column).setCellEditor(this);
+
             this.gerenciamentoConsulta = gerenciamentoConsulta;
             this.buscaConsulta = buscarConsulta;
-  
+
         }
-   
-        public Component getTableCellRendererComponent(  
-            JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
-        {  
-            if (hasFocus)  
-            {  
-                renderButton.setForeground(table.getForeground());  
-                renderButton.setBackground(UIManager.getColor("Button.background"));  
-            }  
-            else if (isSelected)  
-            {  
-                renderButton.setForeground(table.getSelectionForeground());  
-                 renderButton.setBackground(table.getSelectionBackground());  
-            }  
-            else  
-            {  
-                renderButton.setForeground(table.getForeground());  
-                renderButton.setBackground(UIManager.getColor("Button.background"));  
-            }  
-            
-            try{
+
+        public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            if (hasFocus) {
+                renderButton.setForeground(table.getForeground());
+                renderButton.setBackground(UIManager.getColor("Button.background"));
+            } else if (isSelected) {
+                renderButton.setForeground(table.getSelectionForeground());
+                renderButton.setBackground(table.getSelectionBackground());
+            } else {
+                renderButton.setForeground(table.getForeground());
+                renderButton.setBackground(UIManager.getColor("Button.background"));
+            }
+
+            try {
                 consulta = (Consulta) value;
-            }catch(Exception e){}
-   
-            renderButton.setText( TITLE  );  
-            return renderButton;  
-        }  
-   
-        public Component getTableCellEditorComponent(  
-            JTable table, Object value, boolean isSelected, int row, int column)  
-        {  
-            try{
+            } catch (Exception e) {
+            }
+
+            renderButton.setText(TITLE);
+            return renderButton;
+        }
+
+        public Component getTableCellEditorComponent(
+                JTable table, Object value, boolean isSelected, int row, int column) {
+            try {
                 consulta = (Consulta) value;
-            }catch(Exception e){}
-            
-            editButton.setText( TITLE );  
-            return editButton;  
-        }  
-   
-        public Object getCellEditorValue()  
-        {  
-            return TITLE;  
-        }  
-   
-        public void actionPerformed(ActionEvent e)  
-        {  
+            } catch (Exception e) {
+            }
+
+            editButton.setText(TITLE);
+            return editButton;
+        }
+
+        public Object getCellEditorValue() {
+            return TITLE;
+        }
+
+        public void actionPerformed(ActionEvent e) {
             fireEditingStopped();
             buscaConsulta.setVisible(false);
             buscaConsulta.cleanResultTable();
             gerenciamentoConsulta.editarConsulta(consulta);
-        }  
+        }
     }
-    
-    public void cleanResultTable(){
-        
-        DefaultTableModel dtm =  (DefaultTableModel) searchResultTable.getModel();
-        
+
+    public void cleanResultTable() {
+
+        DefaultTableModel dtm = (DefaultTableModel) searchResultTable.getModel();
+
 //        for(int index = 0; index < dtm.getRowCount(); index++){
 //            dtm.removeRow(index);
 //        }

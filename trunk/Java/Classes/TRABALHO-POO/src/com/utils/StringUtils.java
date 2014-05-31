@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.utils;
 
 /**
@@ -11,12 +10,12 @@ package com.utils;
  * @author Gustavo
  */
 public class StringUtils {
-    
-    public static boolean isBlank(String string){
+
+    public static boolean isBlank(String string) {
         return (string == null || string.isEmpty());
     }
-    
-    public static boolean isNotBlank(String string){
+
+    public static boolean isNotBlank(String string) {
         return !(string == null || string.isEmpty());
     }
 }

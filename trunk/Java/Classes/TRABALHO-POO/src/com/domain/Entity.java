@@ -9,23 +9,25 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @MappedSuperclass
-public abstract class Entity implements Comparable<Entity>, Serializable{
-	
-        @Id
-        @Column(name="id")
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @PrimaryKeyJoinColumn
-	protected Long id;
+public abstract class Entity implements Comparable<Entity>, Serializable {
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @PrimaryKeyJoinColumn
+    protected Long id;
 
-        public void setId(Long id){this.id = id;}
-        
-	@Override
-	public int compareTo(Entity entidade) {
-		return this.id.compareTo(entidade.getId());
-	}
-	
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public int compareTo(Entity entidade) {
+        return this.id.compareTo(entidade.getId());
+    }
+
 }

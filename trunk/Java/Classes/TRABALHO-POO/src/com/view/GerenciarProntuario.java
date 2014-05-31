@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.view;
 
 import com.domain.Prontuario;
@@ -24,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class GerenciarProntuario extends javax.swing.JInternalFrame {
 
     ProntuarioViewController prontuarioViewController;
+
     /**
      * Creates new form GerenciarProntuario
      */
@@ -31,7 +31,7 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         initComponents();
         this.prontuarioViewController = prontuarioViewController;
     }
-    
+
     private Prontuario prontuario;
 
     /**
@@ -165,11 +165,11 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         prontuario.setDataModificacao(new Date());
         prontuario.setSintomas(sintomasTextField.getText());
-        
+
         prontuario.setDiagnosticoDaDoenca(diagnosticoTextArea.getText());
         prontuario.setPrescricaoDeTratamento(tratamentoTextArea.getText());
         prontuarioViewController.getController().save(prontuario);
-        
+
         JOptionPane.showMessageDialog(this, "Prontuario salvo com sucesso!");
         setVisible(false);
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -178,7 +178,7 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
         cleanupFields();
         setVisible(false);
     }//GEN-LAST:event_cancelarButtonActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -231,29 +231,29 @@ public class GerenciarProntuario extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea tratamentoTextArea;
     // End of variables declaration//GEN-END:variables
 
-    public void gerenciarProntuario(Prontuario prontuario){
-    
+    public void gerenciarProntuario(Prontuario prontuario) {
+
         cleanupFields();
         this.prontuario = prontuario;
         this.diagnosticoTextArea.setText(prontuario.getDiagnosticoDaDoenca());
         this.tratamentoTextArea.setText(prontuario.getPrescricaoDeTratamento());
-        
+
         this.sintomasTextField.setText(prontuario.getSintomas());
         this.nomePacienteLabel.setText(prontuario.getPaciente().getNome());
         this.setVisible(true);
     }
-    
-    private void cleanupFields(){
+
+    private void cleanupFields() {
         this.diagnosticoTextArea.setText("");
         this.tratamentoTextArea.setText("");
         this.sintomasTextField.setText("");
     }
-    
-    private void cleanTable(JTable tabela){
-        
-        DefaultTableModel dtm =  (DefaultTableModel) tabela.getModel();
-        
-        for(int index = 0; index < dtm.getRowCount(); index++){
+
+    private void cleanTable(JTable tabela) {
+
+        DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
+
+        for (int index = 0; index < dtm.getRowCount(); index++) {
             dtm.removeRow(index);
         }
     }

@@ -6,13 +6,13 @@ import javax.persistence.InheritanceType;
 
 @javax.persistence.Entity
 @DiscriminatorValue("secretaria")
-public class Secretaria extends Usuario{
-	
-	public Secretaria() {
-		super();
-	}	
+public class Secretaria extends Usuario {
 
-            @Override
+    public Secretaria() {
+        super();
+    }
+
+    @Override
     public String toString() {
         return "Usuario{" + "user=" + user + ", password=" + password + '}';
     }

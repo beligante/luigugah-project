@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.view;
 
-import com.controller.PacienteController;
 import com.controller.ProntuarioController;
 import com.domain.Paciente;
 import com.domain.Secretaria;
@@ -15,15 +13,12 @@ import com.enums.TipoAtendimento;
 import com.utils.CollectionUtils;
 import com.utils.StringUtils;
 import com.view.controller.PacienteViewController;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -37,7 +32,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private boolean isInitialized;
     private static final SimpleDateFormat DATA_NASCIMENTO_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
     private ProntuarioController prontuarioController;
-    
+
     /**
      * Creates new form GerenciarPaciente
      */
@@ -48,12 +43,12 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         disableFieldsByUser();
         isInitialized = true;
     }
-    
+
     public GerenciarPaciente(PacienteViewController pacienteViewController, Paciente paciente) {
         this.pacienteViewController = pacienteViewController;
         initComponents();
-        
-        if(paciente != null){
+
+        if (paciente != null) {
             isEditing = true;
             editarPaciente(paciente);
         }
@@ -444,48 +439,48 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private void pacienteButtomSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomSalvarActionPerformed
 
         //START VALIDATION CODES
-        if(StringUtils.isBlank(this.pacienteName.getText())){
+        if (StringUtils.isBlank(this.pacienteName.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o nome do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteCPF.getText())){
+        if (StringUtils.isBlank(this.pacienteCPF.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o CPF do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteRG.getText())){
+        if (StringUtils.isBlank(this.pacienteRG.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o RG do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteName.getText())){
+        if (StringUtils.isBlank(this.pacienteName.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o nome do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteTelefone.getText())){
+        if (StringUtils.isBlank(this.pacienteTelefone.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o telefone do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteEmail.getText())){
+        if (StringUtils.isBlank(this.pacienteEmail.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o e-mail do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteDataNascimento.getText())){
+        if (StringUtils.isBlank(this.pacienteDataNascimento.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique a data de nascimento do paciente.");
             return;
         }
-        if(StringUtils.isBlank(this.pacienteEndereco.getText())){
+        if (StringUtils.isBlank(this.pacienteEndereco.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique o endereço do paciente.");
             return;
         }
-        if(this.pacienteSexo.getSelectedIndex() == -1){
+        if (this.pacienteSexo.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Especifique o sexo do paciente.");
             return;
         }
-        if(this.pacienteTipoAtendimento.getSelectedIndex() == -1){
+        if (this.pacienteTipoAtendimento.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Especifique o tipo de atendimento do paciente.");
             return;
         }
         //END VALIDATION CODES
-        
+
         String nome = pacienteName.getText();
         String cpf = pacienteCPF.getText();
         String rg = pacienteRG.getText();
@@ -493,28 +488,30 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         Sexo sexo = (Sexo) pacienteSexo.getModel().getSelectedItem();
         String email = pacienteEmail.getText();
         Date dataNascimento = null;
-        try{
+        try {
             dataNascimento = DATA_NASCIMENTO_FORMAT.parse(pacienteDataNascimento.getText());
-        }catch(Exception e){}
-        
+        } catch (Exception e) {
+        }
+
         String endereco = pacienteEndereco.getText();
-        
-        TipoAtendimento tipoAtendimento = 
-                (TipoAtendimento) pacienteTipoAtendimento.getModel().getSelectedItem();
-        
+
+        TipoAtendimento tipoAtendimento
+                = (TipoAtendimento) pacienteTipoAtendimento.getModel().getSelectedItem();
+
         boolean isFumante = pacienteIsFumante.isSelected();
         boolean isCardiaco = pacienteIsCardiaco.isSelected();
         boolean isAlcolatra = pacienteIsAlcolatra.isSelected();
         boolean isDiabetico = pacienteIsDiabetico.isSelected();
-        
+
         float colesterol = 0F;
-        try{
-            colesterol= Float.parseFloat(pacienteColesterol.getText());
-        }catch(Exception e){}
-        
-        List<String> alergias = getAlergias();
-        List<String> cirurgias = getCirurgias();
-        
+        try {
+            colesterol = Float.parseFloat(pacienteColesterol.getText());
+        } catch (Exception e) {
+        }
+
+        ArrayList<String> alergias = getAlergias();
+        ArrayList<String> cirurgias = getCirurgias();
+
         Paciente paciente = (isEditing) ? this.paciente : new Paciente();
         paciente.setAlergias(alergias);
         paciente.setCirurgias(cirurgias);
@@ -532,25 +529,25 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         paciente.setDataNascimento(dataNascimento);
         paciente.setTipoAtendimento(tipoAtendimento);
         paciente.setEndereco(endereco);
-        
+
         pacienteViewController.getController().save(paciente);
-        if(isEditing){ 
-        JOptionPane.showMessageDialog(this, "Paciente editado com sucesso!");
-        }else{
+        if (isEditing) {
+            JOptionPane.showMessageDialog(this, "Paciente editado com sucesso!");
+        } else {
             JOptionPane.showMessageDialog(this, "Paciente salvo com sucesso!");
         }
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_pacienteButtomSalvarActionPerformed
 
     private void pacienteButtomCirurgiasAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomCirurgiasAdicionarActionPerformed
-        Object [] dados = {""};
+        Object[] dados = {""};
         DefaultTableModel modelo = (DefaultTableModel) pacienteCirurgias.getModel();
         modelo.addRow(dados);
     }//GEN-LAST:event_pacienteButtomCirurgiasAdicionarActionPerformed
 
     private void pacienteButtomAlergiasAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomAlergiasAdicionarActionPerformed
-        Object [] dados = {""};
+        Object[] dados = {""};
         DefaultTableModel modelo = (DefaultTableModel) pacienteAlergias.getModel();
         modelo.addRow(dados);
     }//GEN-LAST:event_pacienteButtomAlergiasAdicionarActionPerformed
@@ -558,25 +555,27 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private void pacienteButtomCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtomCancelarActionPerformed
 
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_pacienteButtomCancelarActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
 
-        if(paciente == null){return;}
-        
+        if (paciente == null) {
+            return;
+        }
+
         int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir este Paciente?");
-        if(resposta == 0){
-            pacienteViewController.getController().remove(paciente);       
+        if (resposta == 0) {
+            pacienteViewController.getController().remove(paciente);
             JOptionPane.showMessageDialog(this, "Paciente removida com Sucesso!");
             this.paciente = null;
             this.isEditing = false;
             this.setVisible(false);
         }
-        
+
     }//GEN-LAST:event_removeButtonActionPerformed
 
-    /**   
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -653,43 +652,46 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 
-    private List<String> getAlergias() {
+    private ArrayList<String> getAlergias() {
         int numeroDeLinhas = pacienteAlergias.getModel().getRowCount();
-        
-        List<String> alergias = new ArrayList<String>();
-        for(int linha = 0 ; linha < numeroDeLinhas; linha++){
+
+        ArrayList<String> alergias = new ArrayList<String>();
+        for (int linha = 0; linha < numeroDeLinhas; linha++) {
             String toAdd = (String) pacienteAlergias.getModel().getValueAt(linha, 0);
-            if(StringUtils.isNotBlank(toAdd)){
+            if (StringUtils.isNotBlank(toAdd)) {
                 alergias.add(toAdd);
             }
         }
-        
+
         return alergias;
     }
 
-    private List<String> getCirurgias() {
+    private ArrayList<String> getCirurgias() {
         int numeroDeLinhas = pacienteCirurgias.getModel().getRowCount();
-        
-        List<String> cirurgias = new ArrayList<String>();
-        for(int linha = 0 ; linha < numeroDeLinhas; linha++){
+
+        ArrayList<String> cirurgias = new ArrayList<String>();
+        for (int linha = 0; linha < numeroDeLinhas; linha++) {
             String toAdd = (String) pacienteCirurgias.getModel().getValueAt(linha, 0);
-            
-            if(StringUtils.isNotBlank(toAdd)){
+
+            if (StringUtils.isNotBlank(toAdd)) {
                 cirurgias.add(toAdd);
             }
         }
-        
+
         return cirurgias;
     }
-    
-    public void editarPaciente(Paciente paciente){
-        if(paciente == null){isEditing = false;return;}
-        
+
+    public void editarPaciente(Paciente paciente) {
+        if (paciente == null) {
+            isEditing = false;
+            return;
+        }
+
         isEditing = true;
         cleanupFields();
-        
+
         this.paciente = paciente;
-        
+
         pacienteName.setText(paciente.getNome());
         pacienteCPF.setText(paciente.getCpf());
         pacienteRG.setText(paciente.getRg());
@@ -704,30 +706,30 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         pacienteIsDiabetico.setSelected(paciente.getIsDiabetico());
         pacienteIsAlcolatra.setSelected(paciente.getIsAlcolatra());
         pacienteColesterol.setText(paciente.getColesterol().toString());
-        
-        if(CollectionUtils.isNotEmpty(paciente.getAlergias())){
+
+        if (CollectionUtils.isNotEmpty(paciente.getAlergias())) {
             DefaultTableModel alergiasModel = (DefaultTableModel) pacienteAlergias.getModel();
             alergiasModel.addRow(paciente.getAlergias().toArray());
         }
-        
-        if(CollectionUtils.isNotEmpty(paciente.getAlergias())){
+
+        if (CollectionUtils.isNotEmpty(paciente.getAlergias())) {
             DefaultTableModel cirurgiasModel = (DefaultTableModel) pacienteCirurgias.getModel();
             cirurgiasModel.addRow(paciente.getCirurgias().toArray());
         }
-        
+
         this.setVisible(true);
-        
+
     }
-    
-    public void cadastrarPaciente(){
+
+    public void cadastrarPaciente() {
         cleanupFields();
         isEditing = false;
         this.setVisible(true);
     }
-    
+
     private void disableFieldsByUser() {
-    
-        if(pacienteViewController.getSessionUser() instanceof Secretaria){
+
+        if (pacienteViewController.getSessionUser() instanceof Secretaria) {
             pacienteIsFumante.setEnabled(false);
             pacienteIsCardiaco.setEnabled(false);
             pacienteIsDiabetico.setEnabled(false);
@@ -740,7 +742,7 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         }
     }
 
-    private void cleanupFields(){
+    private void cleanupFields() {
         this.pacienteName.setText("");
         this.pacienteCPF.setText("");
         this.pacienteRG.setText("");
@@ -756,23 +758,21 @@ public class GerenciarPaciente extends javax.swing.JInternalFrame {
         this.pacienteIsDiabetico.setSelected(false);
         this.pacienteIsFumante.setSelected(false);
     }
-    
+
     @Override
     public void setVisible(boolean bln) {
         super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
-        
-        if(isInitialized){
 
-            if(isEditing){
+        if (isInitialized) {
+
+            if (isEditing) {
                 removeButton.setVisible(true);
                 removeButton.setEnabled(true);
-            }else{
+            } else {
                 removeButton.setVisible(false);
                 removeButton.setEnabled(false);
             }
         }
     }
-    
-    
-}
 
+}
