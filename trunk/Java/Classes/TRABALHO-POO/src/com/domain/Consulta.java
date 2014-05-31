@@ -19,15 +19,13 @@ public class Consulta extends Entity{
         @Column(name = "dataConsulta")
 	private Date dataConsulta;
         
-        @Column(name = "medicoId")
         @ManyToOne
-        @JoinColumn(name = "id")
+        @JoinColumn(name = "medico_id")
 	private Medico medico;
         
         @ManyToOne
-        @JoinColumn(name="id")
-	@Column(name="pacienteId")
-        private Paciente paciente;
+        @JoinColumn(name="paciente_id")
+	private Paciente paciente;
         
         @Column(name="tipoCosulta")
         @Enumerated(EnumType.STRING)

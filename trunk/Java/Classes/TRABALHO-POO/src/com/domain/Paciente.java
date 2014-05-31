@@ -1,38 +1,50 @@
 package com.domain;
 
-import java.util.List;
-
 import com.enums.TipoAtendimento;
+import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @javax.persistence.Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "paciente")
+@Table(name = "PACIENTE")
 public class Paciente extends Pessoa{
 	
         @Column(name="tipoAtendimento")
-	private TipoAtendimento tipoAtendimento;
+        @Enumerated(EnumType.STRING)
+        private TipoAtendimento tipoAtendimento;
 	
         @Column(name="isFumante")
+        @Type(type = "yes_no")
 	private boolean isFumante;
 	
         @Column(name="isAlcolatra")
-	private boolean isAlcolatra;
+	@Type(type = "yes_no")
+        private boolean isAlcolatra;
 	
         @Column(name="isDiabetico")
-	private boolean isDiabetico;
+	@Type(type = "yes_no")
+        private boolean isDiabetico;
 	
         @Column(name="isCardiaco")
-	private boolean isCardiaco;
+	@Type(type = "yes_no")
+        private boolean isCardiaco;
 	
-        @Column(name="cirurgias")
-	private List<String> cirurgias;
+        @ElementCollection
+        @CollectionTable(name="paciente_cirurgias", joinColumns=@JoinColumn(name="cirurgia_id"))
+        private List<String> cirurgias;
 	
-        @Column(name="alergias")
-	private List<String> alergias;
+	@ElementCollection
+        @CollectionTable(name="paciente_alergias", joinColumns=@JoinColumn(name="alergias_id"))
+        private List<String> alergias;
 	
         @Column(name="colesterol")
 	private float colesterol;
