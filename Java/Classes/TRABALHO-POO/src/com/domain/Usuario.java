@@ -12,33 +12,34 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @javax.persistence.Entity
-@DiscriminatorColumn(name="usuario_tipo")
-public abstract class Usuario extends Pessoa{
-	
-        @Column(name="login")
-	protected String user;
-	
-        @Column(name="password")
-        protected String password;
-	
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+@DiscriminatorColumn(name = "usuario_tipo")
+public abstract class Usuario extends Pessoa {
+
+    @Column(name = "login")
+    protected String user;
+
+    @Column(name = "password")
+    protected String password;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public String toString() {
-        return "Usuario{" + "user=" + user + ", password=" + password + '}';
+        return getNome();
     }
-	
-        
 
 }

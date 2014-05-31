@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Development/Projetos/TRABALHO-POO/src/hibernate.cfg.xml</file>
+            <file>file:/C:/Development/Projetos/TRABALHO-POO/src/com/controller/TESTE.java</file>
+            <file>file:/C:/Development/Projetos/TRABALHO-POO/src/com/domain/Pessoa.java</file>
             <file>file:/C:/Development/Projetos/TRABALHO-POO/src/com/repository/Repository.java</file>
-            <file>file:/C:/Development/Projetos/TRABALHO-POO/src/com/repository/HibernateUtil.java</file>
-            <file>file:/C:/Development/Projetos/TRABALHO-POO/src/com/domain/Consulta.java</file>
+            <file>file:/C:/Development/Projetos/TRABALHO-POO/src/com/controller/PacienteController.java</file>
         </group>
     </open-files>
 </project-private>

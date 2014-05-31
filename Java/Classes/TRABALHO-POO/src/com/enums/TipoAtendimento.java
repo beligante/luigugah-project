@@ -1,5 +1,6 @@
 package com.enums;
 
 public enum TipoAtendimento {
-	PARTICULAR, PLANO;
+
+    PARTICULAR, PLANO;
 }

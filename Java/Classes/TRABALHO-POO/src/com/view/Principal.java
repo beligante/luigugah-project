@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.view;
 
 import com.controller.UserController;
@@ -31,7 +30,7 @@ public class Principal extends javax.swing.JFrame {
     private ProntuarioViewController prontuarioViewController;
     private ConsultaViewController consultaViewController;
     private UserManager userManager;
-    
+
     GerenciamentoConsulta gerenciamentoConsulta;
     GerenciarPaciente gerenciarPaciente;
     GerenciarProntuario gerenciarProntuario;
@@ -70,23 +69,21 @@ public class Principal extends javax.swing.JFrame {
     public void setConsultaViewController(ConsultaViewController consultaViewController) {
         this.consultaViewController = consultaViewController;
     }
-    
-    
-    
+
     /**
      * Creates new form Principal
      */
-    public Principal(ConsultaViewController consultaViewController, 
-                     PacienteViewController pacienteViewController, 
-                     ProntuarioViewController prontuarioViewController, 
-                     UserManager userManager) {
-        
+    public Principal(ConsultaViewController consultaViewController,
+            PacienteViewController pacienteViewController,
+            ProntuarioViewController prontuarioViewController,
+            UserManager userManager) {
+
         this.consultaViewController = consultaViewController;
         this.pacienteViewController = pacienteViewController;
         this.prontuarioViewController = prontuarioViewController;
-        
+
         this.userManager = userManager;
-        
+
         initComponents();
         buildMenuItens();
         setLocationRelativeTo(null);
@@ -94,36 +91,52 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-    
-    
-    private void buildMenuItens(){        
-        
+    private void buildMenuItens() {
+
         gerenciamentoConsulta = new GerenciamentoConsulta(new UserController(userManager), pacienteViewController.getController(), consultaViewController);
-        try{gerenciamentoConsulta.setMaximum(true);}catch(Exception e){}
+        try {
+            gerenciamentoConsulta.setMaximum(true);
+        } catch (Exception e) {
+        }
         this.container.add(gerenciamentoConsulta);
-        
+
         gerenciarPaciente = new GerenciarPaciente(pacienteViewController);
-        try{gerenciarPaciente.setMaximum(true);}catch(Exception e){}
+        try {
+            gerenciarPaciente.setMaximum(true);
+        } catch (Exception e) {
+        }
         this.container.add(gerenciarPaciente);
-        
+
         gerenciarProntuario = new GerenciarProntuario(prontuarioViewController);
-        try{gerenciarProntuario.setMaximum(true);}catch(Exception e){}
+        try {
+            gerenciarProntuario.setMaximum(true);
+        } catch (Exception e) {
+        }
         this.container.add(gerenciarProntuario);
-        
+
         buscarPaciente = new BuscarPaciente(pacienteViewController, gerenciarPaciente);
-        try{buscarPaciente.setMaximum(true);}catch(Exception e){}
+        try {
+            buscarPaciente.setMaximum(true);
+        } catch (Exception e) {
+        }
         this.container.add(buscarPaciente);
-        
+
         buscarConsulta = new BuscaConsulta(consultaViewController, gerenciamentoConsulta);
-        try{buscarConsulta.setMaximum(true);}catch(Exception e){}
+        try {
+            buscarConsulta.setMaximum(true);
+        } catch (Exception e) {
+        }
         this.container.add(buscarConsulta);
-        
+
         buscaProntuario = new BuscaProntuario(gerenciarProntuario, prontuarioViewController);
-        try{buscaProntuario.setMaximum(true);}catch(Exception e){}
-        this.container.add(buscaProntuario);        
-        
+        try {
+            buscaProntuario.setMaximum(true);
+        } catch (Exception e) {
+        }
+        this.container.add(buscaProntuario);
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -267,7 +280,7 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         closeAllInternalFrames();
         buscarPaciente.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -283,15 +296,17 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Collection<Consulta> consultasDiaSeguinte = consultaViewController.getController().getAllConsultasDiaSeguinte();
         int numeroConsultas = 0;
-        
-        if(CollectionUtils.isNotEmpty(consultasDiaSeguinte)){numeroConsultas = consultasDiaSeguinte.size();}
-        if(numeroConsultas != 0){
+
+        if (CollectionUtils.isNotEmpty(consultasDiaSeguinte)) {
+            numeroConsultas = consultasDiaSeguinte.size();
+        }
+        if (numeroConsultas != 0) {
             int opt = JOptionPane.showConfirmDialog(this, "Você tem " + numeroConsultas + " consultas para amanhã\n Deseja enviar um aviso?");
-        
-            if(opt == 0){
+
+            if (opt == 0) {
                 JOptionPane.showMessageDialog(this, "Emails enviados!");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Você não tem consultas para amanhã!");
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -326,7 +341,7 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new Principal().setVisible(true);
+                // new Principal().setVisible(true);
             }
         });
     }
@@ -350,16 +365,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 
-    private void closeAllInternalFrames(){
-        for(Component component : this.container.getComponents()){
-            if(component instanceof JInternalFrame){
+    private void closeAllInternalFrames() {
+        for (Component component : this.container.getComponents()) {
+            if (component instanceof JInternalFrame) {
                 component.setVisible(false);
             }
         }
     }
 
     private void disableMenuItemForLoggedCustomer() {
-        if(prontuarioViewController.getSessionUser() instanceof Secretaria){
+        if (prontuarioViewController.getSessionUser() instanceof Secretaria) {
             buscarProntuarioMenuItem.setEnabled(false);
         }
     }

@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Junior
@@ -19,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     private UserManager userManager;
-    
+
     /**
      * Creates new form Login
      */
@@ -122,28 +121,28 @@ public class Login extends javax.swing.JFrame {
 
         String user = this.user.getText();
         String password = new String(this.password.getPassword());
-        
-        if(StringUtils.isBlank(user)){
+
+        if (StringUtils.isBlank(user)) {
             JOptionPane.showMessageDialog(this, "O Campo usuario é obrigatorio");
             return;
         }
-        
-        if(StringUtils.isBlank(password)){
+
+        if (StringUtils.isBlank(password)) {
             JOptionPane.showMessageDialog(this, "O Campo Senha é obrigatorio");
             return;
         }
-        
+
         Credencial credencial = new Credencial(user, password);
-        
+
         Usuario usuario = userManager.login(credencial);
-        
-        if(usuario == null){
+
+        if (usuario == null) {
             JOptionPane.showMessageDialog(this, "Usuario ou Senha incorreto!");
-        }else{
+        } else {
             setVisible(false);
             Application.buildLoggedScreen(usuario, userManager);
         }
-        
+
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
@@ -176,7 +175,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

@@ -47,14 +47,14 @@
     Another way to customize the build is by overriding existing main targets.
     The targets of interest are: 
 
-      -init-macrodef-javac:     defines macro for javac compilation
-      -init-macrodef-junit:     defines macro for junit execution
-      -init-macrodef-debug:     defines macro for class debugging
-      -init-macrodef-java:      defines macro for class execution
-      -do-jar:                  JAR building
-      run:                      execution of project 
-      -javadoc-build:           Javadoc generation
-      test-report:              JUnit report generation
+	-init-macrodef-javac:     defines macro for javac compilation
+	-init-macrodef-junit:     defines macro for junit execution
+	-init-macrodef-debug:     defines macro for class debugging
+	-init-macrodef-java:      defines macro for class execution
+	-do-jar:                  JAR building
+	run:                      execution of project 
+	-javadoc-build:           Javadoc generation
+	test-report:              JUnit report generation
 
     An example of overriding the target for project execution could look like this:
 

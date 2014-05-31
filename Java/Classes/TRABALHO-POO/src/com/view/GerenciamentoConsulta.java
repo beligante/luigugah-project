@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.view;
 
 import com.controller.ConsultaController;
@@ -36,14 +35,14 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     private boolean isEditing;
     private boolean isInitialized;
     private Consulta consulta;
-    
+
     private static final SimpleDateFormat DATA_SEM_HORA_SDF = new SimpleDateFormat("dd/MM/yyyy");
     private static final SimpleDateFormat HORA_SDF = new SimpleDateFormat("HH:mm");
-    
+
     /**
      * Creates new form GerenciamentoConsulta
      */
-    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController,ConsultaViewController  consultaViewController) {
+    public GerenciamentoConsulta(UserController userController, PacienteController pacienteController, ConsultaViewController consultaViewController) {
         super();
         this.userController = userController;
         this.pacienteController = pacienteController;
@@ -212,70 +211,73 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         //START VALIDATION CODE
-        if(StringUtils.isBlank(this.dataConsultaTextField.getText())){
+        if (StringUtils.isBlank(this.dataConsultaTextField.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique a data da consulta.");
             return;
         }
-        if(StringUtils.isBlank(this.horaConsultaTextField.getText())){
+        if (StringUtils.isBlank(this.horaConsultaTextField.getText())) {
             JOptionPane.showMessageDialog(this, "Especifique a hora da consulta.");
             return;
         }
-        if(this.selectMedico.getSelectedIndex() == -1){
+        if (this.selectMedico.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Especifique o medico da consulta.");
             return;
         }
-        if(this.selectPessoa.getSelectedIndex() == -1){
+        if (this.selectPessoa.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Especifique a pessoa da consulta.");
             return;
-        }if(this.selectTipoConsulta.getSelectedIndex() == -1){
+        }
+        if (this.selectTipoConsulta.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Especifique o tipo da consulta.");
             return;
         }
-        
+
         //END VALIDATION CODE
-        
         SimpleDateFormat fullDataConsulta = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        
+
         Date dataConsulta = null;
-        try{
-            dataConsulta = fullDataConsulta.parse(dataConsultaTextField.getText() + 
-                                                  " " +
-                                                  horaConsultaTextField.getText());
-        }catch(Exception e){}
-        
+        try {
+            dataConsulta = fullDataConsulta.parse(dataConsultaTextField.getText()
+                    + " "
+                    + horaConsultaTextField.getText());
+        } catch (Exception e) {
+        }
+
         TipoConsulta tipoConsulta = (TipoConsulta) selectTipoConsulta.getModel().getSelectedItem();
-        
-        if(!isEditing && consultaViewController.getController().isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)){
+
+        if (!isEditing && consultaViewController.getController().isExisteConsultaMarcadaParaHorario(dataConsulta, tipoConsulta)) {
             JOptionPane.showMessageDialog(this, "Já existe uma consulta marcada para este horario.");
             return;
         }
-        
+
         Medico medico = (Medico) selectMedico.getModel().getSelectedItem();
         Paciente paciente = (Paciente) selectPessoa.getModel().getSelectedItem();
-        
-        Consulta consulta = (isEditing) ? this.consulta :new Consulta();
+
+        Consulta consulta = (isEditing) ? this.consulta : new Consulta();
         consulta.setDataConsulta(dataConsulta);
         consulta.setTipoConsulta(tipoConsulta);
         consulta.setPaciente(paciente);
         consulta.setMedico(medico);
-        
+
         consultaViewController.getController().save(consulta);
         this.setVisible(false);
-        if(isEditing){
+        if (isEditing) {
             JOptionPane.showMessageDialog(this, "Consulta editada com Sucesso!");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Consulta salva com Sucesso!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        if(this.consulta == null){return;}
-        
+        if (this.consulta == null) {
+            return;
+        }
+
         int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir esta consulta?");
-        if(resposta == 0){
-            consultaViewController.getController().remove(consulta);       
+        if (resposta == 0) {
+            consultaViewController.getController().remove(consulta);
             JOptionPane.showMessageDialog(this, "Consulta removida com Sucesso!");
             this.consulta = null;
             this.isEditing = false;
@@ -342,54 +344,56 @@ public class GerenciamentoConsulta extends javax.swing.JInternalFrame {
     }
 
     void editarConsulta(Consulta consulta) {
-        if(consulta == null){isEditing = false; return;}
+        if (consulta == null) {
+            isEditing = false;
+            return;
+        }
         cleanupFields();
         this.isEditing = true;
         this.consulta = consulta;
-        
+
         dataConsultaTextField.setText(DATA_SEM_HORA_SDF.format(consulta.getDataConsulta()));
         horaConsultaTextField.setText(HORA_SDF.format(consulta.getDataConsulta()));
-        
+
         refreshFiels();
-        
+
         selectMedico.setSelectedItem(consulta.getMedico());
         selectPessoa.setSelectedItem(consulta.getPaciente());
         selectTipoConsulta.setSelectedItem(consulta.getTipoConsulta());
-        
+
         this.setVisible(true);
     }
 
     @Override
     public void setVisible(boolean bln) {
-        
+
         super.setVisible(bln); //To change body of generated methods, choose Tools | Templates.
-        
-        if(isInitialized){
-        
-            if(isEditing){
+
+        if (isInitialized) {
+
+            if (isEditing) {
                 removeButton.setVisible(true);
                 removeButton.setEnabled(true);
-            }else{
+            } else {
                 removeButton.setVisible(false);
                 removeButton.setEnabled(false);
             }
         }
     }
-    
-    public void cadastrarConsulta(){
+
+    public void cadastrarConsulta() {
         cleanupFields();
         refreshFiels();
         setVisible(true);
         isEditing = false;
     }
-    
-    private void cleanupFields(){
+
+    private void cleanupFields() {
         this.dataConsultaTextField.setText("");
         this.horaConsultaTextField.setText("");
         this.selectMedico.setSelectedIndex(-1);
         this.selectPessoa.setSelectedIndex(-1);
         this.selectTipoConsulta.setSelectedIndex(-1);
     }
-    
-    
+
 }

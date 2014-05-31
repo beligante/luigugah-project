@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.view;
 
 import com.domain.Consulta;
@@ -33,21 +32,18 @@ public class BuscaProntuario extends javax.swing.JInternalFrame {
     /**
      * Creates new form BuscaProntuario
      */
-    
     private boolean isInitialized = false;
     ProntuarioViewController prontuarioViewController;
     private static final SimpleDateFormat DATA_SEM_HORA_SDF = new SimpleDateFormat("dd/MM/yyyy");
     private static final SimpleDateFormat HORA_SEM_DATA_SDF = new SimpleDateFormat("HH:mm");
-    
-            
-    
+
     public BuscaProntuario(GerenciarProntuario gerenciarProntuario, ProntuarioViewController prontuarioViewController) {
         initComponents();
         isInitialized = true;
         this.prontuarioViewController = prontuarioViewController;
-        
+
         new ButtonColumn(searchResultTable, 0, gerenciarProntuario, this);
-        
+
     }
 
     /**
@@ -145,24 +141,26 @@ public class BuscaProntuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        Collection<Prontuario> resultado = 
-                prontuarioViewController.getController().searchByNomePaciente(searchTextField.getText());
-        
-        if(CollectionUtils.isEmpty(resultado)){return;}
-        
+        Collection<Prontuario> resultado
+                = prontuarioViewController.getController().searchByNomePaciente(searchTextField.getText());
+
+        if (CollectionUtils.isEmpty(resultado)) {
+            return;
+        }
+
         Object[] rowData;
         int contador = 0;
         DefaultTableModel dtm = (DefaultTableModel) searchResultTable.getModel();
 
         cleanTable(searchResultTable);
-        
+
         for (Prontuario prontuario : resultado) {
-            rowData = new Object[]{prontuario, 
-                                   prontuario.getPaciente().getNome(), 
-                                   DATA_SEM_HORA_SDF.format(prontuario.getDataModificacao()), 
-                                   HORA_SEM_DATA_SDF.format(prontuario.getDataModificacao())
-                                };
-            
+            rowData = new Object[]{prontuario,
+                prontuario.getPaciente().getNome(),
+                DATA_SEM_HORA_SDF.format(prontuario.getDataModificacao()),
+                HORA_SEM_DATA_SDF.format(prontuario.getDataModificacao())
+            };
+
             dtm.addRow(rowData);
         }
     }//GEN-LAST:event_searchButtonActionPerformed
@@ -216,105 +214,101 @@ public class BuscaProntuario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField searchTextField;
     // End of variables declaration//GEN-END:variables
 
-    class ButtonColumn extends AbstractCellEditor  
-        implements TableCellRenderer, TableCellEditor, ActionListener  {  
-        JTable table;  
-        JButton renderButton;  
-        JButton editButton;  
-        String text;  
+    class ButtonColumn extends AbstractCellEditor
+            implements TableCellRenderer, TableCellEditor, ActionListener {
+
+        JTable table;
+        JButton renderButton;
+        JButton editButton;
+        String text;
         GerenciarProntuario gerenciarProntuario;
         BuscaProntuario buscaProntuario;
         Prontuario prontuario;
-        
-        private static final String TITLE = "Editar"; 
+
+        private static final String TITLE = "Editar";
 
         private ButtonColumn(JTable table, int column, GerenciarProntuario gerenciarProntuario, BuscaProntuario buscaProntuario) {
-            
-            super();  
-            this.table = table;  
-            renderButton = new JButton();  
-   
-            editButton = new JButton();  
-            editButton.setFocusPainted( false );  
-            editButton.addActionListener( this );  
-   
-            TableColumnModel columnModel = table.getColumnModel();  
-            columnModel.getColumn(column).setCellRenderer( this );  
-            columnModel.getColumn(column).setCellEditor( this );
-            
+
+            super();
+            this.table = table;
+            renderButton = new JButton();
+
+            editButton = new JButton();
+            editButton.setFocusPainted(false);
+            editButton.addActionListener(this);
+
+            TableColumnModel columnModel = table.getColumnModel();
+            columnModel.getColumn(column).setCellRenderer(this);
+            columnModel.getColumn(column).setCellEditor(this);
+
             this.gerenciarProntuario = gerenciarProntuario;
             this.buscaProntuario = buscaProntuario;
-  
+
         }
-   
-        public Component getTableCellRendererComponent(  
-            JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
-        {  
-            if (hasFocus)  
-            {  
-                renderButton.setForeground(table.getForeground());  
-                renderButton.setBackground(UIManager.getColor("Button.background"));  
-            }  
-            else if (isSelected)  
-            {  
-                renderButton.setForeground(table.getSelectionForeground());  
-                 renderButton.setBackground(table.getSelectionBackground());  
-            }  
-            else  
-            {  
-                renderButton.setForeground(table.getForeground());  
-                renderButton.setBackground(UIManager.getColor("Button.background"));  
-            }  
-            
-            try{
+
+        public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            if (hasFocus) {
+                renderButton.setForeground(table.getForeground());
+                renderButton.setBackground(UIManager.getColor("Button.background"));
+            } else if (isSelected) {
+                renderButton.setForeground(table.getSelectionForeground());
+                renderButton.setBackground(table.getSelectionBackground());
+            } else {
+                renderButton.setForeground(table.getForeground());
+                renderButton.setBackground(UIManager.getColor("Button.background"));
+            }
+
+            try {
                 prontuario = (Prontuario) value;
-            }catch(Exception e){}
-   
-            renderButton.setText( TITLE  );  
-            return renderButton;  
-        }  
-   
-        public Component getTableCellEditorComponent(  
-            JTable table, Object value, boolean isSelected, int row, int column)  
-        {  
-            try{
+            } catch (Exception e) {
+            }
+
+            renderButton.setText(TITLE);
+            return renderButton;
+        }
+
+        public Component getTableCellEditorComponent(
+                JTable table, Object value, boolean isSelected, int row, int column) {
+            try {
                 prontuario = (Prontuario) value;
-            }catch(Exception e){}
-            
-            editButton.setText( TITLE );  
-            return editButton;  
-        }  
-   
-        public Object getCellEditorValue()  
-        {  
-            return TITLE;  
-        }  
-   
-        public void actionPerformed(ActionEvent e)  
-        {  
+            } catch (Exception e) {
+            }
+
+            editButton.setText(TITLE);
+            return editButton;
+        }
+
+        public Object getCellEditorValue() {
+            return TITLE;
+        }
+
+        public void actionPerformed(ActionEvent e) {
             fireEditingStopped();
             buscaProntuario.setVisible(false);
             gerenciarProntuario.gerenciarProntuario(prontuario);
-        }  
+        }
     }
 
     @Override
     public void setVisible(boolean b) {
-        
+
         super.setVisible(b); //To change body of generated methods, choose Tools | Templates.
-        
-        if(isInitialized){cleanupFields();}
+
+        if (isInitialized) {
+            cleanupFields();
+        }
     }
-    
-    private void cleanupFields(){
+
+    private void cleanupFields() {
         this.searchTextField.setText("");
         cleanTable(this.searchResultTable);
     }
-    
-    private void cleanTable(JTable tabela){
-        
-        DefaultTableModel dtm =  (DefaultTableModel) tabela.getModel();
-        
+
+    private void cleanTable(JTable tabela) {
+
+        DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
+
 //        for(int index = 0; index < dtm.getRowCount(); index++){
 //            dtm.removeRow(index);
 //        }
