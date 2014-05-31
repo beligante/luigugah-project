@@ -12,15 +12,16 @@ public class UserRepository extends Repository<Usuario>{
 	private Map<String, Long> userMap;
 	
 	public UserRepository() {
-		super();
+		super(Usuario.class);
 		loginMap = new HashMap<String, String>();
 		userMap = new HashMap<String, Long>();
 	}
 	
 	public Repository<Usuario> merge(Usuario usuario){
+            super.merge(usuario);
             loginMap.put(usuario.getUser(), usuario.getPassword());
-		userMap.put(usuario.getUser(), usuario.getId());
-		return super.merge(usuario);		
+            userMap.put(usuario.getUser(), usuario.getId().longValue());
+            return this; 		
 	}
 	
 	public Repository<Usuario> remove(Usuario usuario){

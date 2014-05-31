@@ -1,5 +1,6 @@
 package com.domain;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +9,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @MappedSuperclass
-public abstract class Entity implements Comparable<Entity>{
+public abstract class Entity implements Comparable<Entity>, Serializable{
 	
         @Id
         @Column(name="id")
@@ -16,7 +17,7 @@ public abstract class Entity implements Comparable<Entity>{
         @PrimaryKeyJoinColumn
 	protected Long id;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

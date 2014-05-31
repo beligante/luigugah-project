@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Table(name = "prontuario")
 public class Prontuario extends Entity{
 	
-	@Column(name="paciente")
         @OneToOne(fetch = FetchType.EAGER)
         private Paciente paciente;
         

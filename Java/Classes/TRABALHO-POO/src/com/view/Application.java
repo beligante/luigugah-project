@@ -73,14 +73,14 @@ public class Application {
     
         
         ProntuarioController prontuarioController = new ProntuarioController();
-        prontuarioController.setRepository(new Repository<Prontuario>());
+        prontuarioController.setRepository(new Repository<Prontuario>(Prontuario.class));
         
         ConsultaController consultaController = new ConsultaController();
         
         PacienteController pacienteController = new PacienteController(prontuarioController);
-        pacienteController.setRepository(new Repository<Paciente>());
+        pacienteController.setRepository(new Repository<Paciente>(Paciente.class));
         
-        consultaController.setRepository(new Repository<Consulta>());
+        consultaController.setRepository(new Repository<Consulta>(Consulta.class));
 
         PacienteViewController pacienteViewController = 
                 new PacienteViewController(pacienteController, sessionUser);

@@ -6,23 +6,33 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.hibernate.Session;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class Repository<Entidade extends Entity> {
 	
-        private Session session;
+        private EntityManager entityManager;
 	protected Map<Long, Entidade> repositorio;
-	
-	public Repository(){
-                session = HibernateUtil.getSessionFactory().openSession();
+	private Class<Entidade> type;
+        
+	public Repository(Class<Entidade> tipo){
+                type = tipo;
+                entityManager = HibernateUtil.createEntityManager();
 		repositorio = new HashMap<Long, Entidade>();
 	}
 	
 	public Repository<Entidade> merge(Entidade entidade){
-		
-                session.beginTransaction();
-                session.merge(entidade);
-                session.getTransaction().commit();
+                
+                entityManager.getTransaction().begin();
+                entityManager.flush();
+                try{
+                    entityManager.persist(entidade);
+                    entityManager.getTransaction().commit();
+                }catch(Exception e){
+                        entityManager.merge(entidade);
+                        entityManager.getTransaction().commit();
+                }
                 
 		repositorio.put(entidade.getId(), entidade);
 		
@@ -32,9 +42,9 @@ public class Repository<Entidade extends Entity> {
 	public Repository<Entidade> remove(Entidade entidade){
 		
             
-                session.beginTransaction();
-                session.delete(entidade);
-                session.getTransaction().commit();
+                entityManager.getTransaction().begin();
+                entityManager.remove(entidade);
+                entityManager.getTransaction().commit();
                 
 		repositorio.remove(entidade.getId());
 		
@@ -50,6 +60,14 @@ public class Repository<Entidade extends Entity> {
 	
 	public List<Entidade> search(Long id){
 		
+            
+//                CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+//                CriteriaQuery<Entidade> cq = cb.createQuery(type);
+//                Root<Entidade> root = cq.from(type);
+//                Metamodel m = entityManager.getMetamodel();
+//                EntityType<Entity> Entidade_ = m.entity(Entity.class);
+//                
+//                cq.where(cb.equal(root.get(Entidade_.)));
                 
                 List<Long> combinacoesId = getCombinacoesPossiveisDadoId(id);
 		List<Entidade> resultado = new ArrayList<Entidade>();
@@ -59,7 +77,9 @@ public class Repository<Entidade extends Entity> {
 				resultado.add(e);
 		}
 		
-		return resultado;
+                //return criteria.list();
+		//return resultado;
+                return null;
 	}
 
 	private List<Long> getCombinacoesPossiveisDadoId(Long id) {
@@ -80,12 +100,22 @@ public class Repository<Entidade extends Entity> {
 	}
 	
 	public Collection<Entidade> getAll(){
-		return repositorio.values();
+		//return repositorio.values();
+                
+                String query = "select * from %s";
+                TypedQuery<Entidade> nativeQuery = 
+                        (TypedQuery<Entidade>) entityManager.createNativeQuery(String.format(query, type.getSimpleName()), type);
+                
+                return nativeQuery.getResultList();
 	}
         
         public boolean exists(Entidade entidade){
             
-            if(entidade == null){return false;}
-            return repositorio.containsValue(entidade.getId());
+            if(entidade == null || entidade.getId() == null){return false;}
+            String query = "select * from %s where id = :id";
+                TypedQuery<Entidade> nativeQuery = 
+                        (TypedQuery<Entidade>) entityManager.createNativeQuery(String.format(query, type.getSimpleName()), type);
+                nativeQuery.setParameter("id", entidade.getId());
+            return nativeQuery.getSingleResult() != null;
         }
 }
