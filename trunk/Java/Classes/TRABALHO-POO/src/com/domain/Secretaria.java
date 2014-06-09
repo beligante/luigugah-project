@@ -12,8 +12,4 @@ public class Secretaria extends Usuario {
         super();
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "user=" + user + ", password=" + password + '}';
-    }
 }
