@@ -1,0 +1,55 @@
+@font-face
+{
+	font-family: 'Open Sans';
+	src: url(../fonts/open_sans.woff);
+}
+
+body {
+  padding-top: 10px;
+  padding-bottom: 40px;
+  font-family: 'Open Sans', arial;
+  font-size:16px;
+}
+
+header{
+	width: 75%;
+	margin: 0 auto;
+}
+div.banner{
+	width: 50%;
+	margin: -92px auto 0 100px;
+	text-align: center;
+}
+
+div.banner h4{
+	margin-top: -20px;
+	float: left;
+	margin-left: 30px;
+	font-size: 12px;
+}
+
+img.logo-header{
+	width: 100px;
+	height: 100px;
+}
+
+div.user-informations{
+	float: right;
+	display: block;
+	margin-top: -50px;
+	font-size: 12px;
+	margin-right: 50px;
+}
+
+div.user-name span,  div.user-type span { font-weight: bold;}
+
+img.user-pic {
+	width: 60px;
+	height: 60px;
+	margin: -50px -70px 10px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	float: right;
+}

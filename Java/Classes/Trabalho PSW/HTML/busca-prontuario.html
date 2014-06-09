@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Buscar Prontuario</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/busca-prontuario.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/menu.css">
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			<img class="logo-header" alt="Helth Symbol" src="images/helth-symbol.png" />
+			<div class="banner">
+				<h2>Sistema de Gerenciamento de Clinicas</h2>
+				<h4>Version: 1.0.0 </h4>
+			</div>
+			<div class="user-informations">
+				<div class="user-name">Usuario Logado: <span> Maria da Silva</span></div>
+				<div class="user-type">Função: <span>Secretaria</span> </div>
+				<img class="user-pic" alt="User Picture" src="images/user-pic.png" />
+			</div>
+			
+			<nav id="menu">
+				<ul>
+					<li><a href="cadastro-paciente.html">Cadastrar Paciente</a></li>
+					<li><a href="busca-paciente.html">Buscar Paciente</a></li>
+					<li><a href="cadastro-consulta.html">Cadastrar Consulta</a></li>
+					<li><a href="busca-consulta.html">Buscar Consulta</a></li>
+					<li><a href="busca-prontuario.html">Buscar Prontuario</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		
+		<section id="container">		
+			<form id="form">
+				
+				<div class="div1">
+					<label class="title">Buscar Prontuario</label> 
+				</div>
+				
+				<div class="div1"> 
+					<input class="rounded-border" name="query" type="search">
+					<button for="query">Buscar</button>
+				</div>
+				
+				<div class="cropped-border"></div>
+				
+				<div class="div1">
+					<div id="table-header">
+						<div id="acoes">
+							<label>Ações</label>
+						</div>
+						<div id="nome-paciente">
+							<label>Nome Paciente</label>
+						</div>
+						<div id="data-ultima-modificacao">
+							<label>Data Ultima Modificação</label>
+						</div>
+						<div id="hora-ultima-modificaca">
+							<label>Hora Ultima Modificação</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="div1">
+					<div id="table-body">
+						<div id="table-row">
+							<div id="acoes">
+								<button id="edit-btn">Editar</button>
+								<button for="remove-btn">Remover</button>
+							</div>
+							<div id="nome-paciente">
+								<label>Pedro da Silva</label>
+							</div>
+							<div id="data-ultima-modificacao">
+								<label>05/05/2014</label>
+							</div>
+							<div id="hora-ultima-modificaca">
+								<label>15:00</label>
+							</div>
+						</div>
+						<div id="table-row" class="last">
+							<div id="acoes">
+								<button id="edit-btn">Editar</button>
+								<button for="remove-btn">Remover</button>
+							</div>
+							<div id="nome-paciente">
+								<label>Pedro da Silva</label>
+							</div>
+							<div id="data-ultima-modificacao">
+								<label>05/05/2014</label>
+							</div>
+							<div id="hora-ultima-modificaca">
+								<label>15:00</label>
+							</div>
+						</div>
+					
+					</div>
+				</div>
+
+			</form>
+		</section>
+	</body>
+
+</html>
+

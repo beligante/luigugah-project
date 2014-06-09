@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cadastrar Consulta</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/cadastro-consulta.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/menu.css">
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			<img class="logo-header" alt="Helth Symbol" src="images/helth-symbol.png" />
+			<div class="banner">
+				<h2>Sistema de Gerenciamento de Clinicas</h2>
+				<h4>Version: 1.0.0 </h4>
+			</div>
+			<div class="user-informations">
+				<div class="user-name">Usuario Logado: <span> Maria da Silva</span></div>
+				<div class="user-type">Função: <span>Secretaria</span> </div>
+				<img class="user-pic" alt="User Picture" src="images/user-pic.png" />
+			</div>
+			
+			<nav id="menu">
+				<ul>
+					<li><a href="cadastro-paciente.html">Cadastrar Paciente</a></li>
+					<li><a href="busca-paciente.html">Buscar Paciente</a></li>
+					<li><a href="cadastro-consulta.html">Cadastrar Consulta</a></li>
+					<li><a href="busca-consulta.html">Buscar Consulta</a></li>
+					<li><a href="busca-prontuario.html">Buscar Prontuario</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		
+		<section id="container">		
+			<form id="form">
+				
+				<div class="div1">
+					<label class="title">Cadastro de Consulta</label> 
+				</div>
+				
+				<div class="div1">
+					<label for="dataConsulta">Data consulta</label> 
+					<input required class="first" name="dataConsulta" type="date">
+				</div>
+				
+				<div class="div1">
+					<label for="horaConsulta">Hora consulta</label> 
+					<input required class="last" name="horaConsulta" type="time">
+				</div>
+				
+				<div class="div1">
+					<label for="tipoConsulta">Medico</label>
+					<select class="first" name="tipoConsulta" id="tipoConsulta">
+						<option value="1">João</option>
+						<option value="2">Pedro</option>
+					</select>
+				</div>
+				
+				<div class="div1">
+					<label for="tipoConsulta">Paciente</label>
+					<select name="tipoConsulta" id="tipoConsulta">
+						<option value="1">Patricia</option>
+						<option value="2">Regina</option>
+					</select>
+				</div>
+				
+				<div class="div1">
+					<label for="tipoConsulta">Tipo da Consulta</label>
+					<select class="last" name="tipoConsulta" id="tipoConsulta">
+						<option value="normal">Normal</option>
+						<option value="retorno">Retorno</option>
+					</select>
+				</div>
+				
+				<div class="div1">
+					<div id="button-holder">
+						<button name="salvar" type="submit"> Salvar </button>
+						<button name="cancelar"> Cancelar </button>
+					</div>
+				</div>
+
+			</form>
+		</section>
+	</body>
+
+</html>
+

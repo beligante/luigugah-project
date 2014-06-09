@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gerenciar Prontuario</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/gerenciar-prontuario.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/menu.css">
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			<img class="logo-header" alt="Helth Symbol" src="images/helth-symbol.png" />
+			<div class="banner">
+				<h2>Sistema de Gerenciamento de Clinicas</h2>
+				<h4>Version: 1.0.0 </h4>
+			</div>
+			<div class="user-informations">
+				<div class="user-name">Usuario Logado: <span> Maria da Silva</span></div>
+				<div class="user-type">Função: <span>Secretaria</span> </div>
+				<img class="user-pic" alt="User Picture" src="images/user-pic.png" />
+			</div>
+			
+			<nav id="menu">
+				<ul>
+					<li><a href="cadastro-paciente.html">Cadastrar Paciente</a></li>
+					<li><a href="busca-paciente.html">Buscar Paciente</a></li>
+					<li><a href="cadastro-consulta.html">Cadastrar Consulta</a></li>
+					<li><a href="busca-consulta.html">Buscar Consulta</a></li>
+					<li><a href="busca-prontuario.html">Buscar Prontuario</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		
+		<section id="container">		
+			<form id="form">
+				
+				<div class="div1">
+					<label class="title">Gerenciar Prontuario</label> 
+				</div>
+				
+				<div class="div1">
+					<label for="sintomas">Sintomas</label> 
+					<textarea class="text-area" name="sintomas" ></textarea>
+				</div>
+				
+				<div class="div1">
+					<label for="sintomas">Diagnostico</label> 
+					<textarea class="text-area" name="sintomas" ></textarea>
+				</div>
+				
+				
+				<div class="div1">
+					<label for="sintomas">Prescrição do Tratamento</label> 
+					<textarea class="text-area" name="sintomas" ></textarea>
+				</div>
+				
+				<div class="div1">
+					<div id="button-holder">
+						<button name="salvar" type="submit"> Salvar </button>
+						<button name="cancelar"> Cancelar </button>
+					</div>
+				</div>
+
+			</form>
+		</section>
+	</body>
+
+</html>
+
