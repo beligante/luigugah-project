@@ -28,7 +28,14 @@ public class PacienteController extends AbstractController<Paciente, Repository<
 
     @Override
     protected void removeImpl(Paciente entidade) {
+        try{
+        Prontuario p = new ArrayList<Prontuario>(prontuarioController.searchByNomePaciente(entidade.getNome())).get(0);
+        prontuarioController.remove(p);
+        
         getRepository().remove(entidade);
+        }catch(Exception e){
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Ocorreu um erro ao salvar o paciente", e);
+        }
 
     }
 
