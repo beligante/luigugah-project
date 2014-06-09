@@ -12,8 +12,4 @@ public class Medico extends Usuario {
         super();
     }
 
-    @Override
-    public String toString() {
-        return user;
-    }
 }

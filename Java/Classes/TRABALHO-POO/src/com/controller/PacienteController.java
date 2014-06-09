@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PacienteController extends AbstractController<Paciente, Repository<Paciente>> {
 
@@ -33,6 +35,7 @@ public class PacienteController extends AbstractController<Paciente, Repository<
     @Override
     protected void saveImpl(Paciente entidade) {
 
+       try{
         //Se não possui ID é porque é novo
         boolean isNew = (entidade.getId() == null);
         
@@ -62,6 +65,9 @@ public class PacienteController extends AbstractController<Paciente, Repository<
         for(Alergia a : alergia){
             a.setPaciente(entidade);
             alergiaRepository.merge(a);
+        }
+        }catch(Exception e){
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Ocorreu um erro ao salvar o paciente", e);
         }
     }
 
