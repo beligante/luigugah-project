@@ -14,6 +14,6 @@ public class Medico extends Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "user=" + user + ", password=" + password + '}';
+        return user;
     }
 }
