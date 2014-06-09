@@ -1,0 +1,110 @@
+#form {
+	margin: 0 auto;
+	margin-top: 90px;
+	width: 1000px;
+}
+
+.div1 {
+	margin-top: 0px;
+	width: 100%;
+}
+
+button{
+	background-color: #2082FF;
+	padding: 10px;
+	border-radius: 5px;
+	color: white;
+	font-style: normal;
+	font-weight: bold;
+	width: 30%;
+	border-width: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button:hover{background-color: #0054BE;}
+
+#button-holder{
+	width: 50%;
+	margin: 20px auto 0 auto;
+	
+}
+
+.cropped-border {border-style: dashed; margin: 20px 0 20px 0; border-width: 1px; }
+
+.rounded-border{
+	border-radius: 0px;
+	-webkit-border-bottom-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-bottom-right-radius: 8px !important;
+	border-bottom-left-radius: 8px !important;
+	-webkit-top-bottom-right-radius: 8px;
+	-webkit-top-bottom-left-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	-moz-border-radius-topleft: 8px;
+	border-top-right-radius: 8px !important;
+	border-top-left-radius: 8px !important;
+	border-bottom-width: 1px !important;
+}
+
+.title{width: 100%; font-size: 26px; text-align: center; margin-bottom: 15px;}
+
+input{
+	width:60%;
+	margin:0;
+	padding:6px;
+	border-color: #73BCFF;
+	border-spacing: 12px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 8px;
+}
+
+#table-header {
+	width: 100%;
+}
+
+#table-header div {
+	float: left; 
+	background:#2082FF;
+	padding:5px;
+	border-right-style: solid; 
+	border-width: 2px;	
+	text-align: center;
+	color: white;
+	font-style: normal;
+	font-weight: bold;
+	border-color: #000;
+	
+}
+#table-header #acoes { border-top-left-radius: 8px;}
+#table-header #nome-paciente, #table-header #data-da-consulta, #table-header #medico{
+	width: 24%;
+}
+#table-header #medico{
+	border-right-style: none;
+	border-top-right-radius: 8px;
+}
+
+#table-row div {
+	float: left; 
+	padding:4px;
+	border-left-style: solid; 
+	border-width: 2px;	
+	text-align: center;
+	font-style: normal;
+	border-color: #000;
+	width: 24%;
+	height: 40px;
+	margin-top: -2px;
+	padding-bottom: 6px;
+}
+#acoes { width: 21% !important;}
+#table-row {float: left; width:  100%;}
+#table-row #nome-paciente, #table-row #data-da-consulta{ padding: 5px;}
+#table-row #acoes button{ width: 36%;}
+#table-row #medico{border-right-style: solid; }
+
+#table-row div{ border-bottom-style: solid;}

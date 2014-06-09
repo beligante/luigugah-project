@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Buscar Paciente</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/busca-paciente.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/menu.css">
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			<img class="logo-header" alt="Helth Symbol" src="images/helth-symbol.png" />
+			<div class="banner">
+				<h2>Sistema de Gerenciamento de Clinicas</h2>
+				<h4>Version: 1.0.0 </h4>
+			</div>
+			<div class="user-informations">
+				<div class="user-name">Usuario Logado: <span> Maria da Silva</span></div>
+				<div class="user-type">Função: <span>Secretaria</span> </div>
+				<img class="user-pic" alt="User Picture" src="images/user-pic.png" />
+			</div>
+			
+			<nav id="menu">
+				<ul>
+					<li><a href="cadastro-paciente.html">Cadastrar Paciente</a></li>
+					<li><a href="busca-paciente.html">Buscar Paciente</a></li>
+					<li><a href="cadastro-consulta.html">Cadastrar Consulta</a></li>
+					<li><a href="busca-consulta.html">Buscar Consulta</a></li>
+					<li><a href="busca-prontuario.html">Buscar Prontuario</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		
+		<section id="container">		
+			<form id="form">
+				
+				<div class="div1">
+					<label class="title">Buscar Paciente</label> 
+				</div>
+				
+				<div class="div1"> 
+					<input class="rounded-border" name="query" type="search">
+					<button for="query">Buscar</button>
+				</div>
+				
+				<div class="cropped-border"></div>
+				
+				<div class="div1">
+					<div id="table-header">
+						<div id="acoes">
+							<label>Ações</label>
+						</div>
+						<div id="nome-paciente">
+							<label>Nome Paciente</label>
+						</div>
+						<div id="rg">
+							<label>RG</label>
+						</div>
+						<div id="telefone">
+							<label>Telefone</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="div1">
+					<div id="table-body">
+						<div id="table-row">
+							<div id="acoes">
+								<button id="edit-btn">Editar</button>
+								<button for="remove-btn">Remover</button>
+							</div>
+							<div id="nome-paciente">
+								<label>James Brown</label>
+							</div>
+							<div id="rg">
+								<label>403289440</label>
+							</div>
+							<div id="telefone">
+								<label>3031-2021</label>
+							</div>
+						</div>
+						<div id="table-row" class="last">
+							<div id="acoes">
+								<button id="edit-btn">Editar</button>
+								<button for="remove-btn">Remover</button>
+							</div>
+							<div id="nome-paciente">
+								<label>Ray Charles</label>
+							</div>
+							<div id="rg">
+								<label>911225341</label>
+							</div>
+							<div id="telefone">
+								<label>3020-3121</label>
+							</div>
+						</div>
+					
+					</div>
+				</div>
+
+			</form>
+		</section>
+	</body>
+
+</html>
+
