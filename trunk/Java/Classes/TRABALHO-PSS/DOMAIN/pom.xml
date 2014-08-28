@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <name>KILGHARRAH :: SAEI :: DOMAIN</name>
+  <groupId>com.kilgharrah</groupId>
+  <artifactId>com.saei.domain</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>  
+  
+  <parent>  
+    <groupId>com.kilgharrah</groupId>  
+    <artifactId>com.saei</artifactId>  
+    <version>1.0</version>
+    <relativePath>../pom.xml</relativePath>  
+  </parent>
+
+  <dependencies>
+    <!-- Torque runtime -->
+    <dependency>
+      <artifactId>torque-runtime</artifactId>
+      <groupId>org.apache.torque</groupId>
+      <version>3.3</version>
+    </dependency>
+
+    <!-- Logging via log4j -->
+    <dependency>
+      <artifactId>log4j</artifactId>
+      <groupId>log4j</groupId>
+      <version>1.2.16</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.23</version>
+    </dependency>
+    <dependency>
+     <groupId>org.apache.logging.log4j</groupId>
+     <artifactId>log4j-1.2-api</artifactId>
+     <version>2.0-rc1</version>
+   </dependency>
+
+   <!-- dependencias do log4j 2 para fazer a ponte do log4j1 apache commons logging -->
+   <dependency>
+     <groupId>org.apache.logging.log4j</groupId>
+     <artifactId>log4j-jcl</artifactId>
+     <version>2.0-rc1</version>
+   </dependency>
+
+   <!-- dependencias principais do log4j 2 -->
+   <dependency>
+     <groupId>org.apache.logging.log4j</groupId>
+     <artifactId>log4j-api</artifactId>
+     <version>2.0-rc1</version>
+   </dependency>
+
+   <dependency>
+     <groupId>org.apache.logging.log4j</groupId>
+     <artifactId>log4j-core</artifactId>
+     <version>2.0-rc1</version>
+   </dependency>
+   <!-- dependencias principais do log4j 2 -->
+   <dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.4</version>
+  </dependency>
+</dependencies>
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.db.torque</groupId>
+      <artifactId>torque-maven-plugin</artifactId>
+      <version>3.3-RC2</version>
+      <configuration>
+        <targetDatabase>mysql</targetDatabase>
+        <targetPackage>com.saei.domain.commons</targetPackage>
+        <driver>com.mysql.jdbc.Driver</driver>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>generate-sources</phase>
+          <goals>
+            <goal>om</goal>
+            <goal>documentation</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>build-helper-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <id>add-source</id>
+          <phase>generate-sources</phase>
+          <goals>
+            <goal>add-source</goal>
+          </goals>
+          <configuration>
+            <sources>
+              <source>${project.build.directory}/src/main/generated-java/</source>
+            </sources>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+
+  </plugins>
+
+</build>
+</project>
