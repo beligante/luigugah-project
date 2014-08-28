@@ -1,0 +1,20 @@
+<!DOCTYPE database SYSTEM
+ "http://db.apache.org/torque/dtd/database_3_3.dtd">
+
+<database name="store1" defaultIdMethod="native">
+    <table name="mt_importacao_log" javaName="ImportacaoArquivoProdutosLog">
+        <column name="importacao_id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="data_inicial_recepcao" type="TIMESTAMP" />
+        <column name="data_final_recepcao" type="TIMESTAMP" />
+        <column name="data_inicial_proc" type="TIMESTAMP" />
+        <column name="data_final_proc" type="TIMESTAMP" />
+        <column name="ind_sucesso" type="BOOLEANINT" />
+        <column name="ind_processado" type="BOOLEANINT" />
+        <column name="arquivo" type="VARCHAR" />
+        <column name="erros_validacao" type="VARCHAR" />
+        <column name="erros_processamento" type="VARCHAR" />
+        <column name="tipo_arquivo" type="VARCHAR" />
+    </table>
+    
+</database>
