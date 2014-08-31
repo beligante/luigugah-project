@@ -22,7 +22,6 @@
       <dependency>
         <groupId>com.kilgharrah</groupId>
         <artifactId>com.saei.domain</artifactId>
-        <version>1.0</version>
       </dependency>
   </dependencies>
 </project>

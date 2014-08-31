@@ -2,19 +2,107 @@
  "http://db.apache.org/torque/dtd/database_3_3.dtd">
 
 <database name="store1" defaultIdMethod="native">
-    <table name="mt_importacao_log" javaName="ImportacaoArquivoProdutosLog">
-        <column name="importacao_id" required="true" autoIncrement="true"
+    <table name="produto" javaName="Produto">
+        <column name="id" required="true" autoIncrement="true"
             primaryKey="true" type="INTEGER" />
-        <column name="data_inicial_recepcao" type="TIMESTAMP" />
-        <column name="data_final_recepcao" type="TIMESTAMP" />
-        <column name="data_inicial_proc" type="TIMESTAMP" />
-        <column name="data_final_proc" type="TIMESTAMP" />
-        <column name="ind_sucesso" type="BOOLEANINT" />
-        <column name="ind_processado" type="BOOLEANINT" />
-        <column name="arquivo" type="VARCHAR" />
-        <column name="erros_validacao" type="VARCHAR" />
-        <column name="erros_processamento" type="VARCHAR" />
-        <column name="tipo_arquivo" type="VARCHAR" />
+        <column name="data_cadastro" type="TIMESTAMP" />
+        <column name="tipo_produto" type="VARCHAR" />
+        <column name="dimensoes" type="DECIMAL" />
+        <column name="preco" type="DECIMAL" />
+        <column name="endereco" type="VARCHAR" />
+        <column name="bairro" type="VARCHAR" />
+        <column name="cidade" type="VARCHAR" />
+        <column name="estado" type="VARCHAR" />
+        <column name="descricao" type="VARCHAR" />
+        <column name="link_foto" type="VARCHAR" />
     </table>
     
+    <table name="modalidade_negociacao" javaName="ModalidadeNegociacao">
+
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="produto_id" type="INTEGER" />
+        <column name="tipo_negociacao_id" type="INTEGER" />
+    </table>
+    
+    <table name="tipo_negociacao" javaName="TipoNegociacao">
+
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="nome" type="VARCHAR" />
+    </table>
+
+    <table name="usuario" javaName="Usuario">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="data_cadastro" type="TIMESTAMP" />
+        <column name="nome" type="VARCHAR" />
+        <column name="email" type="INTEGER" />
+        <column name="telefone" type="VARCHAR" />
+        <column name="tipo_pessoa" type="CHAR" />
+        <column name="cep" type="VARCHAR" />
+        <column name="endereco" type="VARCHAR" />
+        <column name="bairro" type="VARCHAR" />
+        <column name="complemento" type="VARCHAR" />
+        <column name="cidade" type="VARCHAR" />
+        <column name="estado" type="VARCHAR" />
+        <column name="usuario" type="VARCHAR" />
+        <column name="senha" type="VARCHAR" />
+        <column name="tipo_usuario" type="INTEGER" />
+    </table>
+
+    <table name="negocio" javaName="Negocio">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="id_vendedor" type="INTEGER" />
+        <column name="id_cliente" type="INTEGER" />
+        <column name="meio_pagamento" type="INTEGER" />
+        <column name="valor_final_total" type="DECIMAL" />
+        <column name="data_negociacao" type="TIMESTAMP" />
+        <column name="tipo_negocio" type="VARCHAR" />
+        <column name="id_produto" type="INTEGER" />        
+    </table>
+
+    <table name="pagamento" javaName="Pagamento">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="id_negocio" type="INTEGER" />
+        <column name="inicio_pagamento" type="TIMESTAMP" />
+        <column name="fim_pagamento" type="TIMESTAMP" />        
+    </table>
+
+    <table name="faturas_pagamento" javaName="FaturaPagamento">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="id_pagamento" type="INTEGER" />
+        <column name="vencimento" type="TIMESTAMP" />
+        <column name="valor" type="DECIMAL" />
+        <column name="link_boleto" type="VARCHAR" />        
+    </table>
+
+    <table name="compra" javaName="Compra">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="tipo_pessoa" type="CHAR" />
+        <column name="nome_interessado" type="VARCHAR" />
+        <column name="email" type="VARCHAR" />
+        <column name="telefone" type="VARCHAR" />
+        <column name="valor_considerado_venda" type="DECIMAL" />
+        <column name="dimensao" type="DECIMAL" />
+        <column name="estado" type="VARCHAR" />  
+        <column name="cidade" type="VARCHAR" />    
+        <column name="data_avaliacao" type="TIMESTAMP" />    
+        <column name="valor_proposto" type="DECIMAL" />      
+        <column name="id_cliente" type="INTEGER" />          
+    </table>
+
+    <table name="historico_compra" javaName="HistoricoCompra">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="compra_id" type="CHAR" />
+        <column name="vendedor_id" type="VARCHAR" />
+        <column name="data_registro" type="TIMESTAMP" />
+        <column name="estado" type="VARCHAR" />
+        <column name="valor_considerado_venda" type="DECIMAL" />
+    </table>
 </database>

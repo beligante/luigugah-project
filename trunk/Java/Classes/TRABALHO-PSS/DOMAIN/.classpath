@@ -6,7 +6,7 @@
   <classpathentry kind="src" path="target/generated-sources/torque" including="**/*.java"/>
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
-  <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/torque/torque-runtime/3.3/torque-runtime-3.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/avalon-framework/avalon-framework-api/4.3/avalon-framework-api-4.3.jar"/>
