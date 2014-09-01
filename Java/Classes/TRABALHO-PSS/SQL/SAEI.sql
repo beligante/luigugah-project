@@ -32,14 +32,13 @@ CREATE TABLE `compra` (
   `email` varchar(100) DEFAULT NULL,
   `telefone` varchar(45) DEFAULT NULL,
   `valor_considerado_venda` decimal(20,0) DEFAULT NULL,
+  `dimensao` decimal(20,0) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   `cidade` varchar(45) DEFAULT NULL,
   `data_avaliacao` timestamp NULL DEFAULT NULL,
   `valor_proposto` decimal(20,0) DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_c_cliente_idx` (`id_cliente`),
-  CONSTRAINT `fk_c_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -89,8 +88,8 @@ DROP TABLE IF EXISTS `historico_compra`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `historico_compra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_compra` int(11) DEFAULT NULL,
-  `id_vendedor` int(11) DEFAULT NULL,
+  `compra_id` int(11) DEFAULT NULL,
+  `vendedor_id` int(11) DEFAULT NULL,
   `data_registro` timestamp NULL DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   `valor_considerado_venda` decimal(20,0) DEFAULT NULL,
@@ -149,7 +148,7 @@ CREATE TABLE `negocio` (
   `meio_pagamento` int(11) DEFAULT NULL,
   `valor_final_total` decimal(20,0) DEFAULT NULL,
   `data_negociacao` timestamp NULL DEFAULT NULL,
-  `tipo_negociacao` varchar(45) DEFAULT NULL,
+  `tipo_negocio` varchar(45) DEFAULT NULL,
   `id_produto` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_n_vendedor_idx` (`id_vendedor`),
@@ -211,6 +210,7 @@ CREATE TABLE `produto` (
   `preco` decimal(10,0) DEFAULT NULL,
   `endereco` varchar(2000) DEFAULT NULL,
   `bairro` varchar(45) DEFAULT NULL,
+  `tipo_produto` varchar(45) DEFAULT NULL,
   `cidade` varchar(200) DEFAULT NULL,
   `estado` varchar(70) DEFAULT NULL,
   `descricao` varchar(3000) DEFAULT NULL,
