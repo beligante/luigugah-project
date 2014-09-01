@@ -1,7 +1,7 @@
 <!DOCTYPE database SYSTEM
  "http://db.apache.org/torque/dtd/database_3_3.dtd">
 
-<database name="store1" defaultIdMethod="native">
+<database name="saei" defaultIdMethod="native">
     <table name="produto" javaName="Produto">
         <column name="id" required="true" autoIncrement="true"
             primaryKey="true" type="INTEGER" />
@@ -37,7 +37,7 @@
             primaryKey="true" type="INTEGER" />
         <column name="data_cadastro" type="TIMESTAMP" />
         <column name="nome" type="VARCHAR" />
-        <column name="email" type="INTEGER" />
+        <column name="email" type="VARCHAR" />
         <column name="telefone" type="VARCHAR" />
         <column name="tipo_pessoa" type="CHAR" />
         <column name="cep" type="VARCHAR" />
