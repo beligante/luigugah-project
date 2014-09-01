@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `compra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `compra` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_pessoa` char(1) DEFAULT NULL,
   `nome_interessado` varchar(200) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `faturas_pagamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `faturas_pagamento` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pagamento` int(11) DEFAULT NULL,
   `vencimento` timestamp NULL DEFAULT NULL,
   `valor` decimal(10,0) DEFAULT NULL,
@@ -88,7 +88,7 @@ DROP TABLE IF EXISTS `historico_compra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `historico_compra` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_compra` int(11) DEFAULT NULL,
   `id_vendedor` int(11) DEFAULT NULL,
   `data_registro` timestamp NULL DEFAULT NULL,
@@ -115,7 +115,7 @@ DROP TABLE IF EXISTS `modalidade_negociacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modalidade_negociacao` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `produto_id` int(11) DEFAULT NULL,
   `tipo_negociacao_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -143,7 +143,7 @@ DROP TABLE IF EXISTS `negocio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `negocio` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_vendedor` int(11) DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL,
   `meio_pagamento` int(11) DEFAULT NULL,
@@ -178,7 +178,7 @@ DROP TABLE IF EXISTS `pagamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pagamento` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `inicio_pagamento` timestamp NULL DEFAULT NULL,
   `fim_pagamento` timestamp NULL DEFAULT NULL,
   `id_negocio` int(11) DEFAULT NULL,
@@ -205,7 +205,7 @@ DROP TABLE IF EXISTS `produto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `produto` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `data_cadastro` timestamp NULL DEFAULT NULL,
   `dimensoes` decimal(10,0) DEFAULT NULL,
   `preco` decimal(10,0) DEFAULT NULL,
@@ -236,7 +236,7 @@ DROP TABLE IF EXISTS `tipo_negociacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipo_negociacao` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -259,7 +259,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `data_cadastro` timestamp NULL DEFAULT NULL,
   `nome` varchar(200) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -273,6 +273,7 @@ CREATE TABLE `usuario` (
   `usuario` varchar(100) DEFAULT NULL,
   `senha` varchar(200) DEFAULT NULL,
   `tipo_usuario` int(11) DEFAULT NULL,
+  `cep` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -294,3 +295,5 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-09-01 17:06:40

@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.saei.domain.commons.BaseUsuarioPeer;
 import com.saei.domain.commons.Usuario;
+import com.saei.domain.commons.Usuario;
  
 public class UsuarioService {
 	
