@@ -99,8 +99,8 @@
     <table name="historico_compra" javaName="HistoricoCompra">
         <column name="id" required="true" autoIncrement="true"
             primaryKey="true" type="INTEGER" />
-        <column name="compra_id" type="CHAR" />
-        <column name="vendedor_id" type="VARCHAR" />
+        <column name="compra_id" type="INTEGER" />
+        <column name="vendedor_id" type="INTEGER" />
         <column name="data_registro" type="TIMESTAMP" />
         <column name="estado" type="VARCHAR" />
         <column name="valor_considerado_venda" type="DECIMAL" />

@@ -12,7 +12,7 @@ public class ModalidadeNegociacaoService {
 
 private static final Logger LOG = Logger.getLogger(ModalidadeNegociacaoService.class);
 	
-	public int salvarProduto(ModalidadeNegociacao modalidadeNegociacao){
+	public int salvarModalidadeNegociacao(ModalidadeNegociacao modalidadeNegociacao){
 		
 		try{
 			if(modalidadeNegociacao != null){
