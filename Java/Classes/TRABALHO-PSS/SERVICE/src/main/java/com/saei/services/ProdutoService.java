@@ -3,6 +3,7 @@ package com.saei.services;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.apache.torque.util.Criteria;
 
 import com.saei.domain.commons.BaseProdutoPeer;
 import com.saei.domain.commons.Produto;
@@ -29,6 +30,8 @@ public class ProdutoService {
 		try {
 			if(produto != null){
 				return BaseProdutoPeer.doSelect(produto);
+			}else{
+				return BaseProdutoPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
 			LOG.error("Ocorreu um erro ao buscar o produto: \n" + produto.toString(), e);

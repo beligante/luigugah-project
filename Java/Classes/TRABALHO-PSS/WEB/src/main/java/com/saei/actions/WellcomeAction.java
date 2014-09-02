@@ -1,4 +1,4 @@
-package com.saei;
+package com.saei.actions;
 
 import java.util.Date;
 

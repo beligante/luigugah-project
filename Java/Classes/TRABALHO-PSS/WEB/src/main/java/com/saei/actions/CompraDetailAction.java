@@ -1,4 +1,4 @@
-package com.saei;
+package com.saei.actions;
 
 public class CompraDetailAction {
 	// all struts logic here

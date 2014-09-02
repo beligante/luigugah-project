@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META HTTP-EQUIV="refresh" CONTENT="0;URL=wellcome">
+<META HTTP-EQUIV="refresh" CONTENT="0;URL=product">
 </head>
 <body>
 

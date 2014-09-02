@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="utf-8"%>
+<%@ include file="../Taglibs.jsp" %>
  
 <BR><BR>
  
@@ -23,47 +24,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="odd gradeA">
-								<td>127</td>
-								<td>Apartamento</td>
-								<td>80 M²</td>
-								<td>R$ 140.000.000,00</td>
-								<td>Paraná / Maringá</td>
-								<td> 
-									<a href="productClienteDetail" class="btn btn-primary  btn-xs">Detalhes</a> 
-								</td>
-							</tr>
-							<tr class="odd gradeA">
-								<td>124</td>
-								<td>Casa</td>
-								<td>100 M²</td>
-								<td>R$ 220.000.000,00</td>
-								<td>Paraná / Maringá</td>
-								<td> 
-									<a href="productClienteDetail" class="btn btn-primary  btn-xs">Detalhes</a> 
-								</td>
-							</tr>
-							<tr class="odd gradeA">
-								<td>125</td>
-								<td>Galpão</td>
-								<td>90 M²</td>
-								<td>R$ 200.000.000,00</td>
-								<td>Paraná / Maringá</td>
-								<td> 
-									<a href="productClienteDetail" class="btn btn-primary  btn-xs">Detalhes</a> 
-								</td>
-							</tr>
-							<tr class="odd gradeA">
-								<td>126</td>
-								<td>Salao Comercial</td>
-								<td>120 M²</td>
-								<td>R$ 110.000.000,00</td>
-								<td>Paraná / Maringá</td>
-								<td> 
-									<a href="productClienteDetail" class="btn btn-primary  btn-xs">Detalhes</a> 
-								</td>
-							</tr>
-							
+							<c:forEach items="${produtos}" var="produto" >
+								<tr class="odd gradeA">
+									<td><c:out value="${produto.id}"></c:out></td>
+									<td><c:out value="${produto.tipoProduto}" /></td>
+									<td><c:out value="${produto.dimensoes }" /> M²</td>
+									<td>R$ <c:out value="${produto.preco}" /></td>
+									<td><c:out value="${produto.estado}" /> / <c:out value="${produto.cidade}" /></td>
+									<td>
+										<a href="deleteProductById?id=${produto.id }" class="btn btn-primary  btn-xs">Deletar</a>
+										<a href="updateProductById?id=${produto.id }" class="btn btn-primary  btn-xs">Atualizar</a>
+									</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

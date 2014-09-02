@@ -1,6 +1,6 @@
-package com.saei;
+package com.saei.actions;
 
-public class CadastroFornecedorAction {
+public class CadastroClienteAction {
 
 	
 	// all struts logic here
@@ -9,5 +9,5 @@ public class CadastroFornecedorAction {
 		return "SUCCESS";
 
 	}
-
+		
 }

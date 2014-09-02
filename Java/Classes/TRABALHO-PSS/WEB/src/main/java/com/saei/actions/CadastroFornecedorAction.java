@@ -1,10 +1,13 @@
-package com.saei;
+package com.saei.actions;
 
-public class AgendamentoDetailAction {
+public class CadastroFornecedorAction {
+
+	
 	// all struts logic here
 	public String execute() {
 
 		return "SUCCESS";
 
 	}
+
 }
