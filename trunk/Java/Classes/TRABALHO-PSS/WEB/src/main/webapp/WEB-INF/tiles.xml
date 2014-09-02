@@ -192,9 +192,9 @@
 
 	<definition name="product.page" extends="baseLayout">
 		<put-attribute name="title" value="SAEI" />
-		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
-		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/comum/product/bodyDetail.jsp" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/comum/product/bodyProduto.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	

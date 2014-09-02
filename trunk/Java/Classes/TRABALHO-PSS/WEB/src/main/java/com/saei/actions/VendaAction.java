@@ -1,12 +1,10 @@
-package com.saei;
+package com.saei.actions;
 
-public class AgendamentoAction {
-	
+public class VendaAction {
 	// all struts logic here
 	public String execute() {
 
 		return "SUCCESS";
 
 	}
-
 }

@@ -11,6 +11,11 @@
 	</context-param>
 
 	<listener>
+		<listener-class>
+	        com.saei.initialization.MyServletContextListener
+	    </listener-class>
+	</listener>
+	<listener>
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
 

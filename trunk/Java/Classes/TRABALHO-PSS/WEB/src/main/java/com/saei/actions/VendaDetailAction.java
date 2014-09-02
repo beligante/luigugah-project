@@ -1,6 +1,6 @@
-package com.saei;
+package com.saei.actions;
 
-public class VendaAction {
+public class VendaDetailAction {
 	// all struts logic here
 	public String execute() {
 
