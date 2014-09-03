@@ -15,6 +15,8 @@
         <column name="estado" type="VARCHAR" />
         <column name="descricao" type="VARCHAR" />
         <column name="link_foto" type="VARCHAR" />
+        <column name="cep" type="VARCHAR" />
+        <column name="complemento" type="VARCHAR" />
     </table>
     
     <table name="modalidade_negociacao" javaName="ModalidadeNegociacao">

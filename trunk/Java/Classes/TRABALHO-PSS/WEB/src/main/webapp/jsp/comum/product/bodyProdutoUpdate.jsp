@@ -5,6 +5,8 @@
 <s:form action="updateprodutosubmit" cssStyle="color:black">
 
 	<BR><BR>
+	<s:hidden name="produto.id"></s:hidden>
+	
 	<s:textfield 
 		label="CEP"
 		name="produto.cep" 

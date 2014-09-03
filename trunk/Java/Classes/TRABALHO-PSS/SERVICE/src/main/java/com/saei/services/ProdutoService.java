@@ -83,6 +83,8 @@ public class ProdutoService {
 	public boolean updateProduto(Produto produto){
 		try{
 			if(produto != null){
+				produto.setNew(false);
+				produto.setModified(true);
 				BaseProdutoPeer.doUpdate(produto);
 				return true;
 			}
