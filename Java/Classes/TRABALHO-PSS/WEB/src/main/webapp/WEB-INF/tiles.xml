@@ -243,7 +243,7 @@
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/comum/product/bodyProduto.jsp" />
+		<put-attribute name="body" value="/jsp/comum/product/bodyProdutoUpdate.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 </tiles-definitions>

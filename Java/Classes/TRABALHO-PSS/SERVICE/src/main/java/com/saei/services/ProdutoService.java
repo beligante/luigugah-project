@@ -6,8 +6,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.apache.torque.util.Criteria;
 
-import com.oracle.webservices.internal.api.message.BasePropertySet;
-import com.saei.domain.commons.BaseProduto;
 import com.saei.domain.commons.BaseProdutoPeer;
 import com.saei.domain.commons.Produto;
 
