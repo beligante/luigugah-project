@@ -2,6 +2,7 @@ package com.saei.services;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.apache.torque.util.Criteria;
 
@@ -44,11 +45,13 @@ public class ProdutoService {
 	public Produto searchProdutoById(int id){
 		try {
 			Criteria c = new Criteria();
-			c.add(BasePro)
-			return BaseProdutoPeer.doSelect(produto);
-			
+			c.add(BaseProdutoPeer.ID, id);
+			List<Produto> produtos = BaseProdutoPeer.doSelect(c);
+			if(CollectionUtils.isNotEmpty(produtos)){
+				return produtos.get(0);
+			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o produto: \n" + produto.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o produto de id[" + id + "]" , e);
 		}
 		return null;
 	}

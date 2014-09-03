@@ -2,9 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 <%@ include file="../Taglibs.jsp" %>
 
-<s:form action="cadastroprodutosubmit" cssStyle="color:black">
+<s:form action="updateprodutosubmit" cssStyle="color:black">
 
 	<BR><BR>
+	<s:hidden
+		name="produto.id"
+		value="<c:out value="${produto.id}"></c:out>"></s:hidden>
 	<s:textfield 
 		label="CEP"
 		name="produto.cep" 

@@ -16,7 +16,8 @@ public class UpdateProdutoByIdAction extends BaseAction {
 		}catch(Exception e){}
 		
 		if(id != null){
-			getAplicationEng().getProdutoEng().deleteProductById(id);
+			getServletRequest().setAttribute("produto", 
+					getAplicationEng().getProdutoEng().getProdutoById(id));
 		}
 		
 		return SUCCESS;
