@@ -36,4 +36,12 @@ public class ProdutoEng {
 		prod.setId(id);
 		PRODUTO_SERVICE.removeProduto(prod);
 	}
+	
+	public Produto getProdutoById(int id){
+		return PRODUTO_SERVICE.searchProdutoById(id);
+	}
+	
+	public void updateProdutoByProduto(Produto produto){
+		PRODUTO_SERVICE.updateProduto(produto);
+	}
 }

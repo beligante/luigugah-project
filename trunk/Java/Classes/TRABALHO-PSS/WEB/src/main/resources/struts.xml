@@ -120,6 +120,16 @@
 			<result name="success" type="chain">product</result>
 		</action>
 		
+		<action name="updateproductbyid" 
+			class="com.saei.actions.product.UpdateProdutoByIdAction">
+			<result name="success" type="tiles">product.update.page</result>
+		</action>
+		
+		<action name="updateprodutosubmit" 
+			class="com.saei.actions.product.UpdateProdutoSubmitAction">
+			<result name="success" type="chain">product</result>
+		</action>
+		
 		<action name="cliente" 
 			class="com.saei.actions.AgendamentoDetailAction">
 			<result name="success" type="tiles">cliente.page</result>
