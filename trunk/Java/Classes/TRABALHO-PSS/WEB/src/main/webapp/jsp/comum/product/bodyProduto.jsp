@@ -32,8 +32,8 @@
 									<td>R$ <c:out value="${produto.preco}" /></td>
 									<td><c:out value="${produto.estado}" /> / <c:out value="${produto.cidade}" /></td>
 									<td>
-										<a href="deleteProductById?id=${produto.id }" class="btn btn-primary  btn-xs">Deletar</a>
-										<a href="updateProductById?id=${produto.id }" class="btn btn-primary  btn-xs">Atualizar</a>
+										<a href="deleteproductbyid?id=<c:out value="${produto.id}" />" class="btn btn-primary  btn-xs">Deletar</a>
+										<a href="updateproductbyid?id=<c:out value="${produto.id}" />" class="btn btn-primary  btn-xs">Atualizar</a>
 									</td>
 								</tr>
 							</c:forEach>

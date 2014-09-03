@@ -109,9 +109,15 @@
 			class="com.saei.actions.AgendamentoDetailAction">
 			<result name="success" type="tiles">product.cliente.detail.page</result>
 		</action>
+		
 		<action name="product" 
 			class="com.saei.actions.product.ProductSearchAction">
 			<result name="success" type="tiles">product.page</result>
+		</action>
+		
+		<action name="deleteproductbyid" 
+			class="com.saei.actions.product.DeleteProductByIdAction">
+			<result name="success" type="chain">product</result>
 		</action>
 		
 		<action name="cliente" 
