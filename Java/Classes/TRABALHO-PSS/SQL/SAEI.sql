@@ -210,6 +210,8 @@ CREATE TABLE `produto` (
   `preco` decimal(10,0) DEFAULT NULL,
   `endereco` varchar(2000) DEFAULT NULL,
   `bairro` varchar(45) DEFAULT NULL,
+  `cep` varchar(45) DEFAULT NULL,
+  `complemento` varchar(45) DEFAULT NULL,
   `tipo_produto` varchar(45) DEFAULT NULL,
   `cidade` varchar(200) DEFAULT NULL,
   `estado` varchar(70) DEFAULT NULL,
