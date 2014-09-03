@@ -246,4 +246,30 @@
 		<put-attribute name="body" value="/jsp/comum/product/bodyProdutoUpdate.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
+	
+	
+	<definition name="usuario.cadastro.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/usuario/bodyUsuarioCadastro.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	
+	<definition name="usuario.search.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/usuario/bodyUsuarioSearch.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<definition name="usuario.update.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/usuario/bodyUsuarioUpdate.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
 </tiles-definitions>

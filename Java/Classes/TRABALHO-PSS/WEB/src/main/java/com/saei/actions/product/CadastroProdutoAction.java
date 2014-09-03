@@ -10,6 +10,8 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.saei.actions.BaseAction;
 import com.saei.domain.enums.TipoProduto;
+import com.saei.services.CidadeService;
+import com.saei.services.EstadosService;
 
 public class CadastroProdutoAction extends BaseAction {
 	
@@ -37,15 +39,11 @@ public class CadastroProdutoAction extends BaseAction {
 	}
 	
 	public List<String> getEstados(){
-		List<String> estados = new ArrayList<String>();
-		estados.add("PR");
-		return estados;
+		return EstadosService.getAllEstadosName();
 	}
 	
 	public List<String> getCidades(){
-		List<String> cidades = new ArrayList<String>();
-		cidades.add("Maringa");
-		return cidades;
+		return CidadeService.getAllCidadesName();
 	}
 	
 	public List<String> getTiposProduto(){

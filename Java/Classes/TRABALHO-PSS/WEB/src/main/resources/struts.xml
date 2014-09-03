@@ -14,102 +14,48 @@
 		<result-types>
 		  <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
 		</result-types>
-		<action name="wellcome" 
-			class="com.saei.actions.WellcomeAction">
-			<result name="success" type="tiles">start.page</result>
+		<!-- Usuario -->
+		<action name="cadastrousuario" 
+			class="com.saei.actions.usuario.CadastroUsuarioAction">
+			<result name="success" type="tiles">usuario.cadastro.page</result>
 		</action>
-		<action name="register" 
-			class="com.saei.actions.RegisterAction">
-			<result name="success" type="tiles">register.page</result>
+		
+		<action name="cadastrousuariosubmit" 
+			class="com.saei.actions.usuario.CadastroUsuarioSubmitAction">
+			<result name="success" type="chain">usuariosearch</result>
 		</action>
-		<action name="simulation" 
-			class="com.saei.actions.SimulateAction">
-			<result name="success" type="tiles">simulation.page</result>
+		
+		<action name="usuariosearch" 
+			class="com.saei.actions.usuario.UsuarioSearchAction">
+			<result name="success" type="tiles">usuario.search.page</result>
 		</action>
-		<action name="saletous" 
-			class="com.saei.actions.SaleAction">
-			<result name="success" type="tiles">sale.page</result>
+		
+		<action name="deleteusuariobyid" 
+			class="com.saei.actions.usuario.DeleteUsuarioByIdAction">
+			<result name="success" type="chain">usuariosearch</result>
 		</action>
-		<action name="funcionario" 
-			class="com.saei.actions.FuncionarioAction">
-			<result name="success" type="tiles">funcionario.page</result>
+		
+		
+		<action name="updateusuariobyid" 
+			class="com.saei.actions.usuario.UpdateUsuarioByIdAction">
+			<result name="success" type="tiles">usuario.update.page</result>
 		</action>
-		<action name="cadastrocliente" 
-			class="com.saei.actions.CadastroClienteAction">
-			<result name="success" type="tiles">cadastroCliente.page</result>
+		
+		
+		<action name="updateusuariosubmit" 
+			class="com.saei.actions.usuario.UpdateUsuarioSubmitAction">
+			<result name="success" type="chain">usuariosearch</result>
 		</action>
-		<action name="cadastrofornecedor" 
-			class="com.saei.actions.CadastroFornecedorAction">
-			<result name="success" type="tiles">cadastroFornecedor.page</result>
-		</action>
-		<action name="cadastrofuncionario" 
-			class="com.saei.actions.CadastroFuncionarioAction">
-			<result name="success" type="tiles">cadastroFuncionario.page</result>
-		</action>
+		
+		<!-- Produto -->
 		<action name="cadastroproduto" 
 			class="com.saei.actions.product.CadastroProdutoAction">
 			<result name="success" type="tiles">cadastroProduto.page</result>
 		</action>
-		
 		<action name="cadastroprodutosubmit" 
 			class="com.saei.actions.product.CadastroProdutoSubmitAction">
 			<result name="success" type="chain">product</result>
 		</action>
-		
-		<action name="vendaEfetuada" 
-			class="com.saei.actions.VendaAction">
-			<result name="success" type="tiles">venda.efetuada.page</result>
-		</action>
-		<action name="vendaEfetuadaDetail" 
-			class="com.saei.actions.VendaDetailAction">
-			<result name="success" type="tiles">venda.efetuada.detail.page</result>
-		</action>
-		
-		<action name="venda" 
-			class="com.saei.actions.VendaAction">
-			<result name="success" type="tiles">venda.page</result>
-		</action>
-		<action name="vendaDetail" 
-			class="com.saei.actions.VendaDetailAction">
-			<result name="success" type="tiles">venda.detail.page</result>
-		</action>
-		<action name="VendaDetailSimulacao" 
-			class="com.saei.actions.VendaDetailSimulacaoAction">
-			<result name="success" type="tiles">venda.detail.simulacao.page</result>
-		</action>
-		<action name="VendaFinalizada" 
-			class="com.saei.actions.VendaDetailSimulacaoAction">
-			<result name="success" type="tiles">venda.finalizada.page</result>
-		</action>
-		
-		<action name="compra" 
-			class="com.saei.actions.CompraAction">
-			<result name="success" type="tiles">compra.page</result>
-		</action>
-		<action name="compraDetail" 
-			class="com.saei.actions.CompraDetailAction">
-			<result name="success" type="tiles">compra.detail.page</result>
-		</action>
-		
-		<action name="agendamento" 
-			class="com.saei.actions.AgendamentoAction">
-			<result name="success" type="tiles">agendamento.page</result>
-		</action>
-		<action name="agendamentoDetail" 
-			class="com.saei.actions.AgendamentoDetailAction">
-			<result name="success" type="tiles">agendamento.detail.page</result>
-		</action>
-		
-		<action name="productDetail" 
-			class="com.saei.actions.AgendamentoDetailAction">
-			<result name="success" type="tiles">product.detail.page</result>
-		</action>
-		
-		<action name="productClienteDetail" 
-			class="com.saei.actions.AgendamentoDetailAction">
-			<result name="success" type="tiles">product.cliente.detail.page</result>
-		</action>
-		
 		<action name="product" 
 			class="com.saei.actions.product.ProductSearchAction">
 			<result name="success" type="tiles">product.page</result>
@@ -128,21 +74,6 @@
 		<action name="updateprodutosubmit" 
 			class="com.saei.actions.product.UpdateProdutoSubmitAction">
 			<result name="success" type="chain">product</result>
-		</action>
-		
-		<action name="cliente" 
-			class="com.saei.actions.AgendamentoDetailAction">
-			<result name="success" type="tiles">cliente.page</result>
-		</action>
-		
-		<action name="login" 
-			class="com.saei.actions.AgendamentoDetailAction">
-			<result name="success" type="tiles">login.page</result>
-		</action>
-		
-		<action name="pagamentos" 
-			class="com.saei.actions.AgendamentoDetailAction">
-			<result name="success" type="tiles">pagamentos.page</result>
 		</action>
 		
 	</package>

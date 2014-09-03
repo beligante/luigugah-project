@@ -14,7 +14,7 @@ public class UsuarioEng {
 		USUARIO_SERVICE = new UsuarioService();
 	}
 	
-	public Usuario registerProduct(Usuario usuario){
+	public Usuario registerUsuariow(Usuario usuario){
 		usuario.setDataCadastro(new Date());
 		USUARIO_SERVICE.salvarUsuario(usuario);
 		
@@ -25,13 +25,13 @@ public class UsuarioEng {
 		return USUARIO_SERVICE.searchUsuario(null);
 	}
 	
-	public void deleteProductByProduct(Usuario usuario){
+	public void deleteUsuarioByUsuario(Usuario usuario){
 		if(usuario != null){
-			deleteProductById(usuario.getId());
+			deleteUsuarioById(usuario.getId());
 		}
 	}
 	
-	public void deleteProductById(int id){
+	public void deleteUsuarioById(int id){
 		Usuario prod = new Usuario();
 		prod.setId(id);
 		USUARIO_SERVICE.removeUsuario(prod);

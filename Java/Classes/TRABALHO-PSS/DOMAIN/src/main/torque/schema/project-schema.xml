@@ -41,7 +41,7 @@
         <column name="nome" type="VARCHAR" />
         <column name="email" type="VARCHAR" />
         <column name="telefone" type="VARCHAR" />
-        <column name="tipo_pessoa" type="CHAR" />
+        <column name="tipo_pessoa" type="VARCHAR" />
         <column name="cep" type="VARCHAR" />
         <column name="endereco" type="VARCHAR" />
         <column name="bairro" type="VARCHAR" />
@@ -50,7 +50,7 @@
         <column name="estado" type="VARCHAR" />
         <column name="usuario" type="VARCHAR" />
         <column name="senha" type="VARCHAR" />
-        <column name="tipo_usuario" type="INTEGER" />
+        <column name="tipo_usuario" type="VARCHAR" />
     </table>
 
     <table name="negocio" javaName="Negocio">
