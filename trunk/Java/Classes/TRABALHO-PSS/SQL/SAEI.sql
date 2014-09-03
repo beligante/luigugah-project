@@ -266,7 +266,7 @@ CREATE TABLE `usuario` (
   `nome` varchar(200) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `telefone` varchar(45) DEFAULT NULL,
-  `tipo_pessoa` char(1) DEFAULT NULL,
+  `tipo_pessoa` varchar(45) DEFAULT NULL,
   `endereco` varchar(300) DEFAULT NULL,
   `bairro` varchar(100) DEFAULT NULL,
   `complemento` varchar(45) DEFAULT NULL,
@@ -274,7 +274,7 @@ CREATE TABLE `usuario` (
   `estado` varchar(100) DEFAULT NULL,
   `usuario` varchar(100) DEFAULT NULL,
   `senha` varchar(200) DEFAULT NULL,
-  `tipo_usuario` int(11) DEFAULT NULL,
+  `tipo_usuario` varchar(45) DEFAULT NULL,
   `cep` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

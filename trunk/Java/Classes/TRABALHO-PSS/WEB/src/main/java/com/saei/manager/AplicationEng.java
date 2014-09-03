@@ -9,6 +9,7 @@ public class AplicationEng {
 	
 	private static final Logger LOG = Logger.getLogger(AplicationEng.class);
 	private static ProdutoEng PRODUTO_ENG;
+	private static UsuarioEng USER_ENG;
 	
 	private AplicationEng() {
 	}
@@ -18,6 +19,7 @@ public class AplicationEng {
 		try{
 			Torque.init("torque.properties");
 			PRODUTO_ENG = new ProdutoEng();
+			USER_ENG = new UsuarioEng();
 			return new AplicationEng();
 		}catch(Exception e){
 			LOG.error("Ocorreu um erro ao inicializar a aplicação", e);
@@ -27,5 +29,9 @@ public class AplicationEng {
 	
 	public ProdutoEng getProdutoEng() {
 		return PRODUTO_ENG;
+	}
+	
+	public UsuarioEng getUsuarioEng(){
+		return USER_ENG;
 	}
 }
