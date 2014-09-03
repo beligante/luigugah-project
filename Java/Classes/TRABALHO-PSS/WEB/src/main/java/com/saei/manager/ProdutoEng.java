@@ -24,4 +24,16 @@ public class ProdutoEng {
 	public List<Produto> getAllProdutos(){
 		return PRODUTO_SERVICE.searchProduto(null);
 	}
+	
+	public void deleteProductByProduct(Produto produto){
+		if(produto != null){
+			deleteProductById(produto.getId());
+		}
+	}
+	
+	public void deleteProductById(int id){
+		Produto prod = new Produto();
+		prod.setId(id);
+		PRODUTO_SERVICE.removeProduto(prod);
+	}
 }

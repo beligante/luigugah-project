@@ -7,3 +7,5 @@
 	font-size: 14px;
 	font-weight: bold;
 }
+
+form label {color: black !important;}
