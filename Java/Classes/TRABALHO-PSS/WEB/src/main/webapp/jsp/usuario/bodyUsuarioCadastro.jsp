@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
 <%@ include file="../comum/Taglibs.jsp" %>
 
@@ -65,11 +65,11 @@
 		name="usuario.usuario" 
 		cssClass="form-control">
 	</s:textfield>	
-	<s:textfield 
+	<s:password
 		label="Senha"
 		name="usuario.senha" 
 		cssClass="form-control">
-	</s:textfield>	
+	</s:password>	
 	<s:select 
 		name="usuario.tipoUsuario"
 		list="tiposUsuario"  
