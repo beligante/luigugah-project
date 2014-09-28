@@ -48,32 +48,37 @@
 		</action>
 		
 		<!-- Produto -->
-		<action name="cadastroproduto" 
+		<action name="cadastro-produto" 
 			class="com.saei.actions.product.CadastroProdutoAction">
-			<result name="success" type="tiles">cadastroProduto.page</result>
+			<result name="success" type="tiles">product.cadastro.page</result>
 		</action>
-		<action name="cadastroprodutosubmit" 
+		<action name="cadastro-produto-submit" 
 			class="com.saei.actions.product.CadastroProdutoSubmitAction">
 			<result name="success" type="tiles">product.cadastro.success.page</result>
 		</action>
-		<action name="product" 
+		<action name="product-search" 
 			class="com.saei.actions.product.ProductSearchAction">
-			<result name="success" type="tiles">product.page</result>
+			<result name="success" type="tiles">product.search.page</result>
 		</action>
 		
-		<action name="deleteproductbyid" 
+		<action name="delete-product-by-id" 
 			class="com.saei.actions.product.DeleteProductByIdAction">
 			<result name="success" type="tiles">product.delete.success.page</result>
 		</action>
 		
-		<action name="updateproductbyid" 
+		<action name="update-product-by-id" 
 			class="com.saei.actions.product.UpdateProdutoByIdAction">
 			<result name="success" type="tiles">product.update.page</result>
 		</action>
 		
-		<action name="updateprodutosubmit" 
+		<action name="update-produto-submit" 
 			class="com.saei.actions.product.UpdateProdutoSubmitAction">
 			<result name="success" type="tiles">product.update.success.page</result>
+		</action>
+		
+		<action name="produto-by-id" 
+			class="com.saei.actions.product.SelectProdutoByIdAction">
+			<result name="success" type="tiles">product.details.page</result>
 		</action>
 		
 	</package>

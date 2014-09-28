@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="utf-8"%>
-<%@ include file="../Taglibs.jsp" %>
- 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../comum/Taglibs.jsp" %>
+
+<%@ page isELIgnored="false" %>
 <BR><BR>
  
  <div class="row">
@@ -26,14 +27,16 @@
 						<tbody>
 							<c:forEach items="${produtos}" var="produto" >
 								<tr class="odd gradeA">
-									<td><c:out value="${produto.id}"></c:out></td>
-									<td><c:out value="${produto.tipoProduto}" /></td>
-									<td><c:out value="${produto.dimensoes }" /> M²</td>
-									<td>R$ <c:out value="${produto.preco}" /></td>
-									<td><c:out value="${produto.estado}" /> / <c:out value="${produto.cidade}" /></td>
+
+									<td>${produto.id}</td>
+									<td>${produto.tipoProduto}</td>
+									<td>${produto.dimensoes} M²</td>
+									<td>R$ ${produto.preco}</td>
+									<td>${produto.estado} / ${produto.cidade}</td>
 									<td>
-										<a href="deleteproductbyid?id=<c:out value="${produto.id}" />" class="btn btn-primary  btn-xs">Deletar</a>
-										<a href="updateproductbyid?id=<c:out value="${produto.id}" />" class="btn btn-primary  btn-xs">Atualizar</a>
+										<a href="produto-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Detalhes</a>
+										<a href="update-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Editar</a>
+										<a href="delete-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Deletar</a>
 									</td>
 								</tr>
 							</c:forEach>
