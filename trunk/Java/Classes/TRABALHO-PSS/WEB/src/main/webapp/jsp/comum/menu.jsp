@@ -24,7 +24,7 @@
 		</a>
 		<ul class="dropdown-menu" role="menu">
 			<li><a href="vendaEfetuada">Vendas Efetuadas</a></li>
-			<li><a href="venda">Catalogo</a></li>
+			<li><a href="catalog-search">Catalogo</a></li>
 		</ul></li>
 
 	<li class="dropdown"><a class="dropdown-toggle"

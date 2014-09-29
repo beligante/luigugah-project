@@ -47,7 +47,7 @@
 			<result name="success" type="chain">usuariosearch</result>
 		</action>
 		
-		<!-- Produto -->
+		<!-- Produto actions -->
 		<action name="cadastro-produto" 
 			class="com.saei.actions.product.CadastroProdutoAction">
 			<result name="success" type="tiles">product.cadastro.page</result>
@@ -81,5 +81,22 @@
 			<result name="success" type="tiles">product.details.page</result>
 		</action>
 		
+		<!-- Venda actions -->
+		<action name="catalog-search"
+				class="com.saei.actions.venda.VendaCatalogoAction">
+			<result name="success" type="tiles">venda.search.page</result>
+		</action>
+		
+		<action name="sale-product-by-id"
+				class="com.saei.actions.venda.VendaByIdAction">
+			<result name="success" type="tiles">venda.by.id.page</result>
+			<result name="catalog" type="chain">catalog-search</result>
+		</action>
+		<action name="sale-product-by-id-submit"
+				class="com.saei.actions.venda.VendaByIdSubmitAction">
+			<result name="success" type="tiles">venda.by.id.simulacao</result>
+			<result name="catalog" type="chain">catalog-search</result>
+		</action>
+		sale-product-by-id
 	</package>
 </struts>

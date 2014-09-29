@@ -13,9 +13,9 @@ public class CadastroUsuarioAction extends BaseAction{
 
 	
 	// all struts logic here
-	public String execute() {
+	public String execute() { 
 
-		return SUCCESS;
+		return SUCCESS; 
 
 	}
 	
