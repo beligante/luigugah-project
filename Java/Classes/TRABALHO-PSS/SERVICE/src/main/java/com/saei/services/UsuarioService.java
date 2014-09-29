@@ -9,6 +9,7 @@ import org.apache.torque.util.Criteria;
 import com.saei.domain.commons.BaseProdutoPeer;
 import com.saei.domain.commons.BaseUsuarioPeer;
 import com.saei.domain.commons.Usuario;
+import com.saei.domain.enums.TipoUsuario;
  
 public class UsuarioService {
 	
@@ -93,6 +94,16 @@ public class UsuarioService {
 			}
 		} catch (Exception e) {
 			LOG.error("Ocorreu um erro ao buscar o usuario de id[" + id + "]" , e);
+		}
+		return null;
+	}
+	
+	public List<Usuario> getAllVendedores(){
+		try {
+			return BaseUsuarioPeer.doSelect(new Criteria()
+						.add(BaseUsuarioPeer.TIPO_USUARIO, TipoUsuario.VENDEDOR.getValor()));
+		} catch (Exception e) {
+			LOG.error("Ocorreu um erro ao buscar os usuarios vendedores", e);
 		}
 		return null;
 	}

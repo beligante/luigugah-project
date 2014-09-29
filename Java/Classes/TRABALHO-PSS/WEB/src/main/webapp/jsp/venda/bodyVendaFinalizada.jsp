@@ -15,7 +15,7 @@
 	
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<a href="venda" class="btn btn-default">Concluir</a>
+			<a href="venda-search" class="btn btn-default">Concluir</a>
 		</div>
 	</div>
 </form>

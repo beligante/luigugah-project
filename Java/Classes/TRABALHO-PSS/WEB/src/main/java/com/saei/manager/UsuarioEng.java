@@ -44,4 +44,8 @@ public class UsuarioEng {
 	public void updateUsuarioByUsuario(Usuario usuario){
 		USUARIO_SERVICE.updateUsuario(usuario);
 	}
+	
+	public List<Usuario> getAllUsuarioVendedores(){
+		return USUARIO_SERVICE.getAllVendedores();
+	}
 }

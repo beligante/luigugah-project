@@ -37,6 +37,9 @@
 										<a href="produto-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Detalhes</a>
 										<a href="update-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Editar</a>
 										<a href="delete-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Deletar</a>
+										<c:if test="${isVendaPage}">
+											<a href="sale-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Vender</a>
+										</c:if>
 									</td>
 								</tr>
 							</c:forEach>
