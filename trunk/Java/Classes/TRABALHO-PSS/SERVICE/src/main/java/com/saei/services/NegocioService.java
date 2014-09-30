@@ -3,6 +3,7 @@ package com.saei.services;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.apache.torque.util.Criteria;
 
 import com.saei.domain.commons.BaseNegocioPeer;
 import com.saei.domain.commons.Negocio;
@@ -35,6 +36,19 @@ public class NegocioService {
 		}
 		return null;
 	}
+	
+	public Negocio searchNegocioById(int id){
+		try {
+				Criteria c = new Criteria();
+				c.add(BaseNegocioPeer.ID, id);
+				//Se vier nullo, cai no catch e retorna nullo
+				return (Negocio) BaseNegocioPeer.doSelect(c).get(0);
+		} catch (Exception e) {
+			LOG.error("Ocorreu um erro ao buscar o negocio de Id: " + id, e);
+		}
+		return null;
+	}
+	
 	
 	public boolean removeNegocio(Negocio negocio){
 		try{
