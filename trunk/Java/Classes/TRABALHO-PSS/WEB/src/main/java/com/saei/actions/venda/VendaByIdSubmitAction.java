@@ -2,8 +2,11 @@ package com.saei.actions.venda;
 
 import java.math.BigDecimal;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.saei.actions.BaseAction;
 import com.saei.domain.commons.Negocio;
+import com.saei.domain.enums.TipoPagamento;
 
 public class VendaByIdSubmitAction extends BaseAction{
 
@@ -18,7 +21,18 @@ public class VendaByIdSubmitAction extends BaseAction{
 	
 	@Override
 	public String execute() throws Exception {
-	
+		
+		String validationResult = validateActionParameters();
+		
+		if(StringUtils.isNotEmpty(validationResult)){
+			return validationResult;
+		}
+		
+		
+		return SUCCESS;
+	}
+
+	private String validateActionParameters(){
 		int clientId = -1;
 		try{clientId = Integer.parseInt(cliente);}catch(Exception e){}
 		if(clientId < 0){return CATALOGO_ACTION;}
@@ -34,14 +48,20 @@ public class VendaByIdSubmitAction extends BaseAction{
 		BigDecimal entradaBig = null;
 		try{entradaBig = new BigDecimal(entrada);}catch(Exception e){}
 		if(entradaBig == null){return CATALOGO_ACTION;}
-		
+
 		int intParcelas = -1;
 		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
 		if(intParcelas < 0){return CATALOGO_ACTION;}
 		
-		return SUCCESS;
+		TipoPagamento pagamento = TipoPagamento.findByName(tipoPagamento);
+		if(pagamento == null){return CATALOGO_ACTION;}
+		
+		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
+		if(intParcelas < 0){return CATALOGO_ACTION;}
+		
+		return null;
 	}
-
+	
 	public String getCliente() {
 		return cliente;
 	}
