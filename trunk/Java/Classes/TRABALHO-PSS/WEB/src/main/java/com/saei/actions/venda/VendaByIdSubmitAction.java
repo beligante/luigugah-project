@@ -28,7 +28,6 @@ public class VendaByIdSubmitAction extends BaseAction{
 			return validationResult;
 		}
 		
-		
 		return SUCCESS;
 	}
 
