@@ -97,6 +97,5 @@
 			<result name="success" type="tiles">venda.by.id.simulacao</result>
 			<result name="catalog" type="chain">catalog-search</result>
 		</action>
-		sale-product-by-id
 	</package>
 </struts>
