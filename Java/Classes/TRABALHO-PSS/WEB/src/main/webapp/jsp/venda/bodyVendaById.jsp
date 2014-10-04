@@ -36,7 +36,7 @@
 	<div class="form-group">
 		<label for="inputName" class="col-sm-2 control-label">Valor do Imovel</label>
 		<div class="col-xs-5">
-			R$ ${produto.preco }
+			R$ ${produto.preco}
 		</div>
 	</div>
 	

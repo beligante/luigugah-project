@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
-<%@ include file="Taglibs.jsp" %>
+<%@ include file="../comum/Taglibs.jsp" %>
  
 <BR><BR>
  
@@ -36,8 +36,8 @@
 									<td><c:out value="${usuario.tipoUsuario}" /></td>
 									<td><c:out value="${usuario.tipoPessoa}" /></td>
 									<td>
-										<a href="deleteusuariobyid?id=<c:out value="${usuario.id}" />" class="btn btn-primary  btn-xs">Deletar</a>
-										<a href="updateusuariobyid?id=<c:out value="${usuario.id}" />" class="btn btn-primary  btn-xs">Atualizar</a>
+										<a href="delete-usuario-by-id?id=<c:out value="${usuario.id}" />" class="btn btn-primary  btn-xs">Deletar</a>
+										<a href="update-usuario-by-id?id=<c:out value="${usuario.id}" />" class="btn btn-primary  btn-xs">Atualizar</a>
 									</td>
 								</tr>
 							</c:forEach>

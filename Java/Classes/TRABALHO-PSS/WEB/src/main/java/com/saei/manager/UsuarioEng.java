@@ -14,7 +14,7 @@ public class UsuarioEng {
 		USUARIO_SERVICE = new UsuarioService();
 	}
 	
-	public Usuario registerUsuariow(Usuario usuario){
+	public Usuario registerUsuario(Usuario usuario){
 		usuario.setDataCadastro(new Date());
 		USUARIO_SERVICE.salvarUsuario(usuario);
 		
