@@ -19,6 +19,15 @@
         <column name="complemento" type="VARCHAR" />
     </table>
     
+    <table name="interesse_venda" javaName="InteresseVenda">
+    	<column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="data_cadastro" type="TIMESTAMP" />
+        <column name="estado" type="VARCHAR" />
+        <column name="cliente_id" type="INTEGER" />
+        <column name="produto_id" type="INTEGER" />
+    </table>
+    
     <table name="modalidade_negociacao" javaName="ModalidadeNegociacao">
 
         <column name="id" required="true" autoIncrement="true"

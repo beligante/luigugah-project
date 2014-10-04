@@ -107,5 +107,9 @@
 			<result name="success" type="tiles">venda.finished.page</result>
 			<result name="catalogo" type="chain">catalog-search</result>
 		</action>
+		<action name="sales-intrest-manager"
+				class="com.saei.actions.venda.VendaIntrestManagerAction">
+			<result name="success" type="tiles">sales.intrest.manager</result>
+		</action>
 	</package>
 </struts>

@@ -1,9 +1,10 @@
 drop database if exists saei_db;
 CREATE DATABASE  IF NOT EXISTS `saei_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `saei_db`;
+
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: saei_db
+-- Host: localhost    Database: saei_db
 -- ------------------------------------------------------
 -- Server version	5.6.20
 
@@ -104,6 +105,36 @@ CREATE TABLE `historico_compra` (
 LOCK TABLES `historico_compra` WRITE;
 /*!40000 ALTER TABLE `historico_compra` DISABLE KEYS */;
 /*!40000 ALTER TABLE `historico_compra` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `interese_venda`
+--
+
+DROP TABLE IF EXISTS `interese_venda`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interese_venda` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `estado` varchar(45) DEFAULT NULL,
+  `data_cadastro` datetime DEFAULT NULL,
+  `cliente_id` int(11) DEFAULT NULL,
+  `produto_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `produto_id_idx` (`produto_id`),
+  KEY `fk_iv_cliente_id_idx` (`cliente_id`),
+  CONSTRAINT `fk_iv_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_iv_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `produto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `interese_venda`
+--
+
+LOCK TABLES `interese_venda` WRITE;
+/*!40000 ALTER TABLE `interese_venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interese_venda` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -298,4 +329,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-01 17:06:40
+-- Dump completed on 2014-10-01 21:10:34
