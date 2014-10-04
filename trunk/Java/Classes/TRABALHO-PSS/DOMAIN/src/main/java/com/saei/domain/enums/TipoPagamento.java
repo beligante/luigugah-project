@@ -2,7 +2,12 @@ package com.saei.domain.enums;
 
 public enum TipoPagamento {
 	
-	BOLETO_MENSAL;
+	BOLETO_MENSAL("Boleto Mensal");
+	
+	private String label;
+
+
+	private TipoPagamento(String label){ this.label = label;}
 
 	
 	public static TipoPagamento findByName(String name){
@@ -14,4 +19,6 @@ public enum TipoPagamento {
 		
 		return null;
 	}
+	
+	public String getLabel(){return this.label;}
 }

@@ -9,8 +9,8 @@ public class CadastroUsuarioSubmitAction  extends BaseAction {
 	
 	@Override
 	public String execute() throws Exception {
-		
-		getAplicationEng().getUsuarioEng().registerUsuariow(usuario);
+
+		getAplicationEng().getUsuarioEng().registerUsuario(usuario);
 		return SUCCESS;
 	}
 

@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ include file="../comum/Taglibs.jsp" %>
 
-<s:form action="cadastrousuariosubmit" >
+<s:form action="cadastro-usuario-submit" >
 	<s:textfield 
 		label="Nome"
 		name="usuario.nome" 

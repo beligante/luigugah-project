@@ -101,7 +101,7 @@ public class UsuarioService {
 	public List<Usuario> getAllVendedores(){
 		try {
 			return BaseUsuarioPeer.doSelect(new Criteria()
-						.add(BaseUsuarioPeer.TIPO_USUARIO, TipoUsuario.VENDEDOR.getValor()));
+						.add(BaseUsuarioPeer.TIPO_USUARIO, TipoUsuario.VENDEDOR.toString()));
 		} catch (Exception e) {
 			LOG.error("Ocorreu um erro ao buscar os usuarios vendedores", e);
 		}

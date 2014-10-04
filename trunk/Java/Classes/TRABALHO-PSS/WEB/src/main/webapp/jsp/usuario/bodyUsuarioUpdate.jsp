@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
-<%@ include file="Taglibs.jsp" %>
+<%@ include file="../comum/Taglibs.jsp" %>
 
-<s:form action="updateusuariosubmit" >
+<s:form action="update-usuario-submit" >
 
 	<s:hidden name="usuario.id"></s:hidden>
 	<s:textfield 

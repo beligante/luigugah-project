@@ -5,8 +5,13 @@ import java.math.BigDecimal;
 import org.apache.commons.lang.StringUtils;
 
 import com.saei.actions.BaseAction;
+import com.saei.constants.SessionConstants;
+import com.saei.domain.Simulacao;
 import com.saei.domain.commons.Negocio;
+import com.saei.domain.commons.Produto;
+import com.saei.domain.commons.Usuario;
 import com.saei.domain.enums.TipoPagamento;
+import com.saei.services.SimulacaoService;
 
 public class VendaByIdSubmitAction extends BaseAction{
 
@@ -22,27 +27,26 @@ public class VendaByIdSubmitAction extends BaseAction{
 	@Override
 	public String execute() throws Exception {
 		
-		String validationResult = validateActionParameters();
-		
-		if(StringUtils.isNotEmpty(validationResult)){
-			return validationResult;
-		}
-		
-		return SUCCESS;
-	}
-
-	private String validateActionParameters(){
 		int clientId = -1;
-		try{clientId = Integer.parseInt(cliente);}catch(Exception e){}
-		if(clientId < 0){return CATALOGO_ACTION;}
+		Usuario cliente = null;
+		try{
+			clientId = Integer.parseInt(this.cliente);
+			cliente = getAplicationEng().getUsuarioEng().getUsuarioById(clientId);
+		}catch(Exception e){}
+		if(clientId < 0 || cliente == null){return CATALOGO_ACTION;}
 		
 		int vendedorId = -1;
 		try{vendedorId = Integer.parseInt(vendedor);}catch(Exception e){}
 		if(vendedorId < 0){return CATALOGO_ACTION;}
 		
 		int produtoId = -1;
-		try{produtoId = Integer.parseInt(produto);}catch(Exception e){}
-		if(produtoId < 0){return CATALOGO_ACTION;}
+		Produto produto = null;
+		try{
+			produtoId = Integer.parseInt(this.produto);
+			produto = getAplicationEng().getProdutoEng().getProdutoById(produtoId);
+		}catch(Exception e){}
+		
+		if(produtoId < 0 || produto == null){return CATALOGO_ACTION;}
 
 		BigDecimal entradaBig = null;
 		try{entradaBig = new BigDecimal(entrada);}catch(Exception e){}
@@ -58,8 +62,22 @@ public class VendaByIdSubmitAction extends BaseAction{
 		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
 		if(intParcelas < 0){return CATALOGO_ACTION;}
 		
-		return null;
+		
+		Simulacao simulacao = SimulacaoService.generateSimulation(
+								produto.getPreco(), 
+								new BigDecimal(1.3), 
+								entradaBig, 
+								intParcelas);
+
+		request.getSession().setAttribute(SessionConstants.SIMULACAO_KEY , simulacao);
+		request.getSession().setAttribute(SessionConstants.CHECKOUT_PRODUCT_KEY, produto);
+		request.getSession().setAttribute(SessionConstants.CHECKOUT_CLIENT_KEY, cliente);
+		request.getSession().setAttribute(SessionConstants.CHECKOUT_TIPO_PAGAMENTO, pagamento);
+		
+		
+		return SUCCESS;
 	}
+
 	
 	public String getCliente() {
 		return cliente;

@@ -15,36 +15,35 @@
 		  <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
 		</result-types>
 		<!-- Usuario -->
-		<action name="cadastrousuario" 
+		<action name="cadastro-usuario" 
 			class="com.saei.actions.usuario.CadastroUsuarioAction">
 			<result name="success" type="tiles">usuario.cadastro.page</result>
 		</action>
 		
-		<action name="cadastrousuariosubmit" 
+		<action name="cadastro-usuario-submit" 
 			class="com.saei.actions.usuario.CadastroUsuarioSubmitAction">
-			<result name="success" type="chain">usuariosearch</result>
+			<result name="success" type="chain">usuario-search</result>
 		</action>
 		
-		<action name="usuariosearch" 
+		<action name="usuario-search" 
 			class="com.saei.actions.usuario.UsuarioSearchAction">
 			<result name="success" type="tiles">usuario.search.page</result>
 		</action>
 		
-		<action name="deleteusuariobyid" 
+		<action name="delete-usuario-by-id" 
 			class="com.saei.actions.usuario.DeleteUsuarioByIdAction">
-			<result name="success" type="chain">usuariosearch</result>
+			<result name="success" type="chain">usuario-search</result>
 		</action>
 		
 		
-		<action name="updateusuariobyid" 
+		<action name="update-usuario-by-id" 
 			class="com.saei.actions.usuario.UpdateUsuarioByIdAction">
 			<result name="success" type="tiles">usuario.update.page</result>
 		</action>
 		
-		
-		<action name="updateusuariosubmit" 
+		<action name="update-usuario-submit" 
 			class="com.saei.actions.usuario.UpdateUsuarioSubmitAction">
-			<result name="success" type="chain">usuariosearch</result>
+			<result name="success" type="chain">usuario-search</result>
 		</action>
 		
 		<!-- Produto actions -->
@@ -90,12 +89,23 @@
 		<action name="sale-product-by-id"
 				class="com.saei.actions.venda.VendaByIdAction">
 			<result name="success" type="tiles">venda.by.id.page</result>
-			<result name="catalog" type="chain">catalog-search</result>
+			<result name="catalogo" type="chain">catalog-search</result>
 		</action>
 		<action name="sale-product-by-id-submit"
 				class="com.saei.actions.venda.VendaByIdSubmitAction">
 			<result name="success" type="tiles">venda.by.id.simulacao</result>
-			<result name="catalog" type="chain">catalog-search</result>
+			<result name="catalogo" type="chain">catalog-search</result>
+		</action>
+		<action name="sale-product-contract"
+				class="com.saei.actions.venda.VendaContratoAction">
+			<result name="success" type="tiles">venda.contrato.page</result>
+			<result name="catalogo" type="chain">catalog-search</result>
+		</action>
+		
+		<action name="sale-product-finished"
+				class="com.saei.actions.venda.VendaFinalizadaAction">
+			<result name="success" type="tiles">venda.finished.page</result>
+			<result name="catalogo" type="chain">catalog-search</result>
 		</action>
 	</package>
 </struts>

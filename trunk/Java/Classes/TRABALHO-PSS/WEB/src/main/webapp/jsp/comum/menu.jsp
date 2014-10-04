@@ -8,14 +8,14 @@
 			data-toggle="dropdown" href="#"> Cadastros <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="cadastrousuario">Usuario</a></li>
+			<li><a href="cadastro-usuario">Usuario</a></li>
 			<li><a href="cadastrofornecedor">Fornecedor</a></li>
-			<li><a href="cadastroproduto">Produto</a></li>
+			<li><a href="cadastro-produto">Produto</a></li>
 		</ul>
 	</li>
 		
 	<li><a href="product-search">Produtos</a></li>
-	<li><a href="usuariosearch">Usuarios</a></li>
+	<li><a href="usuario-search">Usuarios</a></li>
 	<li><a href="pagamentos">Pagamentos</a></li>
 	<li><a href="agendamento">Agendamento</a></li>
 	<li class="dropdown">
