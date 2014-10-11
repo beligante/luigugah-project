@@ -108,15 +108,14 @@ LOCK TABLES `historico_compra` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `interese_venda`
+-- Table structure for table `interesse_venda`
 --
 
-DROP TABLE IF EXISTS `interese_venda`;
+DROP TABLE IF EXISTS `interesse_venda`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `interese_venda` (
+CREATE TABLE `interesse_venda` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `estado` varchar(45) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT NULL,
   `cliente_id` int(11) DEFAULT NULL,
   `produto_id` int(11) DEFAULT NULL,
@@ -129,12 +128,40 @@ CREATE TABLE `interese_venda` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `interese_venda`
+-- Dumping data for table `interesse_venda`
 --
 
-LOCK TABLES `interese_venda` WRITE;
-/*!40000 ALTER TABLE `interese_venda` DISABLE KEYS */;
-/*!40000 ALTER TABLE `interese_venda` ENABLE KEYS */;
+LOCK TABLES `interesse_venda` WRITE;
+/*!40000 ALTER TABLE `interesse_venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interesse_venda` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `interesse_venda_historico`
+--
+
+DROP TABLE IF EXISTS `interesse_venda_historico`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interesse_venda_historico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `situacao` varchar(45) DEFAULT NULL,  
+  `descricao` varchar(100) DEFAULT NULL,
+  `data_ocorrencia` datetime DEFAULT NULL,
+  `interesse_venda_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_interesse_venda_id_idx` (`interesse_venda_id`),
+  CONSTRAINT `fk_interesse_venda_id` FOREIGN KEY (`interesse_venda_id`) REFERENCES `interesse_venda` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `interesse_venda_historico`
+--
+
+LOCK TABLES `interesse_venda_historico` WRITE;
+/*!40000 ALTER TABLE `interesse_venda_historico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interesse_venda_historico` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

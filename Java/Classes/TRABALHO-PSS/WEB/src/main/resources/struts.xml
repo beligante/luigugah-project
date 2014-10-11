@@ -118,5 +118,9 @@
 				class="com.saei.actions.venda.VendaIntrestManagerAction">
 			<result name="success" type="tiles">sales.intrest.manager</result>
 		</action>
+		<action name="sales-intrest-manager-update"
+				class="com.saei.actions.venda.VendaIntrestManagerUpdateAction">
+			<result name="success" type="tiles">sales.intrest.manager.update</result>
+		</action>
 	</package>
 </struts>
