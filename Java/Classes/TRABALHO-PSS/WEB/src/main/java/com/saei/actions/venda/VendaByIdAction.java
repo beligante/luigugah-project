@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import com.saei.actions.BaseAction;
 import com.saei.domain.commons.Produto;
 import com.saei.domain.commons.Usuario;
+import com.saei.domain.enums.TipoPagamento;
 
 public class VendaByIdAction extends BaseAction{
 
@@ -41,7 +42,8 @@ public class VendaByIdAction extends BaseAction{
 		if(CollectionUtils.isEmpty(clientes)){return CATALOGO_ACTION;}
 		request.setAttribute("clientes", clientes);
 
-		
+		TipoPagamento[] tipoPagamento = TipoPagamento.values();
+		request.setAttribute("tiposPagamento", tipoPagamento);
 		return SUCCESS;
 	}
 }

@@ -96,6 +96,13 @@
 			<result name="success" type="tiles">venda.by.id.simulacao</result>
 			<result name="catalogo" type="chain">catalog-search</result>
 		</action>
+		
+		<action name="sale-product-simulacao"
+				class="com.saei.actions.venda.VendaSimulacaoAction">
+			<result name="success" type="tiles">venda.by.id.simulacao</result>
+			<result name="catalogo" type="chain">catalog-search</result>
+		</action>
+		
 		<action name="sale-product-contract"
 				class="com.saei.actions.venda.VendaContratoAction">
 			<result name="success" type="tiles">venda.contrato.page</result>

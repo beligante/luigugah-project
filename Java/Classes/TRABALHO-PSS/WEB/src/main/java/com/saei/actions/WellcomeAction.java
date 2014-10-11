@@ -1,7 +1,5 @@
 package com.saei.actions;
 
-import java.util.Date;
-
 import org.apache.log4j.Logger;
 import org.apache.torque.Torque;
 import org.apache.torque.TorqueException;
@@ -13,7 +11,6 @@ import com.saei.domain.commons.ModalidadeNegociacao;
 import com.saei.domain.commons.Negocio;
 import com.saei.domain.commons.Pagamento;
 import com.saei.domain.commons.Produto;
-import com.saei.domain.commons.TipoNegociacao;
 import com.saei.domain.commons.Usuario;
 import com.saei.services.CompraService;
 import com.saei.services.FaturaPagamentoService;
@@ -22,7 +19,6 @@ import com.saei.services.ModalidadeNegociacaoService;
 import com.saei.services.NegocioService;
 import com.saei.services.PagamentoService;
 import com.saei.services.ProdutoService;
-import com.saei.services.TipoNegociacaoService;
 import com.saei.services.UsuarioService;
 
 public class WellcomeAction{
@@ -44,11 +40,6 @@ public class WellcomeAction{
 		int produtoId = id;
 		LOG.info(id);
 		
-		TipoNegociacaoService tns = new TipoNegociacaoService();
-		id = tns.salvarTipoNegociacao(new TipoNegociacao());
-		int tipoNegoId = id;
-		LOG.info(id);
-		
 		Negocio negocio = new Negocio();
 		negocio.setIdCliente(usuarioId);
 		negocio.setIdVendedor(usuarioId);
@@ -68,7 +59,6 @@ public class WellcomeAction{
 		
 		ModalidadeNegociacao mn = new ModalidadeNegociacao();
 		mn.setProdutoId(produtoId);
-		mn.setTipoNegociacaoId(tipoNegoId);
 		ModalidadeNegociacaoService mns = new ModalidadeNegociacaoService();
 		id = mns.salvarModalidadeNegociacao(mn);
 		LOG.info(id);

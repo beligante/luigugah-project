@@ -3,7 +3,7 @@
 <%@ include file="../comum/Taglibs.jsp" %>
  
 
-<form class="form-horizontal" action="sale-product-by-id-submit" role="form">
+<form class="form-horizontal" action="sale-product-by-id-submit"  method="POST" role="form">
 
 	<BR><BR>
 	
@@ -60,8 +60,16 @@
 		<label for="inputName" class="col-sm-2 control-label">Forma de pagamento</label>
 		<div class="col-xs-5">
 			<select name="tipoPagamento" class="form-control">
-				<option value="boleto">Boleto mensal</option>
+				<c:forEach items="${tiposPagamento}" var="tipoPagamento">
+					<option value="${tipoPagamento}">${tipoPagamento.label }</option>
+				</c:forEach>
 			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputName" class="col-sm-2 control-label">Dia para vencimento boleto</label>
+		<div class="col-xs-5">
+			<input type="number" name="vencimentoBoleto" >
 		</div>
 	</div>
 	
@@ -70,7 +78,10 @@
 	<input type="hidden" name="produto" value="${produto.id}">
 	
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
+		<div class="col-md-2">
+			<a href="catalog-search"  class="btn btn-warning">Voltar</a>
+		</div>
+		<div class="col-md-2">
 			<button type="submit" class="btn btn-primary">Efetuar Simulação</button>
 		</div>
 	</div>

@@ -16,7 +16,23 @@ public class MyServletContextListener implements ServletContextListener {
 	  @Override
 	  public void contextInitialized(ServletContextEvent event) {
 		  event.getServletContext().setAttribute(Constants.ENG_KEY, AplicationEng.initialize());
-			
+		
+		  System.out.println("\n\n\n");
+		  
+		  String mensagem;
+		  mensagem = "***************************************************************************\n"		  
+				  	+"*                                                                         *\n"
+				  	+"*   ######     ###    ######## ####                  ##         #####     *\n"
+				  	+"*  ##    ##   ## ##   ##        ##                 ####        ##   ##    *\n"
+				  	+"*  ##        ##   ##  ##        ##                   ##       ##     ##   *\n"
+  				    +"*   ######  ##     ## ######    ##     #######       ##       ##     ##   *\n"
+				    +"*        ## ######### ##        ##                   ##       ##     ##   *\n"
+				    +"*  ##    ## ##     ## ##        ##                   ##   ###  ##   ##    *\n"
+				    +"*   ######  ##     ## ######## ####                ###### ###   #####     *\n"
+				    +"*                                                                         *\n"
+				    +"***************************************************************************\n";
+		  System.out.println(mensagem);
+		  System.out.println("SYSTEM INITIALIZED WITH SUCCESS!! \\o\\\\o//o/ \n\n\n");
 	  }
 
 }

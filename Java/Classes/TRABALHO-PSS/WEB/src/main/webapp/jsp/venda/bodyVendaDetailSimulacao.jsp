@@ -15,12 +15,13 @@
 			<p><strong> Juros (%): </strong> ${simulacao.juros}<p>
 			<p><strong> Valor final (R$): </strong> ${simulacao.valorFinal}<p>
 			<p><strong> Meio de pagamento: </strong> ${checkoutTipoPagamento.label}<p>
+			<p><strong> Inicio Pagamento: </strong>  <fmt:formatDate pattern="dd/MM/yyyy" value="${dataPrimeiraParcela}" /><p>
 		</div>
 	</div>
 	
 	<div class="form-group">
 		<div class="col-md-2">
-			<a href="sale-product-by-id-submit" class="btn btn-warning">Voltar</a>
+			<a href="sale-product-by-id?id=${checkoutProduct.id}" class="btn btn-warning">Voltar</a>
 		</div>
 		<div class="col-md-10">
 			<a href="sale-product-contract" class="btn btn-default">Finalizar</a>

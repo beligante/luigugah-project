@@ -9,6 +9,7 @@ public class Simulacao {
 	private BigDecimal valorParcelas;
 	private BigDecimal valorFinal;
 	private BigDecimal entrada;
+	private int diaVencimentoBoleto;
 	
 	public BigDecimal getValorOriginal() {
 		return valorOriginal;
@@ -54,6 +55,13 @@ public class Simulacao {
 				+ ", quantidadeParcelas=" + quantidadeParcelas
 				+ ", valorParcelas=" + valorParcelas + ", valorFinal="
 				+ valorFinal + ", entrada=" + entrada + "]";
+	}
+
+	public int getDiaVencimentoBoleto() {
+		return diaVencimentoBoleto;
+	}
+	public void setDiaVencimentoBoleto(int diaVencimentoBoleto) {
+		this.diaVencimentoBoleto = diaVencimentoBoleto;
 	}
 	
 	

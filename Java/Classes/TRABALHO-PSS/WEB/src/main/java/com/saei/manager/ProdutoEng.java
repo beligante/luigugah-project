@@ -1,9 +1,12 @@
 package com.saei.manager;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.saei.domain.Simulacao;
 import com.saei.domain.commons.Produto;
+import com.saei.domain.enums.SituacaoProduto;
 import com.saei.services.ProdutoService;
 
 public class ProdutoEng {
@@ -16,6 +19,8 @@ public class ProdutoEng {
 	
 	public Produto registerProduct(Produto produto){
 		produto.setDataCadastro(new Date());
+		if(produto.getPreco() == null){	produto.setPreco(BigDecimal.ZERO);}
+		produto.setSituacao(SituacaoProduto.DISPONIVEL.name());
 		PRODUTO_SERVICE.salvarProduto(produto);
 		
 		return produto;

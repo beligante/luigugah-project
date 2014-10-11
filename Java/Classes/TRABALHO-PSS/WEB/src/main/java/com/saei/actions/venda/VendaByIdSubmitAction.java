@@ -1,6 +1,7 @@
 package com.saei.actions.venda;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -11,6 +12,7 @@ import com.saei.domain.commons.Negocio;
 import com.saei.domain.commons.Produto;
 import com.saei.domain.commons.Usuario;
 import com.saei.domain.enums.TipoPagamento;
+import com.saei.services.DataPagamentoService;
 import com.saei.services.SimulacaoService;
 
 public class VendaByIdSubmitAction extends BaseAction{
@@ -21,6 +23,7 @@ public class VendaByIdSubmitAction extends BaseAction{
 	private String entrada;
 	private String parcelas;
 	private String tipoPagamento;
+	private String vencimentoBoleto;
 	
 	private static final String CATALOGO_ACTION = "catalogo";
 	
@@ -59,8 +62,18 @@ public class VendaByIdSubmitAction extends BaseAction{
 		TipoPagamento pagamento = TipoPagamento.findByName(tipoPagamento);
 		if(pagamento == null){return CATALOGO_ACTION;}
 		
+		int intVencimentoBoleto = -1;
+		try{intVencimentoBoleto = Integer.parseInt(vencimentoBoleto);}catch(Exception e){}
+		if(intVencimentoBoleto < 0 && TipoPagamento.BOLETO_MENSAL.equals(pagamento)){return CATALOGO_ACTION;}
+		
 		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
 		if(intParcelas < 0){return CATALOGO_ACTION;}
+		
+		if(entradaBig.compareTo(produto.getPreco()) > 0){return CATALOGO_ACTION;}
+		
+		if(!DataPagamentoService.isDiaPagamentoValido(intVencimentoBoleto, intParcelas, new Date())){
+			return CATALOGO_ACTION;
+		}
 		
 		
 		Simulacao simulacao = SimulacaoService.generateSimulation(
@@ -68,12 +81,14 @@ public class VendaByIdSubmitAction extends BaseAction{
 								new BigDecimal(1.3), 
 								entradaBig, 
 								intParcelas);
+		simulacao.setDiaVencimentoBoleto(intVencimentoBoleto);
 
 		request.getSession().setAttribute(SessionConstants.SIMULACAO_KEY , simulacao);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_PRODUCT_KEY, produto);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_CLIENT_KEY, cliente);
+		request.getSession().setAttribute(SessionConstants.CHECKOUT_VENDEDOR_KEY, vendedorId);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_TIPO_PAGAMENTO, pagamento);
-		
+		request.setAttribute("dataPrimeiraParcela", DataPagamentoService.getDataPagamentoProximoMesByDataAtual(new Date(), intVencimentoBoleto));
 		
 		return SUCCESS;
 	}
@@ -125,6 +140,16 @@ public class VendaByIdSubmitAction extends BaseAction{
 
 	public void setProduto(String produto) {
 		this.produto = produto;
+	}
+
+
+	public String getVencimentoBoleto() {
+		return vencimentoBoleto;
+	}
+
+
+	public void setVencimentoBoleto(String vencimentoBoleto) {
+		this.vencimentoBoleto = vencimentoBoleto;
 	}
 
 }
