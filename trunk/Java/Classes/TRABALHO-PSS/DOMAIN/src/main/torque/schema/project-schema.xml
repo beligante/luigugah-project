@@ -9,6 +9,7 @@
         <column name="tipo_produto" type="VARCHAR" />
         <column name="dimensoes" type="DECIMAL" />
         <column name="preco" type="DECIMAL" />
+        <column name="situacao" type="VARCHAR" />
         <column name="endereco" type="VARCHAR" />
         <column name="bairro" type="VARCHAR" />
         <column name="cidade" type="VARCHAR" />
@@ -33,16 +34,9 @@
         <column name="id" required="true" autoIncrement="true"
             primaryKey="true" type="INTEGER" />
         <column name="produto_id" type="INTEGER" />
-        <column name="tipo_negociacao_id" type="INTEGER" />
+        <column name="tipo_negociacao" type="VARCHAR" />
     </table>
     
-    <table name="tipo_negociacao" javaName="TipoNegociacao">
-
-        <column name="id" required="true" autoIncrement="true"
-            primaryKey="true" type="INTEGER" />
-        <column name="nome" type="VARCHAR" />
-    </table>
-
     <table name="usuario" javaName="Usuario">
         <column name="id" required="true" autoIncrement="true"
             primaryKey="true" type="INTEGER" />
@@ -67,7 +61,7 @@
             primaryKey="true" type="INTEGER" />
         <column name="id_vendedor" type="INTEGER" />
         <column name="id_cliente" type="INTEGER" />
-        <column name="meio_pagamento" type="INTEGER" />
+        <column name="meio_pagamento" type="VARCHAR" />
         <column name="valor_final_total" type="DECIMAL" />
         <column name="data_negociacao" type="TIMESTAMP" />
         <column name="tipo_negocio" type="VARCHAR" />

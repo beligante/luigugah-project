@@ -19,6 +19,7 @@
 								<th>Codigo</th>
 								<th>Tipo</th>
 								<th>Dimensao</th>
+								<th>Situação</th>
 								<th>Valor</th>
 								<th>Estado / Cidade</th>
 								<th>Açoes</th>
@@ -31,6 +32,7 @@
 									<td>${produto.id}</td>
 									<td>${produto.tipoProduto}</td>
 									<td>${produto.dimensoes} M²</td>
+									<td>${produto.situacao}</td>
 									<td>R$ ${produto.preco}</td>
 									<td>${produto.estado} / ${produto.cidade}</td>
 									<td>

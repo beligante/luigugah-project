@@ -1,6 +1,7 @@
 package com.saei.services;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 import com.saei.domain.Simulacao;
 
@@ -13,23 +14,27 @@ public class SimulacaoService {
 												BigDecimal entrada,
 												int quantidadeParcelas){
 		
-		BigDecimal valorJuros = valorOriginal.subtract(entrada).divide(CEM, BigDecimal.ROUND_HALF_UP).multiply(juros);
+		BigDecimal valorJuros = valorOriginal
+									.subtract(entrada)
+									.divide(CEM, BigDecimal.ROUND_HALF_UP)
+									.multiply (juros.setScale(2, BigDecimal.ROUND_HALF_UP));
 		
 		BigDecimal valorParcela = valorOriginal
 										.subtract(entrada)
 										.add(valorJuros)
 										.divide(new BigDecimal(quantidadeParcelas), 
-												BigDecimal.ROUND_HALF_UP);
+												BigDecimal.ROUND_HALF_UP)
+										.setScale(2, BigDecimal.ROUND_HALF_UP);
 		
 		BigDecimal valorTotal = valorParcela.multiply(new BigDecimal(quantidadeParcelas));
 	
 		Simulacao simulacao = new Simulacao();
-		simulacao.setJuros(juros);
-		simulacao.setEntrada(entrada);
+		simulacao.setJuros(juros.setScale(2, BigDecimal.ROUND_HALF_UP));
+		simulacao.setEntrada(entrada.setScale(2, BigDecimal.ROUND_HALF_UP));
 		simulacao.setQuantidadeParcelas(quantidadeParcelas);
-		simulacao.setValorFinal(valorTotal);
-		simulacao.setValorOriginal(valorOriginal);
-		simulacao.setValorParcelas(valorParcela);
+		simulacao.setValorFinal(valorTotal.setScale(2, BigDecimal.ROUND_HALF_UP));
+		simulacao.setValorOriginal(valorOriginal.setScale(2, BigDecimal.ROUND_HALF_UP));
+		simulacao.setValorParcelas(valorParcela.setScale(2, BigDecimal.ROUND_HALF_UP));
 		
 		return simulacao;
 	}

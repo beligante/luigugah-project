@@ -313,6 +313,14 @@
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	
+	<definition name="venda.by.id.simulacao" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/venda/bodyVendaDetailSimulacao.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
 	<definition name="venda.contrato.page" extends="baseLayout">
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
@@ -328,7 +336,6 @@
 		<put-attribute name="body" value="/jsp/venda/bodyVendaFinalizada.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
-	
 	<!-- FIM PAGINAS RELACIONADAS A CLIENTE -->
 	
 	
