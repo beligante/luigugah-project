@@ -12,7 +12,7 @@ import com.saei.domain.commons.InteresseVenda;
 
 public class InteresseVendaService {
 	
-	private static final Logger LOG = Logger.getLogger(ProdutoService.class);
+	private static final Logger LOG = Logger.getLogger(InteresseVendaService.class);
 	
 	public int salvarInteresseVenda(InteresseVenda interesseVend){
 		try{

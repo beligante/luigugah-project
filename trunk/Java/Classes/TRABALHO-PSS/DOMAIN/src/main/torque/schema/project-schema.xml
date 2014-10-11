@@ -24,9 +24,17 @@
     	<column name="id" required="true" autoIncrement="true"
             primaryKey="true" type="INTEGER" />
         <column name="data_cadastro" type="TIMESTAMP" />
-        <column name="estado" type="VARCHAR" />
         <column name="cliente_id" type="INTEGER" />
         <column name="produto_id" type="INTEGER" />
+    </table>
+    
+    <table name="interesse_venda_historico" javaName="InteresseVendaHistorico">
+    	<column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="data_ocorrencia" type="TIMESTAMP" />
+        <column name="descricao" type="VARCHAR" />
+        <column name="situacao" type="VARCHAR" />
+        <column name="interesse_venda_id" type="INTEGER" />
     </table>
     
     <table name="modalidade_negociacao" javaName="ModalidadeNegociacao">

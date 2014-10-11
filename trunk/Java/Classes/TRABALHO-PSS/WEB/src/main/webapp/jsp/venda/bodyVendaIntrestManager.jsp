@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ include file="../comum/Taglibs.jsp" %>
@@ -23,20 +23,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${interesses}" var="interesse" >
+							<c:forEach items="${interessesVendaVO}" var="interesse" >
 								<tr class="odd gradeA">
 
-									<td>${interesse.estado}</td>
-									<td>${interesse.cliente_id}</td>
-									<td>${interesse.produto_id}</td>
-									<td>${interesse.data_cadastro}</td>
+									<td>${interesse.tipoSituacao}</td>
+									<td>${interesse.interesseVenda.clienteId}</td>
+									<td>${interesse.interesseVenda.produtoId}</td>
+									<td>${interesse.interesseVenda.dataCadastro}</td>
 									<td>
-										<a href="produto-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Detalhes</a>
-										<a href="update-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Editar</a>
-										<a href="delete-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Deletar</a>
-										<c:if test="${isInteresseVendaPage}">
-											<a href="sale-product-by-id?id=${produto.id}" class="btn btn-primary  btn-xs">Vender</a>
-										</c:if>
+										<a href="sales-intrest-manager-update?id=${interesse.interesseVenda.id}" class="btn btn-primary  btn-xs">Editar</a>
+										<a href="sales-intrest-manager-delete?id=${interesse.interesseVenda.id}" class="btn btn-primary  btn-xs">Deletar</a>
+										<a href="sale-product-by-id?id=${interesse.interesseVenda.produtoId}" class="btn btn-primary  btn-xs">Vender</a>
 									</td>
 								</tr>
 							</c:forEach>
