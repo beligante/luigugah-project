@@ -8,10 +8,12 @@ import com.saei.domain.Simulacao;
 import com.saei.domain.commons.FaturaPagamento;
 import com.saei.domain.commons.Negocio;
 import com.saei.domain.commons.Pagamento;
+import com.saei.domain.enums.SituacaoProduto;
 import com.saei.services.DataPagamentoService;
 import com.saei.services.FaturaPagamentoService;
 import com.saei.services.NegocioService;
 import com.saei.services.PagamentoService;
+import com.saei.services.ProdutoService;
 
 public class NegocioEng {
 
@@ -27,9 +29,10 @@ public class NegocioEng {
 			
 			List<FaturaPagamento> faturas = new ArrayList<FaturaPagamento>();
 			
-			FaturaPagamento fatura = new FaturaPagamento();
+			FaturaPagamento fatura = null;
 			Date dataVencimento = new Date();
 			for(int contador = 0; contador < simulacao.getQuantidadeParcelas(); contador++){
+				fatura = new FaturaPagamento();
 				dataVencimento = DataPagamentoService.getDataPagamentoProximoMesByDataAtual(dataVencimento, simulacao.getDiaVencimentoBoleto());
 				fatura.setVencimento(dataVencimento);
 				fatura.setValor(simulacao.getValorParcelas());
@@ -51,11 +54,19 @@ public class NegocioEng {
 				fps.salvarFaturaPagamento(fat);
 			}
 			
+			ProdutoService ps = new ProdutoService();
+			ps.changeProdutoSituacaoById(negocio.getIdProduto(), 
+										SituacaoProduto.VENDIDO.name());
+			
 			return negocio;
 		}
 		
 		public List<Negocio> getAllNegocios(){
 			return NEGOCIO_SERVICE.searchNegocio(null);
+		}
+		
+		public List<Negocio> getAllVendas(){
+			return NEGOCIO_SERVICE.getAllVendas();
 		}
 		
 		public void deleteNegocioByNegocio(Negocio negocio){

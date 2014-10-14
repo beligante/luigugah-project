@@ -39,8 +39,12 @@ public class VendaByIdSubmitAction extends BaseAction{
 		if(clientId < 0 || cliente == null){return CATALOGO_ACTION;}
 		
 		int vendedorId = -1;
-		try{vendedorId = Integer.parseInt(vendedor);}catch(Exception e){}
-		if(vendedorId < 0){return CATALOGO_ACTION;}
+		Usuario vendedor = null;
+		try{
+			vendedorId = Integer.parseInt(this.vendedor);
+			vendedor = getAplicationEng().getUsuarioEng().getUsuarioById(vendedorId);
+		}catch(Exception e){}
+		if(vendedorId < 0 || vendedor == null){return CATALOGO_ACTION;}
 		
 		int produtoId = -1;
 		Produto produto = null;
@@ -86,11 +90,11 @@ public class VendaByIdSubmitAction extends BaseAction{
 		request.getSession().setAttribute(SessionConstants.SIMULACAO_KEY , simulacao);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_PRODUCT_KEY, produto);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_CLIENT_KEY, cliente);
-		request.getSession().setAttribute(SessionConstants.CHECKOUT_VENDEDOR_KEY, vendedorId);
+		request.getSession().setAttribute(SessionConstants.CHECKOUT_VENDEDOR_KEY, vendedor);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_TIPO_PAGAMENTO, pagamento);
 		request.setAttribute("dataPrimeiraParcela", DataPagamentoService.getDataPagamentoProximoMesByDataAtual(new Date(), intVencimentoBoleto));
 		
-		return SUCCESS;
+		return SUCCESS; 
 	}
 
 	

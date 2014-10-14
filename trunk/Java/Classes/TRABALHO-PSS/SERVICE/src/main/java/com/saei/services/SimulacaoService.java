@@ -26,7 +26,9 @@ public class SimulacaoService {
 												BigDecimal.ROUND_HALF_UP)
 										.setScale(2, BigDecimal.ROUND_HALF_UP);
 		
-		BigDecimal valorTotal = valorParcela.multiply(new BigDecimal(quantidadeParcelas));
+		BigDecimal valorTotal = valorParcela
+									.multiply(new BigDecimal(quantidadeParcelas))
+									.add(entrada);
 	
 		Simulacao simulacao = new Simulacao();
 		simulacao.setJuros(juros.setScale(2, BigDecimal.ROUND_HALF_UP));

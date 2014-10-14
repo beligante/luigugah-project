@@ -1,5 +1,6 @@
 package com.saei.actions.venda;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -23,6 +24,14 @@ public class VendaByIdAction extends BaseAction{
 			return CATALOGO_ACTION;
 		}
 		
+		String clientId = request.getParameter("clientId");
+		int intClientId = -1;
+		try{intClientId = Integer.parseInt(clientId);}catch(Exception e){}
+		Usuario clienteRequest = null;
+		if(StringUtils.isNotEmpty(clientId) && intClientId > 0){
+			clienteRequest = getAplicationEng().getUsuarioEng().getUsuarioById(intClientId);
+		}
+		
 		int intId = -1;
 		try{intId = Integer.parseInt(id);}catch(Exception e){}
 		if(intId < 0){return CATALOGO_ACTION;}
@@ -37,8 +46,15 @@ public class VendaByIdAction extends BaseAction{
 		if(CollectionUtils.isEmpty(vendedores)){return CATALOGO_ACTION;}
 		request.setAttribute("vendedores", vendedores);
 
-		List<Usuario> clientes = getAplicationEng()
+		List<Usuario> clientes = null;
+		if(clienteRequest != null){
+			clientes = new ArrayList<Usuario>();
+			clientes.add(clienteRequest);
+		}else{
+			clientes = getAplicationEng()
 				.getUsuarioEng().getAllUsuarios();
+		}
+		
 		if(CollectionUtils.isEmpty(clientes)){return CATALOGO_ACTION;}
 		request.setAttribute("clientes", clientes);
 
