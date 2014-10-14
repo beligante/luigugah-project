@@ -274,6 +274,7 @@ CREATE TABLE `produto` (
   `estado` varchar(70) DEFAULT NULL,
   `descricao` varchar(3000) DEFAULT NULL,
   `link_foto` varchar(200) DEFAULT NULL,
+  `deletado` BOOL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

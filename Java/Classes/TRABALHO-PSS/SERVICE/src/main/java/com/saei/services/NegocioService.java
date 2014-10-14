@@ -7,6 +7,7 @@ import org.apache.torque.util.Criteria;
 
 import com.saei.domain.commons.BaseNegocioPeer;
 import com.saei.domain.commons.Negocio;
+import com.saei.domain.enums.TipoNegociacao;
 
 public class NegocioService {
 	
@@ -30,9 +31,23 @@ public class NegocioService {
 		try {
 			if(negocio != null){
 				return BaseNegocioPeer.doSelect(negocio);
+			}else{
+				return BaseNegocioPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
 			LOG.error("Ocorreu um erro ao buscar o negocio: \n" + negocio.toString(), e);
+		}
+		return null;
+	}
+	
+	public List<Negocio> getAllVendas(){
+		try {
+			Criteria c = new Criteria();
+			c.add(BaseNegocioPeer.TIPO_NEGOCIO, TipoNegociacao.VENDA.name());
+			return BaseNegocioPeer.doSelect(c);
+			
+		} catch (Exception e) {
+			LOG.error("Ocorreu um erro ao buscar vendas na base", e);
 		}
 		return null;
 	}

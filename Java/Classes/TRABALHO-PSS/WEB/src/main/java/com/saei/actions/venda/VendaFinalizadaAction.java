@@ -18,10 +18,10 @@ public class VendaFinalizadaAction extends BaseAction {
 		TipoPagamento tipoPagamento = (TipoPagamento) getServletRequest().getSession().getAttribute(SessionConstants.CHECKOUT_TIPO_PAGAMENTO);
 		Produto product  = (Produto) getServletRequest().getSession().getAttribute(SessionConstants.CHECKOUT_PRODUCT_KEY);
 		Usuario client = (Usuario) getServletRequest().getSession().getAttribute(SessionConstants.CHECKOUT_CLIENT_KEY);
-		Usuario vendedor = (Usuario) getServletRequest().getSession().getAttribute(SessionConstants.CHECKOUT_CLIENT_KEY);
+		Usuario vendedor = (Usuario) getServletRequest().getSession().getAttribute(SessionConstants.CHECKOUT_VENDEDOR_KEY);
 		
 		Negocio negocio = new Negocio();
-		negocio.setIdCliente(client.getId());
+		negocio.setIdCliente(client.getId()); 
 		negocio.setIdProduto(product.getId());
 		negocio.setIdVendedor(vendedor.getId());
 		negocio.setMeioPagamento(tipoPagamento.name());

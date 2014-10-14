@@ -47,6 +47,7 @@ public class ProdutoEng {
 	}
 	
 	public void updateProdutoByProduto(Produto produto){
+		produto.setSituacao(SituacaoProduto.DISPONIVEL.name());
 		PRODUTO_SERVICE.updateProduto(produto);
 	}
 }

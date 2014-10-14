@@ -17,6 +17,7 @@ public class ProdutoService {
 		
 		try{
 			if(produto != null){
+				produto.setDeletado(false);
 				BaseProdutoPeer.doInsert(produto);
 				return produto.getId();
 			}
@@ -68,10 +69,12 @@ public class ProdutoService {
 	
 	public boolean removeProdutoById(int id){
 		try{
-			Criteria c = new Criteria();
-			c.add(BaseProdutoPeer.ID, id);
-				BaseProdutoPeer.doDelete(c);
-				return true;
+			Produto p = searchProdutoById(id);
+			p.setDeletado(true);
+			p.setNew(false);
+			p.setModified(true);
+			BaseProdutoPeer.doUpdate(p);
+			return true;
 			
 		}catch (Exception e) {
 			LOG.error("Ocorreu um erro ao remover o produto de id[" + id + "]", e);
@@ -93,5 +96,19 @@ public class ProdutoService {
 		}
 		
 		return false;
+	}
+	
+	public void changeProdutoSituacaoById(int id, String status){
+		try{
+			Produto produto = searchProdutoById(id);
+			if(produto != null){
+				produto.setNew(false);
+				produto.setModified(true);
+				produto.setSituacao(status);
+				BaseProdutoPeer.doUpdate(produto);
+			}
+		}catch (Exception e) {
+			LOG.error("Ocorreu um erro ao alterar o status do produto de id[" + id + "]", e);
+		}
 	}
 }

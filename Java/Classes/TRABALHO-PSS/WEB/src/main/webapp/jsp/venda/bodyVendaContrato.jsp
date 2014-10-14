@@ -2,9 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../comum/Taglibs.jsp" %>
 
-<form class="form-horizontal" role="form">
-	
-<div id="lipsum">
+<form class="form-horizontal" role="form" style="width: 100%;">
+
+<h1 style="
+    margin: 26px 10px;
+    width: 100%;
+    text-align: center;
+">CONTRATO</h1>
+<div id="lipsum" style="width: 80%;margin: 0 auto;text-align: justify;">
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id finibus massa. Nunc nec cursus lacus. Morbi tellus mi, dictum quis est vitae, egestas consectetur ex. Nulla rhoncus felis quis nisi placerat, sed venenatis quam ornare. Donec elementum turpis justo, ac lobortis magna semper ut. Morbi nec elit id lectus consequat ullamcorper. Vestibulum accumsan risus non metus fermentum porta. Pellentesque arcu odio, sagittis quis elit ac, vehicula dignissim mi. Praesent fermentum dapibus massa quis consectetur. In id ipsum at purus scelerisque dapibus consequat nec nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut ut iaculis ex. Curabitur ullamcorper diam id ligula malesuada consectetur.
 </p>
@@ -50,14 +55,16 @@ Donec magna magna, eleifend eget ante quis, porta laoreet risus. Proin a quam he
 <p>
 Pellentesque at tellus ac dui dictum sagittis ac et tortor. Morbi fermentum nisi ac magna pretium consectetur. Phasellus quis dictum mi. Nam feugiat ipsum arcu, quis pharetra nisi egestas vel. In vitae ultrices lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam sed tempor lacus. Quisque efficitur lorem at tristique bibendum. Nulla pulvinar nisi sit amet orci sagittis sollicitudin. Aliquam in facilisis odio, vitae tincidunt orci. Nulla et euismod nibh. Aenean placerat sit amet erat non sodales. Donec in tellus nisi. Duis gravida dapibus eleifend.
 </p></div>
-	
+
+<div style="margin: 10px 0 10px 0;font-size: 20px;">
+	<p>Eu ${cliente.nome} afirmo ter lido o contrato descrito acima e estou ciente de todas as suas clausulas</p>
+</div>
+
 	<div class="form-group">
 		<div class="col-md-2">
-			<p></p>
 			<a href="sale-product-simulacao" class="btn btn-warning">Voltar</a>
 		</div>
 		<div class="col-md-10">
-			<p>Eu ${cliente.nome} afirmo ter lido o contrato descrito acima e estou ciente de todas as suas clausulas</p>
 			<a href="sale-product-finished" class="btn btn-default">Concordo e desejo finalizar!</a>
 		</div>
 	</div>

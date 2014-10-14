@@ -257,14 +257,6 @@
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	
-	<definition name="sales.intrest.manager" extends="baseLayout">
-		<put-attribute name="title" value="SAEI" />
-		<put-attribute name="header" value="/jsp/comum/header.jsp" />
-		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
-		<put-attribute name="body" value="/jsp/venda/bodyVendaIntrestManager.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
-	</definition>
-	
 	<definition name="sales.intrest.manager.update" extends="baseLayout">
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
@@ -305,6 +297,15 @@
 
 	<!-- INICIO PAGINAS RELACIONADAS A VENDA -->
 	
+	
+	<definition name="venda.intrest.manager" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/venda/bodyVendaIntrestManager.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
 	<definition name="venda.search.page" extends="baseLayout">
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
@@ -344,7 +345,17 @@
 		<put-attribute name="body" value="/jsp/venda/bodyVendaFinalizada.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
-	<!-- FIM PAGINAS RELACIONADAS A CLIENTE -->
+	
+	
+	<definition name="venda.finished.search.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
+		<put-attribute name="body" value="/jsp/venda/bodyVendaFinalizadaSearch.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+	</definition>
+	
+	<!-- FIM PAGINAS RELACIONADAS A VENDA -->
 	
 	
 </tiles-definitions>

@@ -18,6 +18,7 @@
         <column name="link_foto" type="VARCHAR" />
         <column name="cep" type="VARCHAR" />
         <column name="complemento" type="VARCHAR" />
+        <column name="deletado" type="BOOLEANINT" />
     </table>
     
     <table name="interesse_venda" javaName="InteresseVenda">

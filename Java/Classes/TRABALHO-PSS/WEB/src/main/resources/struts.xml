@@ -85,7 +85,6 @@
 				class="com.saei.actions.venda.VendaCatalogoAction">
 			<result name="success" type="tiles">venda.search.page</result>
 		</action>
-		
 		<action name="sale-product-by-id"
 				class="com.saei.actions.venda.VendaByIdAction">
 			<result name="success" type="tiles">venda.by.id.page</result>
@@ -116,11 +115,16 @@
 		</action>
 		<action name="sales-intrest-manager"
 				class="com.saei.actions.venda.VendaIntrestManagerAction">
-			<result name="success" type="tiles">sales.intrest.manager</result>
+			<result name="success" type="tiles">venda.intrest.manager</result>
 		</action>
 		<action name="sales-intrest-manager-update"
 				class="com.saei.actions.venda.VendaIntrestManagerUpdateAction">
 			<result name="success" type="tiles">sales.intrest.manager.update</result>
+		</action>
+		
+		<action name="sales-search"
+				class="com.saei.actions.venda.VendaSearch">
+			<result name="success" type="tiles">venda.finished.search.page</result>
 		</action>
 	</package>
 </struts>
