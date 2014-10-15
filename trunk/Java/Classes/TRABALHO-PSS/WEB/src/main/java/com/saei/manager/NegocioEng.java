@@ -36,7 +36,7 @@ public class NegocioEng {
 				dataVencimento = DataPagamentoService.getDataPagamentoProximoMesByDataAtual(dataVencimento, simulacao.getDiaVencimentoBoleto());
 				fatura.setVencimento(dataVencimento);
 				fatura.setValor(simulacao.getValorParcelas());
-				fatura.setLinkBoleto("/archives/boleto.pdf");
+				fatura.setLinkBoleto("archives/boleto.pdf");
 				faturas.add(fatura);
 			}
 			

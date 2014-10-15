@@ -126,5 +126,17 @@
 				class="com.saei.actions.venda.VendaSearch">
 			<result name="success" type="tiles">venda.finished.search.page</result>
 		</action>
+		
+		<!-- Pagamentos actions -->
+		<action name="pagamentos-search" 
+				class="com.saei.actions.pagamentos.PagamentosSearch">
+				<result name="success" type="tiles">pagamento.search.page</result>
+		</action>
+		
+		<action name="pagamentos-search-submit"
+				class="com.saei.actions.pagamentos.PagamentosSearchSubmit">
+				<result name="success" type="tiles">pagamento.search.user.page</result>
+				<result name="pagamentos" type="chain">pagamentos-search</result>
+		</action>
 	</package>
 </struts>

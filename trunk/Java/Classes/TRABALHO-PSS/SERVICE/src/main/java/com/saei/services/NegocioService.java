@@ -1,13 +1,17 @@
 package com.saei.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
+import org.apache.torque.util.BasePeer;
 import org.apache.torque.util.Criteria;
 
 import com.saei.domain.commons.BaseNegocioPeer;
 import com.saei.domain.commons.Negocio;
 import com.saei.domain.enums.TipoNegociacao;
+import com.workingdogs.village.Record;
 
 public class NegocioService {
 	
@@ -89,5 +93,28 @@ public class NegocioService {
 		}
 		
 		return false;
+	}
+	
+	public List<Integer> getAllIdsNegocioByUsuarioId(Integer id){
+		
+		try{
+			Criteria c = new Criteria();
+			c.addSelectColumn(BaseNegocioPeer.ID);
+			c.add(BaseNegocioPeer.ID_CLIENTE, id);
+			
+			List<Record> result = BasePeer.doSelect(c);
+			
+			if(CollectionUtils.isNotEmpty(result)){
+				List<Integer> ids = new ArrayList<Integer>();
+				for(Record record : result){
+					ids.add(record.getValue(BaseNegocioPeer.ID).asInt());
+				}
+				return ids;
+			}
+		}catch(Exception e){
+			LOG.error("Ocorreu um erro ao buscar os negocios para o usuario de id[" + id + "]", e);
+		}
+		
+		return null;
 	}
 }

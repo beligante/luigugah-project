@@ -16,7 +16,7 @@
 		
 	<li><a href="product-search">Produtos</a></li>
 	<li><a href="usuario-search">Usuarios</a></li>
-	<li><a href="pagamentos">Pagamentos</a></li>
+	<li><a href="pagamentos-search">Pagamentos</a></li>
 	<li><a href="agendamento">Agendamento</a></li>
 	<li class="dropdown">
 		<a class="dropdown-toggle"data-toggle="dropdown" href="#"> 
