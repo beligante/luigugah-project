@@ -12,6 +12,7 @@ public class AplicationEng {
 	private static UsuarioEng USER_ENG;
 	private static NegocioEng NEGOCIO_ENG;
 	private static InteresseVendaEng INTERESSEVENDA_ENG;
+	private static PagamentoEng PAGAMENTO_ENG;
 	
 	private AplicationEng() {
 	}
@@ -24,6 +25,7 @@ public class AplicationEng {
 			USER_ENG = 			new UsuarioEng();
 			NEGOCIO_ENG = 		new NegocioEng();
 			INTERESSEVENDA_ENG = new InteresseVendaEng();
+			PAGAMENTO_ENG = 	new PagamentoEng();
 			return new AplicationEng();
 		}catch(Exception e){
 			LOG.error("Ocorreu um erro ao inicializar a aplicação", e);
@@ -45,5 +47,9 @@ public class AplicationEng {
 	
 	public InteresseVendaEng getInteresseVendaEng(){
 		return INTERESSEVENDA_ENG;
+	}
+	
+	public PagamentoEng getPagamentoEng(){
+		return PAGAMENTO_ENG;
 	}
 }

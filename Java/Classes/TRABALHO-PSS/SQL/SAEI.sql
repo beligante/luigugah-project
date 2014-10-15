@@ -63,7 +63,7 @@ CREATE TABLE `faturas_pagamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pagamento` int(11) DEFAULT NULL,
   `vencimento` timestamp NULL DEFAULT NULL,
-  `valor` decimal(10,0) DEFAULT NULL,
+  `valor` decimal(30,2) DEFAULT NULL,
   `link_boleto` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_fp_pagamento_idx` (`id_pagamento`),
@@ -324,6 +324,35 @@ LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Table structure for table `interesse_venda_historico`
+--
+
+DROP TABLE IF EXISTS `interesse_venda_historico`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interesse_venda_historico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(100) DEFAULT NULL,
+  `data_ocorrencia` datetime DEFAULT NULL,
+  `interesse_venda_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_interesse_venda_id_idx` (`interesse_venda_id`),
+  CONSTRAINT `fk_interesse_venda_id` FOREIGN KEY (`interesse_venda_id`) REFERENCES `interesse_venda` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `interesse_venda_historico`
+--
+
+LOCK TABLES `interesse_venda_historico` WRITE;
+/*!40000 ALTER TABLE `interesse_venda_historico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interesse_venda_historico` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -9,8 +9,8 @@
 	<definition name="baseLayout" template="jsp/comum/BaseLayout.jsp">
 		<put-attribute name="title" value="SAEI" />
 		<put-attribute name="top-bar" value="/jsp/comum/empty.jsp" />
-		<put-attribute name="header" value="/jsp/comum/empty.jsp" />
-		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="header" value="/jsp/comum/header.jsp" />
+		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
@@ -356,6 +356,18 @@
 	</definition>
 	
 	<!-- FIM PAGINAS RELACIONADAS A VENDA -->
+	
+	<!-- INICIO PAGINAS RELACIONADAS A PAGAMENTOS -->
+	<definition name="pagamento.search.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="body" value="/jsp/pagamentos/bodyPagamentoSearch.jsp" />
+	</definition>
+	
+	<definition name="pagamento.search.user.page" extends="baseLayout">
+		<put-attribute name="title" value="SAEI" />
+		<put-attribute name="body" value="/jsp/pagamentos/bodyPagamentosByUsuarioSearch.jsp" />
+	</definition>
+	<!-- FIM PAGINAS RELACIONADAS A PAGAMENTOS -->
 	
 	
 </tiles-definitions>

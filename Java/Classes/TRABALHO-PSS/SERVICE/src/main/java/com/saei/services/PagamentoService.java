@@ -1,11 +1,16 @@
 package com.saei.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
+import org.apache.torque.util.BasePeer;
+import org.apache.torque.util.Criteria;
 
 import com.saei.domain.commons.BasePagamentoPeer;
 import com.saei.domain.commons.Pagamento;
+import com.workingdogs.village.Record;
 
 public class PagamentoService {
 	
@@ -60,6 +65,26 @@ public class PagamentoService {
 		}
 		
 		return false;
+	}
+	
+	public List<Integer> getAllPagamentosIdByNegociosId(List<Integer> ids){
+		try{
+			Criteria c = new Criteria();
+			c.addIn(BasePagamentoPeer.ID_NEGOCIO, ids);
+			c.addSelectColumn(BasePagamentoPeer.ID);
+			List<Record> records = BasePeer.doSelect(c);
+			List<Integer> pagamentosIds = new ArrayList<Integer>();
+			if(CollectionUtils.isNotEmpty(records)){
+				for(Record record : records){
+					pagamentosIds.add(record.getValue(BasePagamentoPeer.ID).asInt());
+				}
+			}
+			return pagamentosIds;
+		}catch (Exception e) {
+			LOG.error("Ocorreu um erro ao buscar os pagamentos para os negocios de id[" + ids + "]", e);
+		}
+		
+		return null;
 	}
 
 }
