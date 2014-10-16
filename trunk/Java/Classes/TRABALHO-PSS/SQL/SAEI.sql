@@ -1,12 +1,11 @@
 drop database if exists saei_db;
 CREATE DATABASE  IF NOT EXISTS `saei_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `saei_db`;
-
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: localhost    Database: saei_db
+-- Host: 127.0.0.1    Database: saei_db
 -- ------------------------------------------------------
--- Server version 5.6.20
+-- Server version	5.6.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -145,8 +144,8 @@ DROP TABLE IF EXISTS `interesse_venda_historico`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `interesse_venda_historico` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `situacao` varchar(45) DEFAULT NULL,  
-  `descricao` varchar(100) DEFAULT NULL,
+  `descricao` varchar(2000) DEFAULT NULL,
+  `situacao` varchar(100) DEFAULT NULL,
   `data_ocorrencia` datetime DEFAULT NULL,
   `interesse_venda_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -162,6 +161,31 @@ CREATE TABLE `interesse_venda_historico` (
 LOCK TABLES `interesse_venda_historico` WRITE;
 /*!40000 ALTER TABLE `interesse_venda_historico` DISABLE KEYS */;
 /*!40000 ALTER TABLE `interesse_venda_historico` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `juros_parcelamento`
+--
+
+DROP TABLE IF EXISTS `juros_parcelamento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `juros_parcelamento` (
+  `id` int(11) NOT NULL,
+  `max_valor_total` decimal(30,2) DEFAULT NULL,
+  `juros` decimal(5,4) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `max_valor_total_UNIQUE` (`max_valor_total`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `juros_parcelamento`
+--
+
+LOCK TABLES `juros_parcelamento` WRITE;
+/*!40000 ALTER TABLE `juros_parcelamento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `juros_parcelamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -274,7 +298,7 @@ CREATE TABLE `produto` (
   `estado` varchar(70) DEFAULT NULL,
   `descricao` varchar(3000) DEFAULT NULL,
   `link_foto` varchar(200) DEFAULT NULL,
-  `deletado` BOOL DEFAULT NULL,
+  `deletado` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -325,35 +349,6 @@ LOCK TABLES `usuario` WRITE;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Table structure for table `interesse_venda_historico`
---
-
-DROP TABLE IF EXISTS `interesse_venda_historico`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `interesse_venda_historico` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(100) DEFAULT NULL,
-  `data_ocorrencia` datetime DEFAULT NULL,
-  `interesse_venda_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_interesse_venda_id_idx` (`interesse_venda_id`),
-  CONSTRAINT `fk_interesse_venda_id` FOREIGN KEY (`interesse_venda_id`) REFERENCES `interesse_venda` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `interesse_venda_historico`
---
-
-LOCK TABLES `interesse_venda_historico` WRITE;
-/*!40000 ALTER TABLE `interesse_venda_historico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `interesse_venda_historico` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -362,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-08 20:08:32
+-- Dump completed on 2014-10-15 20:59:37
