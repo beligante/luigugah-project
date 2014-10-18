@@ -2,7 +2,8 @@ package com.saei.domain.enums;
 
 public enum TipoSituacao {
 	
-	PENDENTE("Pendente");
+	PENDENTE("Pendente"),CANCELADO("Cancelado"),CONTATO_EFETUADO("Contato Efetuado"),AGUARDANDO_RESPOSTA("Aguardando Resposta")
+	,VENDIDO("Vendido");
 	
 	private String label;
 	

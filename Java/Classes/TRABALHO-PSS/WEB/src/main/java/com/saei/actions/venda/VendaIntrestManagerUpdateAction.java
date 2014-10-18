@@ -11,6 +11,7 @@ public class VendaIntrestManagerUpdateAction extends BaseAction{
 	private static final String INTREST_ACTION = "intrest";
 	private String id;
 	private List<InteresseVendaHistorico> listInteresseVendHist;
+	private InteresseVendaHistorico interesseVendHist;
 	private InteresseVenda interesseVend;
 
 
@@ -19,10 +20,13 @@ public class VendaIntrestManagerUpdateAction extends BaseAction{
 			Integer id = null;
 			id = Integer.parseInt(this.id);
 		
-			interesseVend = getAplicationEng().getInteresseVendaEng().getInteresseVendaById(id);
-			listInteresseVendHist = getAplicationEng().getInteresseVendaEng().getInteresseVendaHistoricoByInteresseVendaId(id);
+		interesseVend = getAplicationEng().getInteresseVendaEng().getInteresseVendaById(id);
+		interesseVendHist = getAplicationEng().getInteresseVendaEng().getEstaduAtualInterresseById(id);
+		listInteresseVendHist = getAplicationEng().getInteresseVendaEng().getInteresseVendaHistoricoByInteresseVendaId(id);
 		
-			request.setAttribute("interesseVenda", interesseVend);		
+		request.setAttribute("interesseVenda", interesseVend);	
+		request.setAttribute("interesseVendHist", interesseVendHist);
+		request.setAttribute("listInteresseVendHist", listInteresseVendHist);
 		
 		}catch(Exception e){
 			addActionError("Ocorreu um erro inesperado: " + e.getMessage());
@@ -31,7 +35,6 @@ public class VendaIntrestManagerUpdateAction extends BaseAction{
 		return SUCCESS;
 	}
 
-	
 	//-------GET AND SET-------
 	
 	public String getId() {

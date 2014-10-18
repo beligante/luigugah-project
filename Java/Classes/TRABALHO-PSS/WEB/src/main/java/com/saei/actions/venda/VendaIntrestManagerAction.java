@@ -15,8 +15,6 @@ public class VendaIntrestManagerAction extends BaseAction{
 	
 	public String execute() {
 		
-		request.setAttribute("isInteresseVendaPage", true);
-		
 		List<VendaInteresseVO> interesse = parseToInteresseVendaVOList();
 		
 		if(CollectionUtils.isEmpty(interesse)){

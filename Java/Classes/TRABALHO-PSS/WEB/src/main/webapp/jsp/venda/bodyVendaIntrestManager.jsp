@@ -31,7 +31,7 @@
 									<td>
 										<a href="sales-intrest-manager-update?id=${interesse.interesseVenda.id}" class="btn btn-primary  btn-xs">Editar</a>
 										<a href="sales-intrest-manager-delete?id=${interesse.interesseVenda.id}" class="btn btn-primary  btn-xs">Deletar</a>
-										<a href="sale-product-by-id?id=${interesse.interesseVenda.produtoId}" class="btn btn-primary  btn-xs">Vender</a>
+										<a href="sale-product-by-id?id=${interesse.interesseVenda.produtoId}&clientId=${interesse.interesseVenda.clienteId}" class="btn btn-primary  btn-xs">Vender</a>
 									</td>
 								</tr>
 							</c:forEach>
