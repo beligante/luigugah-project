@@ -17,7 +17,8 @@ public class BaseAction extends ActionSupport implements ServletRequestAware{
 	protected boolean hasActionError;
 	protected String actionMessage;
 	protected boolean hasActionMessage;
-	
+	protected String actionSuccess;
+	protected boolean hasActionSuccess;
 	
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
@@ -37,6 +38,14 @@ public class BaseAction extends ActionSupport implements ServletRequestAware{
 		if(StringUtils.isNotEmpty(anErrorMessage)){
 			this.actionError = anErrorMessage;
 			this.hasActionError = true;
+		}
+	}
+
+	
+	public void addActionSuccess(String anSuccessMessage) {
+		if(StringUtils.isNotEmpty(anSuccessMessage)){
+			this.actionSuccess = anSuccessMessage;
+			this.hasActionSuccess = true;
 		}
 	}
 	
@@ -86,6 +95,22 @@ public class BaseAction extends ActionSupport implements ServletRequestAware{
 
 	public void setHasActionMessage(boolean hasActionMessage) {
 		this.hasActionMessage = hasActionMessage;
+	}
+
+	public String getActionSuccess() {
+		return actionSuccess;
+	}
+
+	public void setActionSuccess(String actionSuccess) {
+		this.actionSuccess = actionSuccess;
+	}
+
+	public boolean isHasActionSuccess() {
+		return hasActionSuccess;
+	}
+
+	public void setHasActionSuccess(boolean hasActionSuccess) {
+		this.hasActionSuccess = hasActionSuccess;
 	}
 	
 	

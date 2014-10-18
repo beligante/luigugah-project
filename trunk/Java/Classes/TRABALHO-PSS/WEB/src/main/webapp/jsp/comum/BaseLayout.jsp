@@ -35,6 +35,11 @@
 			      ${actionError}
 			   </div>
 			</c:if>
+			<c:if test="${hasActionSuccess}">
+			   <div class="alert alert-success" role="alert">
+			      ${actionSuccess}
+			   </div>
+			</c:if>
 			<c:if test="${hasActionMessage}">
 			   <div class="alert alert-info" role="alert">
 			      ${actionMessage}

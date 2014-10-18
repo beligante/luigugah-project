@@ -124,7 +124,11 @@
 			<result name="success" type="tiles">sales.intrest.manager.update</result>
 			<result name="intrest" type="chain">sales-intrest-manager</result>
 		</action>
-		
+		<action name="sales-intrest-manager-update-submit"
+				class="com.saei.actions.venda.VendaIntrestManagerUpdateSubmitAction">
+			<result name="success" type="chain">sales-intrest-manager</result>
+		</action>
+				
 		<action name="sales-search"
 				class="com.saei.actions.venda.VendaSearch">
 			<result name="success" type="tiles">venda.finished.search.page</result>
