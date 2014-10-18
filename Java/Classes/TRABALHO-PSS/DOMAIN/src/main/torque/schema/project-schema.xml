@@ -119,4 +119,12 @@
         <column name="estado" type="VARCHAR" />
         <column name="valor_considerado_venda" type="DECIMAL" />
     </table>
+
+    <table name="juros_parcelamento" javaName="JurosParcelamento">
+        <column name="id" required="true" autoIncrement="true"
+            primaryKey="true" type="INTEGER" />
+        <column name="valor_total" type="DECIMAL" />
+        <column name="porcentagemJuros" type="DECIMAL" />
+        <column name="quantidadeParcelas" type="INTEGER" />
+    </table>
 </database>

@@ -15,6 +15,12 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+			</dependency>
+			
 			<!-- Torque runtime -->
 			<dependency>
 				<artifactId>torque-runtime</artifactId>
