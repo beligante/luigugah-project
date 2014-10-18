@@ -6,6 +6,9 @@ import java.util.Date;
 public class DataPagamentoService {
 	
 	public static Date getDataPagamentoProximoMesByDataAtual(Date dataAtual, int diaVencimento){
+		
+		if(dataAtual == null || diaVencimento < 0){return null;}
+		
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(dataAtual);
 		calendar.add(Calendar.MONTH, 1);
@@ -17,6 +20,10 @@ public class DataPagamentoService {
 	}
 	
 	public static boolean isDiaPagamentoValido(int dia, int quantidadeParcelas, Date dataAtual){
+		
+		if(dia < 0 || quantidadeParcelas < 1 || dataAtual == null){
+			return false;
+		}
 		
 		Date dataPagamento = dataAtual;
 		
