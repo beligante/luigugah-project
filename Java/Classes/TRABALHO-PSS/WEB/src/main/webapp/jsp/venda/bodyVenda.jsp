@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
 <%@ include file="../comum/Taglibs.jsp" %>
- 
-<BR><BR>
- 
  <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">

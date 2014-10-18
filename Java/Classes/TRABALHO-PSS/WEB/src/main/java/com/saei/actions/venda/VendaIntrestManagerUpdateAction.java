@@ -8,20 +8,26 @@ import com.saei.domain.commons.InteresseVendaHistorico;
 
 public class VendaIntrestManagerUpdateAction extends BaseAction{
 	
+	private static final String INTREST_ACTION = "intrest";
 	private String id;
 	private List<InteresseVendaHistorico> listInteresseVendHist;
 	private InteresseVenda interesseVend;
 
 
 	public String execute() {
-		Integer id = null;
-		id = Integer.parseInt(this.id);
+		try{
+			Integer id = null;
+			id = Integer.parseInt(this.id);
 		
-		interesseVend = getAplicationEng().getInteresseVendaEng().getInteresseVendaById(id);
-		listInteresseVendHist = getAplicationEng().getInteresseVendaEng().getInteresseVendaHistoricoByInteresseVendaId(id);
+			interesseVend = getAplicationEng().getInteresseVendaEng().getInteresseVendaById(id);
+			listInteresseVendHist = getAplicationEng().getInteresseVendaEng().getInteresseVendaHistoricoByInteresseVendaId(id);
 		
-		request.setAttribute("interesseVenda", interesseVend);		
+			request.setAttribute("interesseVenda", interesseVend);		
 		
+		}catch(Exception e){
+			addActionError("Ocorreu um erro inesperado: " + e.getMessage());
+			return INTREST_ACTION;
+		}
 		return SUCCESS;
 	}
 

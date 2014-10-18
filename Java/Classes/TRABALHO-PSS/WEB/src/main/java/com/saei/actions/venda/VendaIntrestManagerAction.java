@@ -17,7 +17,13 @@ public class VendaIntrestManagerAction extends BaseAction{
 		
 		request.setAttribute("isInteresseVendaPage", true);
 		
-		request.setAttribute("interessesVendaVO",parseToInteresseVendaVOList());
+		List<VendaInteresseVO> interesse = parseToInteresseVendaVOList();
+		
+		if(CollectionUtils.isEmpty(interesse)){
+			addActionMessage("Não existem interesses de venda cadastrados");
+		}
+		
+		request.setAttribute("interessesVendaVO",interesse);
 		
 		return SUCCESS;
 	}

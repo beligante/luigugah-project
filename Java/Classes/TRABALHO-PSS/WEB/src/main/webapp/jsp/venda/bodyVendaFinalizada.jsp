@@ -4,7 +4,6 @@
     
 <form class="form-horizontal" role="form">
 	
-	<BR><BR>
 	<div class="col-lg-12">
 		<h1> Compra finalizada! </h1>
 		<p> Obrigado. </p>

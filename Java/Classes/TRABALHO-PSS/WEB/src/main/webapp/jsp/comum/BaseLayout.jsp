@@ -29,6 +29,18 @@
 		<div class="menu">
 			<tiles:insertAttribute name="menu" />
 		</div>
+		<div class="system-messages">
+			<c:if test="${hasActionError}">
+			   <div class="alert alert-danger" role="alert">
+			      ${actionError}
+			   </div>
+			</c:if>
+			<c:if test="${hasActionMessage}">
+			   <div class="alert alert-info" role="alert">
+			      ${actionMessage}
+			   </div>
+			</c:if>
+    	</div>
 		<div class="body">
 			<tiles:insertAttribute name="body" />
 		</div>

@@ -21,6 +21,7 @@ public class VendaByIdAction extends BaseAction{
 
 		String id = request.getParameter("id");
 		if(StringUtils.isEmpty(id)){
+			addActionError("Desculpe! Nenhum produto foi encontrado");
 			return CATALOGO_ACTION;
 		}
 		
@@ -34,16 +35,25 @@ public class VendaByIdAction extends BaseAction{
 		
 		int intId = -1;
 		try{intId = Integer.parseInt(id);}catch(Exception e){}
-		if(intId < 0){return CATALOGO_ACTION;}
+		if(intId < 0){
+			addActionError("Desculpe! Nenhum produto foi encontrado");
+			return CATALOGO_ACTION;
+		}
 		
 		Produto produto  = getAplicationEng().getProdutoEng().getProdutoById(intId);
-		if(produto == null){return CATALOGO_ACTION;}
+		if(produto == null){
+			addActionError("Desculpe! Nenhum produto foi encontrado");
+			return CATALOGO_ACTION;
+		}
 		
 		request.setAttribute("produto", produto);
 		
 		List<Usuario> vendedores = getAplicationEng()
 									.getUsuarioEng().getAllUsuarioVendedores();
-		if(CollectionUtils.isEmpty(vendedores)){return CATALOGO_ACTION;}
+		if(CollectionUtils.isEmpty(vendedores)){
+			addActionError("Desculpe! Não existem vendedores cadastrados");
+			return CATALOGO_ACTION;
+		}
 		request.setAttribute("vendedores", vendedores);
 
 		List<Usuario> clientes = null;
@@ -55,7 +65,10 @@ public class VendaByIdAction extends BaseAction{
 				.getUsuarioEng().getAllUsuarios();
 		}
 		
-		if(CollectionUtils.isEmpty(clientes)){return CATALOGO_ACTION;}
+		if(CollectionUtils.isEmpty(clientes)){
+			addActionError("Desculpe! Não existem clientes cadastrados");
+			return CATALOGO_ACTION;
+		}
 		request.setAttribute("clientes", clientes);
 
 		TipoPagamento[] tipoPagamento = TipoPagamento.values();
