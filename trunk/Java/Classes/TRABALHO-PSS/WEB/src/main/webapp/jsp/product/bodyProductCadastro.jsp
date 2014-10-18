@@ -4,7 +4,6 @@
 
 <s:form action="cadastro-produto-submit" cssStyle="color:black">
 
-	<BR><BR>
 	<s:textfield 
 		label="CEP"
 		name="produto.cep" 

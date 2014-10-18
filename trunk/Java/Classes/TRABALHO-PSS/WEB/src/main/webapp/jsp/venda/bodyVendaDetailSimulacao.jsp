@@ -3,8 +3,6 @@
 <%@ include file="../comum/Taglibs.jsp" %>
 
 <form class="form-horizontal" role="form">
-
-	<BR><BR>
 	<div class="col-lg-12">
 		<div class="panel panel-default simulation-result">
 		

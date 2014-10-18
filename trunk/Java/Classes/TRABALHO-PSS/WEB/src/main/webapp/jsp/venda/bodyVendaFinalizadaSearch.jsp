@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../comum/Taglibs.jsp" %>
 
-<%@ page isELIgnored="false" %>
-<BR><BR>
- 
+<%@ page isELIgnored="false" %> 
  <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">

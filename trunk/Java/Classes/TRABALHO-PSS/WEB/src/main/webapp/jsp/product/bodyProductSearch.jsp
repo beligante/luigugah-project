@@ -3,7 +3,6 @@
 <%@ include file="../comum/Taglibs.jsp" %>
 
 <%@ page isELIgnored="false" %>
-<BR><BR>
  
  <div class="row">
 	<div class="col-lg-12">

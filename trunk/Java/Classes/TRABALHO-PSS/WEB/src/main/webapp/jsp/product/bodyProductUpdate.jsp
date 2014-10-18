@@ -4,7 +4,6 @@
 
 <s:form action="update-produto-submit" cssStyle="color:black">
 
-	<BR><BR>
 	<s:hidden name="produto.id"></s:hidden>
 	
 	<s:textfield 

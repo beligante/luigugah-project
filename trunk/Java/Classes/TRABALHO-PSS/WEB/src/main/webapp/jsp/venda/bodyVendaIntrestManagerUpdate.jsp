@@ -2,6 +2,5 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="../comum/Taglibs.jsp" %>
-<BR><BR>
 
 detalhes ..........................

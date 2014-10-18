@@ -84,10 +84,12 @@
 		<action name="catalog-search"
 				class="com.saei.actions.venda.VendaCatalogoAction">
 			<result name="success" type="tiles">venda.search.page</result>
+			<result name="input" type="tiles">venda.search.page</result>
 		</action>
 		<action name="sale-product-by-id"
 				class="com.saei.actions.venda.VendaByIdAction">
 			<result name="success" type="tiles">venda.by.id.page</result>
+			<result name="input" type="tiles">venda.by.id.page</result>
 			<result name="catalogo" type="chain">catalog-search</result>
 		</action>
 		<action name="sale-product-by-id-submit"
@@ -120,6 +122,7 @@
 		<action name="sales-intrest-manager-update"
 				class="com.saei.actions.venda.VendaIntrestManagerUpdateAction">
 			<result name="success" type="tiles">sales.intrest.manager.update</result>
+			<result name="intrest" type="chain">sales-intrest-manager</result>
 		</action>
 		
 		<action name="sales-search"

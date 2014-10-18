@@ -36,7 +36,10 @@ public class VendaByIdSubmitAction extends BaseAction{
 			clientId = Integer.parseInt(this.cliente);
 			cliente = getAplicationEng().getUsuarioEng().getUsuarioById(clientId);
 		}catch(Exception e){}
-		if(clientId < 0 || cliente == null){return CATALOGO_ACTION;}
+		if(clientId < 0 || cliente == null){
+			addActionError("Cliente invalido!");
+			return CATALOGO_ACTION;
+		}
 		
 		int vendedorId = -1;
 		Usuario vendedor = null;
@@ -44,7 +47,10 @@ public class VendaByIdSubmitAction extends BaseAction{
 			vendedorId = Integer.parseInt(this.vendedor);
 			vendedor = getAplicationEng().getUsuarioEng().getUsuarioById(vendedorId);
 		}catch(Exception e){}
-		if(vendedorId < 0 || vendedor == null){return CATALOGO_ACTION;}
+		if(vendedorId < 0 || vendedor == null){
+			addActionError("Vendedor invalido!");
+			return CATALOGO_ACTION;
+		}
 		
 		int produtoId = -1;
 		Produto produto = null;
@@ -53,29 +59,45 @@ public class VendaByIdSubmitAction extends BaseAction{
 			produto = getAplicationEng().getProdutoEng().getProdutoById(produtoId);
 		}catch(Exception e){}
 		
-		if(produtoId < 0 || produto == null){return CATALOGO_ACTION;}
+		if(produtoId < 0 || produto == null){
+			addActionError("Produto invalido!");
+			return CATALOGO_ACTION;
+		}
 
 		BigDecimal entradaBig = null;
 		try{entradaBig = new BigDecimal(entrada);}catch(Exception e){}
-		if(entradaBig == null){return CATALOGO_ACTION;}
+		if(entradaBig == null && entradaBig.floatValue() < 0){
+			addActionError("Valor de entrada não pode ser menor que zero ou invalido!");
+			return CATALOGO_ACTION;
+		}
 
 		int intParcelas = -1;
 		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
-		if(intParcelas < 0){return CATALOGO_ACTION;}
+		if(intParcelas < 0){
+			addActionError("Numero de parcelas não pode ser menor que zero");			
+			return CATALOGO_ACTION;
+		}
 		
 		TipoPagamento pagamento = TipoPagamento.findByName(tipoPagamento);
-		if(pagamento == null){return CATALOGO_ACTION;}
+		if(pagamento == null){
+			addActionError("Tipo de pagamento selecionado é inválido!");
+			return CATALOGO_ACTION;
+		}
 		
 		int intVencimentoBoleto = -1;
 		try{intVencimentoBoleto = Integer.parseInt(vencimentoBoleto);}catch(Exception e){}
-		if(intVencimentoBoleto < 0 && TipoPagamento.BOLETO_MENSAL.equals(pagamento)){return CATALOGO_ACTION;}
-		
-		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
-		if(intParcelas < 0){return CATALOGO_ACTION;}
-		
-		if(entradaBig.compareTo(produto.getPreco()) > 0){return CATALOGO_ACTION;}
+		if(intVencimentoBoleto < 1 && TipoPagamento.BOLETO_MENSAL.equals(pagamento)){
+			
+			addActionError("Dia do vencimento do boleto inválido!");
+			return CATALOGO_ACTION;
+		}
+		if(entradaBig.compareTo(produto.getPreco()) > 0){
+			addActionError("Valor de entrada não pode ser superior ao valor do produto");
+			return CATALOGO_ACTION;
+		}
 		
 		if(!DataPagamentoService.isDiaPagamentoValido(intVencimentoBoleto, intParcelas, new Date())){
+			addActionError("Dia do vencimento do boleto inválido!");
 			return CATALOGO_ACTION;
 		}
 		

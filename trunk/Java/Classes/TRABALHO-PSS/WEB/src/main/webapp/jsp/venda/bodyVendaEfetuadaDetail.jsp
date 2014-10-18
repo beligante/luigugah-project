@@ -3,8 +3,6 @@
 
 <form class="form-horizontal" role="form">
 
-	<BR><BR>
-
 	<div class="form-group">
 		<label for="inputName" class="col-sm-2 control-label">Nome</label>
 		<div class="col-xs-5">

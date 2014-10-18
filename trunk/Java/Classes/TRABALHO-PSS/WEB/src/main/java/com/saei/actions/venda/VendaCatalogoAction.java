@@ -1,15 +1,26 @@
 package com.saei.actions.venda;
 
+import java.util.List;
+
+import org.apache.commons.collections.CollectionUtils;
+
 import com.saei.actions.BaseAction;
+import com.saei.domain.commons.Produto;
 
 public class VendaCatalogoAction extends BaseAction  {
 	// all struts logic here 
+	@Override
 	public String execute() {
 		
 		request.setAttribute("isVendaPage", true);
 		
-		request.setAttribute("produtos", 
-				getAplicationEng().getProdutoEng().getAllProdutos());
+		List<Produto> produtos = getAplicationEng().getProdutoEng().getAllProdutos();
+		
+		if(CollectionUtils.isEmpty(produtos)){
+			addActionMessage("Não existem produtos cadastrados");
+		}
+		
+		request.setAttribute("produtos", produtos);
 		
 		return SUCCESS;
 

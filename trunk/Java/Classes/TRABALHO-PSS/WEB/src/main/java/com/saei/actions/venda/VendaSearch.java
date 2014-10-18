@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
+
 import com.saei.actions.BaseAction;
 import com.saei.domain.commons.Negocio;
 import com.saei.domain.commons.Usuario;
@@ -47,6 +49,10 @@ public class VendaSearch extends BaseAction{
 			vo.setMeioPagamento(TipoPagamento.findByName(venda.getMeioPagamento()));
 			
 			vendasVO.add(vo);
+		}
+		
+		if(CollectionUtils.isEmpty(vendasVO)){
+			addActionMessage("Não existem vendas feitas!");
 		}
 		
 		request.setAttribute("vendas", vendasVO);

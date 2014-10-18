@@ -18,6 +18,7 @@ public class VendaContratoAction extends BaseAction {
 				throw new Exception();
 			}
 		}catch(Exception e){
+			addActionError("Desculpe! Ocorreu um erro inesperado no processo de compra.");
 			request.getSession().invalidate();
 			return CATALOGO_ACTION;
 		}

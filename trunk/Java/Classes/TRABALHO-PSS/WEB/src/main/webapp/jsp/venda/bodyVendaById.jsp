@@ -5,8 +5,6 @@
 
 <form class="form-horizontal" action="sale-product-by-id-submit"  method="POST" role="form">
 
-	<BR><BR>
-	
 	<div class="form-group">
 		<label for="inputName" class="col-sm-2 control-label">Cliente</label>
 		<div class="col-xs-5">
