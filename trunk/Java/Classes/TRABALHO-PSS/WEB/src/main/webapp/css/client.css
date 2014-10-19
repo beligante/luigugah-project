@@ -1,12 +1,20 @@
 @CHARSET "ISO-8859-1";
 .product-detail-page, .header-funcionario, .login-page, .simulation-result{
-	padding: 20px;
+  padding: 20px;
 }
 
 .destaque-text{
-	font-size: 14px;
-	font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
 }
+
+#wrap{
+min-height: 100%;
+height: auto !important;
+height: 100%;margin: 0 auto -86px;
+}
+
+#push, footer{height: 86px;}
 
 form label {color: black !important;}
 form-group{margin: 0px !important;}
@@ -25,7 +33,6 @@ clear: both;
 float: none;
 padding: 0px;
 width: 100%;
-position: absolute;
 }
 
 footer span{line-height: 19px;}

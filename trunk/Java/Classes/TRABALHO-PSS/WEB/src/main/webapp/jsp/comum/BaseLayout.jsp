@@ -19,36 +19,39 @@
 	<link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.css">
 </head>
 <body>
-	<div id="main-container" class="container">
-		<div class="top-bar">
-			<tiles:insertAttribute name="top-bar" />
+	<div id="wrap">
+		<div id="main-container" class="container">
+			<div class="top-bar">
+				<tiles:insertAttribute name="top-bar" />
+			</div>
+			<div class="header">
+				<tiles:insertAttribute name="header" />
+			</div>
+			<div class="menu">
+				<tiles:insertAttribute name="menu" />
+			</div>
+			<div class="system-messages">
+				<c:if test="${hasActionError}">
+				   <div class="alert alert-danger" role="alert">
+				      ${actionError}
+				   </div>
+				</c:if>
+				<c:if test="${hasActionSuccess}">
+				   <div class="alert alert-success" role="alert">
+				      ${actionSuccess}
+				   </div>
+				</c:if>
+				<c:if test="${hasActionMessage}">
+				   <div class="alert alert-info" role="alert">
+				      ${actionMessage}
+				   </div>
+				</c:if>
+	    	</div>
+			<div class="body">
+				<tiles:insertAttribute name="body" />
+			</div>
 		</div>
-		<div class="header">
-			<tiles:insertAttribute name="header" />
-		</div>
-		<div class="menu">
-			<tiles:insertAttribute name="menu" />
-		</div>
-		<div class="system-messages">
-			<c:if test="${hasActionError}">
-			   <div class="alert alert-danger" role="alert">
-			      ${actionError}
-			   </div>
-			</c:if>
-			<c:if test="${hasActionSuccess}">
-			   <div class="alert alert-success" role="alert">
-			      ${actionSuccess}
-			   </div>
-			</c:if>
-			<c:if test="${hasActionMessage}">
-			   <div class="alert alert-info" role="alert">
-			      ${actionMessage}
-			   </div>
-			</c:if>
-    	</div>
-		<div class="body">
-			<tiles:insertAttribute name="body" />
-		</div>
+		<div id="push"></div>
 	</div>
 	<div class="footer">
 		<tiles:insertAttribute name="footer" />
