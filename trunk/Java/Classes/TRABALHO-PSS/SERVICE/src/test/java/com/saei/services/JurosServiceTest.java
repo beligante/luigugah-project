@@ -42,8 +42,8 @@ public class JurosServiceTest{
 	public void testeValorTotalConfiguracaoInvalida() throws Exception {
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ZERO);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ZERO);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(null);
 		
 		lista.add(j);
@@ -61,8 +61,8 @@ public class JurosServiceTest{
 	public void testeQuantidadeParcelasConfiguracaoInvalida() throws Exception {
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ZERO);
-		j.setQuantidadeparcelas(-1);
+		j.setPorcentagemJuros(BigDecimal.ZERO);
+		j.setQuantidadeParcelas(-1);
 		j.setValorTotal(BigDecimal.ZERO);
 		
 		lista.add(j);
@@ -80,8 +80,8 @@ public class JurosServiceTest{
 	public void testePorcentagemJurosConfiguracaoInvalida() throws Exception {
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(null);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(null);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(BigDecimal.ZERO);
 		
 		lista.add(j);
@@ -99,8 +99,8 @@ public class JurosServiceTest{
 	public void testeInicializacaoConfiguracaoAmbigua() throws Exception {
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ZERO);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ZERO);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(BigDecimal.ZERO);
 		
 		lista.add(j);
@@ -119,16 +119,16 @@ public class JurosServiceTest{
 	public void testeInicializacaoCorreta() throws NoConfigurationException, InvalidConfigurationException, AmbiguousConfigurationException {
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ZERO);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ZERO);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(BigDecimal.ZERO);
 		
 
 		lista.add(j);
 		
 		j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ONE);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ONE);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(BigDecimal.ONE);
 
 		lista.add(j);
@@ -143,8 +143,8 @@ public class JurosServiceTest{
 	public void testeRetornoZeroPorcentagemJurosParaParametrosInvalidos() throws Exception{
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ZERO);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ZERO);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(BigDecimal.ZERO);
 		
 		lista.add(j);
@@ -162,36 +162,36 @@ public class JurosServiceTest{
 	public void testeRetornoCorretoParaConfiguracoes() throws Exception{
 		List<JurosParcelamento> lista = new ArrayList<JurosParcelamento>();
 		JurosParcelamento j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ZERO);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ZERO);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(new BigDecimal(100));
 		
 		lista.add(j);
 		
 		j = new JurosParcelamento();
-		j.setPorcentagemjuros(BigDecimal.ONE);
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(BigDecimal.ONE);
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(new BigDecimal(101));
 		
 		lista.add(j);
 		
 		j = new JurosParcelamento();
-		j.setPorcentagemjuros(new BigDecimal(1.3));
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(new BigDecimal(1.3));
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(new BigDecimal(200));
 		
 		lista.add(j);
 		
 		j = new JurosParcelamento();
-		j.setPorcentagemjuros(new BigDecimal(2.1));
-		j.setQuantidadeparcelas(1);
+		j.setPorcentagemJuros(new BigDecimal(2.1));
+		j.setQuantidadeParcelas(1);
 		j.setValorTotal(new BigDecimal(800));
 		
 		lista.add(j);
 		
 		j = new JurosParcelamento();
-		j.setPorcentagemjuros(new BigDecimal(3.2));
-		j.setQuantidadeparcelas(4);
+		j.setPorcentagemJuros(new BigDecimal(3.2));
+		j.setQuantidadeParcelas(4);
 		j.setValorTotal(new BigDecimal(4000));
 		
 		lista.add(j);
