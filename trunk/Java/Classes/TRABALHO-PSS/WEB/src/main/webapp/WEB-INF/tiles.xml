@@ -12,7 +12,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		<put-attribute name="footer" value="/jsp/comum/footer.jsp" />
 	</definition>
 
 	<definition name="start.page" template="jsp/start/BaseLayout.jsp">
@@ -21,7 +21,6 @@
 		<put-attribute name="header" value="/jsp/start/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/start/body.jsp" />
-		<put-attribute name="footer" value="/jsp/start/footer.jsp" />
 	</definition>
 	
 	<definition name="startAreaLayout" template="jsp/start/comum/BaseLayout.jsp">
@@ -30,7 +29,6 @@
 		<put-attribute name="header" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
 	</definition>
 	
 	<definition name="register.page" extends="startAreaLayout">
@@ -39,7 +37,7 @@
 		<put-attribute name="header" value="/jsp/register/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/cadastros/bodyCliente.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="simulation.page" extends="startAreaLayout">
@@ -48,7 +46,7 @@
 		<put-attribute name="header" value="/jsp/start/headerSimulacao.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/start/bodySimulacao.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="sale.page" extends="startAreaLayout">
@@ -57,7 +55,7 @@
 		<put-attribute name="header" value="/jsp/start/headerVenda.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/empty.jsp" />
 		<put-attribute name="body" value="/jsp/start/bodyVenda.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="funcionario.page" extends="baseLayout">
@@ -65,7 +63,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="cadastroCliente.page" extends="baseLayout">
@@ -73,7 +71,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/cadastros/bodyCliente.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="cadastroFornecedor.page" extends="baseLayout">
@@ -81,7 +79,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/cadastros/bodyFornecedor.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="cadastroFuncionario.page" extends="baseLayout">
@@ -89,7 +87,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/cadastros/bodyFuncionario.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="agendamento.page" extends="baseLayout">
@@ -97,7 +95,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyAgendamento.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="agendamento.detail.page" extends="baseLayout">
@@ -105,7 +103,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/agendamento/bodyAgendamentoDetail.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 
 	
@@ -114,7 +112,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/compra/bodyCompra.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="compra.detail.page" extends="baseLayout">
@@ -122,7 +120,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/compra/bodyCompraDetail.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 
 	
@@ -131,7 +129,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaEfetuada.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.efetuada.detail.page" extends="baseLayout">
@@ -139,7 +137,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaEfetuadaDetail.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 
 	<definition name="venda.page" extends="baseLayout">
@@ -147,7 +145,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVenda.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.detail.page" extends="baseLayout">
@@ -155,7 +153,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaDetail.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.detail.simulacao.page" extends="baseLayout">
@@ -163,7 +161,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaDetailSimulacao.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.finalizada.page" extends="baseLayout">
@@ -171,7 +169,7 @@
 		<put-attribute name="header" value="/jsp/funcionario/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/funcionario/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/funcionario/venda/bodyVendaFinalizada.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="cliente.page" extends="baseLayout">
@@ -179,7 +177,7 @@
 		<put-attribute name="header" value="/jsp/cliente/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/cliente/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/comum/empty.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 
 	<definition name="pagamentos.page" extends="baseLayout">
@@ -206,7 +204,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductSearch.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 
 	<definition name="product.update.page" extends="baseLayout">
@@ -214,7 +212,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductUpdate.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="product.update.success.page" extends="baseLayout">
@@ -222,7 +220,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductUpdateSuccess.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="product.delete.success.page" extends="baseLayout">
@@ -230,7 +228,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductDeleteSuccess.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="product.cadastro.success.page" extends="baseLayout">
@@ -238,7 +236,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductCadastroSuccess.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="product.details.page" extends="baseLayout">
@@ -246,7 +244,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductDetail.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="product.cadastro.page" extends="baseLayout">
@@ -254,7 +252,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductCadastro.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="sales.intrest.manager.update" extends="baseLayout">
@@ -262,7 +260,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaIntrestManagerUpdate.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<!-- FIM PAGINAS RELACIONADAS A PRODUTO -->
@@ -274,7 +272,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/usuario/bodyUsuarioCadastro.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="usuario.search.page" extends="baseLayout">
@@ -282,7 +280,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/usuario/bodyUsuarioSearch.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="usuario.update.page" extends="baseLayout">
@@ -290,7 +288,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/usuario/bodyUsuarioUpdate.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<!-- FIM PAGINAS RELACIONADAS A CLIENTE -->
@@ -303,7 +301,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaIntrestManager.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.search.page" extends="baseLayout">
@@ -311,7 +309,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/product/bodyProductSearch.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.by.id.page" extends="baseLayout">
@@ -319,7 +317,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaById.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.by.id.simulacao" extends="baseLayout">
@@ -327,7 +325,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaDetailSimulacao.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.contrato.page" extends="baseLayout">
@@ -335,7 +333,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaContrato.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<definition name="venda.finished.page" extends="baseLayout">
@@ -343,7 +341,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaFinalizada.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	
@@ -352,7 +350,7 @@
 		<put-attribute name="header" value="/jsp/comum/header.jsp" />
 		<put-attribute name="menu" value="/jsp/comum/menu.jsp" />
 		<put-attribute name="body" value="/jsp/venda/bodyVendaFinalizadaSearch.jsp" />
-		<put-attribute name="footer" value="/jsp/comum/empty.jsp" />
+		
 	</definition>
 	
 	<!-- FIM PAGINAS RELACIONADAS A VENDA -->
