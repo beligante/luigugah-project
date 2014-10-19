@@ -85,7 +85,7 @@ public class VendaByIdSubmitAction extends BaseAction{
 		
 		TipoPagamento pagamento = TipoPagamento.findByName(tipoPagamento);
 		if(pagamento == null){
-			addActionError("Tipo de pagamento selecionado � inv�lido!");
+			addActionError("Tipo de pagamento selecionado é inválido!");
 			return CATALOGO_ACTION;
 		}
 		
@@ -93,7 +93,7 @@ public class VendaByIdSubmitAction extends BaseAction{
 		try{intVencimentoBoleto = Integer.parseInt(vencimentoBoleto);}catch(Exception e){}
 		if(intVencimentoBoleto < 1 && TipoPagamento.BOLETO_MENSAL.equals(pagamento)){
 			
-			addActionError("Dia do vencimento do boleto inv�lido!");
+			addActionError("Dia do vencimento do boleto inválido!");
 			return CATALOGO_ACTION;
 		}
 		if(entradaBig.compareTo(produto.getPreco()) > 0){
@@ -102,7 +102,7 @@ public class VendaByIdSubmitAction extends BaseAction{
 		}
 		
 		if(!DataPagamentoService.isDiaPagamentoValido(intVencimentoBoleto, intParcelas, new Date())){
-			addActionError("Dia do vencimento do boleto inv�lido!");
+			addActionError("Dia do vencimento do boleto inválido!");
 			return CATALOGO_ACTION;
 		}
 		Simulacao simulacao;
