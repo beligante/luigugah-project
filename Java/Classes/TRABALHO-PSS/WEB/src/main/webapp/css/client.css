@@ -21,12 +21,11 @@ footer a:hover{text-decoration: underline;}
 footer b{font-family: "PTSans-Bold", sans-serif; font-weight: bold; font-smooth: always; -webkit-font-smoothing: antialiased; }
 
 .footer {
-position: absolute;
 clear: both;
 float: none;
 padding: 0px;
-bottom: 0px;
 width: 100%;
+position: absolute;
 }
 
 footer span{line-height: 19px;}
@@ -645,3 +644,4 @@ ul.sociais li#twitter a {
 .container_16 .pull_15 {
   left: -900px;
 }
+html, body{width: 100%; height: 100%;min-height: 100%}
