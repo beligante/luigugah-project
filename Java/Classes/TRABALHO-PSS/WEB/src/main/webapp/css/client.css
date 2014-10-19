@@ -13,7 +13,7 @@ form-group{margin: 0px !important;}
 
 .menu{margin-bottom: 20px;}
 
-footer{height: 86px; background-color: #f3f3f3; font-family: "PTSans-Regular", sans-serif; font-size: 12px; padding: 15px; color: #707070; margin-top: 40px;}
+footer{height: 86px; background-color: #f3f3f3; font-family: "PTSans-Regular", sans-serif; font-size: 12px; padding: 15px; color: #707070; }
 footer h1{margin: -5px 0 0; padding: 0;}
 footer h1 a{margin:0; padding: 0; display:block; width:89px; height:35px; background-repeat: no-repeat; text-indent: -5000px;}
 footer a{text-decoration: none; color: inherit;}
