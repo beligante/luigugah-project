@@ -17,7 +17,18 @@ public class VendaCatalogoAction extends BaseAction  {
 		List<Produto> produtos = getAplicationEng().getProdutoEng().getAllProdutos();
 		
 		if(CollectionUtils.isEmpty(produtos)){
-			addActionMessage("N�o existem produtos cadastrados");
+			addActionMessage("Não Existem produtos disponiveis para venda");
+		}
+		
+		int contador = 0;
+		for(Produto p : produtos){
+			if(p.getDeletado()){
+				contador++;
+			}
+		}
+		
+		if(contador == produtos.size()){
+			addActionMessage("Não Existem produtos disponiveis para venda");
 		}
 		
 		request.setAttribute("produtos", produtos);

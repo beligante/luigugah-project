@@ -172,10 +172,10 @@ DROP TABLE IF EXISTS `juros_parcelamento`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `juros_parcelamento` (
   `id` int(11) NOT NULL,
-  `max_valor_total` decimal(30,2) DEFAULT NULL,
-  `juros` decimal(5,4) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `max_valor_total_UNIQUE` (`max_valor_total`)
+  `valor_total` decimal(30,2) DEFAULT NULL,
+  `porcentagem_juros` decimal(5,4) DEFAULT NULL,
+  `quantidade_parcelas` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -357,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-15 20:59:37
+-- Dump completed on 2014-10-19 14:25:47
