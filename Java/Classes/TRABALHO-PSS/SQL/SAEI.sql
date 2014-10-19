@@ -171,7 +171,7 @@ DROP TABLE IF EXISTS `juros_parcelamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `juros_parcelamento` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `valor_total` decimal(30,2) DEFAULT NULL,
   `porcentagem_juros` decimal(5,4) DEFAULT NULL,
   `quantidade_parcelas` int(11) DEFAULT NULL,
