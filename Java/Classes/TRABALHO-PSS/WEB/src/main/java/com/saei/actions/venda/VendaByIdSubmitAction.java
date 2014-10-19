@@ -2,18 +2,23 @@ package com.saei.actions.venda;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 
 import com.saei.actions.BaseAction;
 import com.saei.constants.SessionConstants;
 import com.saei.domain.Simulacao;
+import com.saei.domain.commons.JurosParcelamento;
 import com.saei.domain.commons.Negocio;
 import com.saei.domain.commons.Produto;
 import com.saei.domain.commons.Usuario;
 import com.saei.domain.enums.TipoPagamento;
 import com.saei.services.DataPagamentoService;
+import com.saei.services.JurosParcelamentoService;
+import com.saei.services.JurosService;
 import com.saei.services.SimulacaoService;
+import com.saei.services.exceptions.JurosServiceException;
 
 public class VendaByIdSubmitAction extends BaseAction{
 
@@ -67,20 +72,20 @@ public class VendaByIdSubmitAction extends BaseAction{
 		BigDecimal entradaBig = null;
 		try{entradaBig = new BigDecimal(entrada);}catch(Exception e){}
 		if(entradaBig == null && entradaBig.floatValue() < 0){
-			addActionError("Valor de entrada não pode ser menor que zero ou invalido!");
+			addActionError("Valor de entrada nï¿½o pode ser menor que zero ou invalido!");
 			return CATALOGO_ACTION;
 		}
 
 		int intParcelas = -1;
 		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
 		if(intParcelas < 0){
-			addActionError("Numero de parcelas não pode ser menor que zero");			
+			addActionError("Numero de parcelas nï¿½o pode ser menor que zero");			
 			return CATALOGO_ACTION;
 		}
 		
 		TipoPagamento pagamento = TipoPagamento.findByName(tipoPagamento);
 		if(pagamento == null){
-			addActionError("Tipo de pagamento selecionado é inválido!");
+			addActionError("Tipo de pagamento selecionado ï¿½ invï¿½lido!");
 			return CATALOGO_ACTION;
 		}
 		
@@ -88,26 +93,36 @@ public class VendaByIdSubmitAction extends BaseAction{
 		try{intVencimentoBoleto = Integer.parseInt(vencimentoBoleto);}catch(Exception e){}
 		if(intVencimentoBoleto < 1 && TipoPagamento.BOLETO_MENSAL.equals(pagamento)){
 			
-			addActionError("Dia do vencimento do boleto inválido!");
+			addActionError("Dia do vencimento do boleto invï¿½lido!");
 			return CATALOGO_ACTION;
 		}
 		if(entradaBig.compareTo(produto.getPreco()) > 0){
-			addActionError("Valor de entrada não pode ser superior ao valor do produto");
+			addActionError("Valor de entrada nï¿½o pode ser superior ao valor do produto");
 			return CATALOGO_ACTION;
 		}
 		
 		if(!DataPagamentoService.isDiaPagamentoValido(intVencimentoBoleto, intParcelas, new Date())){
-			addActionError("Dia do vencimento do boleto inválido!");
+			addActionError("Dia do vencimento do boleto invï¿½lido!");
 			return CATALOGO_ACTION;
 		}
+		Simulacao simulacao;
+		try{
+			List<JurosParcelamento> jurosConfigs = JurosParcelamentoService.getAllJurosParcelamento();
+			JurosService js = new JurosService(jurosConfigs);
 		
+			BigDecimal precoComEntradaDescontada = produto.getPreco().subtract(entradaBig);
 		
-		Simulacao simulacao = SimulacaoService.generateSimulation(
+			simulacao = SimulacaoService.generateSimulation(
 								produto.getPreco(), 
-								new BigDecimal(1.3), 
+								js.getPorcentagemJurosByValorAndQuantidadeParcelas(precoComEntradaDescontada,intParcelas),
 								entradaBig, 
 								intParcelas);
-		simulacao.setDiaVencimentoBoleto(intVencimentoBoleto);
+			simulacao.setDiaVencimentoBoleto(intVencimentoBoleto);
+		}catch(Exception e){
+			addActionError("Ocorreu um erro ao gera a simulacao, tente novamente!");
+			LOG.error("Ocorreu um erro ao gera a simulacao", e);
+			return CATALOGO_ACTION;
+		}
 
 		request.getSession().setAttribute(SessionConstants.SIMULACAO_KEY , simulacao);
 		request.getSession().setAttribute(SessionConstants.CHECKOUT_PRODUCT_KEY, produto);

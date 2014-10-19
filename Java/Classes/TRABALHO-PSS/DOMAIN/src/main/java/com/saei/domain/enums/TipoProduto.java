@@ -7,9 +7,9 @@ public enum TipoProduto {
 	APARTAMENTO_DUPLEX("Apartamento Duplex"),
 	APARTAMENTO_KITNET("Apartamento kitnet"),
 	CASA("Casa"),
-	GALPÃO_INDUSTRIAL("Galpão (Industrial)"),
+	GALPAO_INDUSTRIAL("Galpao (Industrial)"),
 	PREDIO("Predio"),
-	SALAO_COMERCIAL("Salão Comercial"),
+	SALAO_COMERCIAL("Salï¿½o Comercial"),
 	SOBRADO("Sobrado"),
 	TERRENO("Terreno");
 	

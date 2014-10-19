@@ -26,8 +26,7 @@ public class JurosService {
 		
 		this.configuracoes = configuracoes;
 		
-	}
-
+	}  
 
 	private void checkConfigurations(List<JurosParcelamento> configuracoes) 
 				throws 	NoConfigurationException, 
@@ -43,11 +42,11 @@ public class JurosService {
 				throw new InvalidConfigurationException("O Valor total da configuração não pode ser nulo ou menor que zero");
 			}
 			
-			if(configuracao.getQuantidadeparcelas()  < 1){
+			if(configuracao.getQuantidadeParcelas()  < 1){
 				throw new InvalidConfigurationException("A quantidade de parcelas não pode ser menor que 1");
 			}
 			
-			if(configuracao.getPorcentagemjuros() == null || configuracao.getPorcentagemjuros().floatValue() < 0){
+			if(configuracao.getPorcentagemJuros() == null || configuracao.getPorcentagemJuros().floatValue() < 0){
 				throw new InvalidConfigurationException("O valor de porcentagem da configuração não pode ser nulo ou menor que zero");
 			}
 			
@@ -63,7 +62,7 @@ public class JurosService {
 			if(CollectionUtils.isEmpty(cloneList)){break;}
 			for(JurosParcelamento comparador : cloneList){
 				isValorIgual = configuracao.getValorTotal().compareTo(comparador.getValorTotal()) == 0;
-				isQuantidadeParcelasIgual = configuracao.getQuantidadeparcelas() == comparador.getQuantidadeparcelas();
+				isQuantidadeParcelasIgual = configuracao.getQuantidadeParcelas() == comparador.getQuantidadeParcelas();
 						if((isValorIgual && isQuantidadeParcelasIgual)){
 							throw new AmbiguousConfigurationException("Não podem existir configurações ambiguas na lista de configurações");
 						}
@@ -111,8 +110,8 @@ public class JurosService {
 		for(JurosParcelamento configuracao : configuracoes){
 			configuracaoAtual = null;
 			if(configuracao.getValorTotal().compareTo(valorTotal) <= 0 
-					&& configuracao.getQuantidadeparcelas() <= quantidadeParcelas){
-				configuracaoAtual = configuracao.getPorcentagemjuros();
+					&& configuracao.getQuantidadeParcelas() <= quantidadeParcelas){
+				configuracaoAtual = configuracao.getPorcentagemJuros();
 			}
 			
 			if(configuracaoAtual != null){ melhorConfiguracao = configuracaoAtual;}
