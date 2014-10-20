@@ -10,6 +10,7 @@ public class CadastroProdutoSubmitAction extends BaseAction{
 	@Override
 	public String execute() throws Exception {
 		getAplicationEng().getProdutoEng().registerProduct(getProduto());
+		addActionSuccess("Produto Cadastrado Com Sucesso");
 		return SUCCESS;
 	}
 
