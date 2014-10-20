@@ -31,7 +31,7 @@ public class CompraService {
 				return BaseCompraPeer.doSelect(compra);
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o compra: \n" + compra.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o compra", e);
 		}
 		return null;
 	}

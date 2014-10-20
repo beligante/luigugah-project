@@ -37,7 +37,7 @@ public class UsuarioService {
 				return BaseUsuarioPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o usuario: \n" + usuario.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o usuario", e);
 		}
 		return null;
 	}

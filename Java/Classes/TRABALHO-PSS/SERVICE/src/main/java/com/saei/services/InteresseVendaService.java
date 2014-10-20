@@ -34,7 +34,7 @@ public class InteresseVendaService {
 				return BaseInteresseVendaPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o Interesse de Venda: \n" + interesseVend.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o Interesse de Venda", e);
 		}
 		return null;
 	}

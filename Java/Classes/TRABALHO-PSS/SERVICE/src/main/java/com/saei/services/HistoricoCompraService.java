@@ -31,7 +31,7 @@ public class HistoricoCompraService {
 				return BaseHistoricoCompraPeer.doSelect(historicoCompra);
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o historicoCompra: \n" + historicoCompra.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o historicoCompra", e);
 		}
 		return null;
 	}

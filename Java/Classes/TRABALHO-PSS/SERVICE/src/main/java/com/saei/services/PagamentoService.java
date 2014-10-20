@@ -36,7 +36,7 @@ public class PagamentoService {
 				return BasePagamentoPeer.doSelect(pagamento);
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o pagamento: \n" + pagamento.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o pagamento", e);
 		}
 		return null;
 	}
