@@ -34,7 +34,7 @@ public class InteresseVendaHistoricoService {
 				return BaseInteresseVendaHistoricoPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o Interesse de Venda historico: \n" + interesseVend.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o Interesse de Venda historico", e);
 		}
 		return null;
 	}

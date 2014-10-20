@@ -32,7 +32,7 @@ private static final Logger LOG = Logger.getLogger(FaturaPagamentoService.class)
 				return BaseFaturaPagamentoPeer.doSelect(faturaPagamento);
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o faturaPagamento: \n" + faturaPagamento.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o faturaPagamento", e);
 		}
 		return null;
 	}

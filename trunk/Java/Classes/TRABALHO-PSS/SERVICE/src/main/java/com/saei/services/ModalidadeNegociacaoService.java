@@ -32,7 +32,7 @@ private static final Logger LOG = Logger.getLogger(ModalidadeNegociacaoService.c
 				return BaseModalidadeNegociacaoPeer.doSelect(modalidadeNegociacao);
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar a ModalidadeNegociacao: \n" + modalidadeNegociacao.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar a ModalidadeNegociacao", e);
 		}
 		return null;
 	}

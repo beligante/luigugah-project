@@ -39,7 +39,7 @@ public class NegocioService {
 				return BaseNegocioPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o negocio: \n" + negocio.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar o negocio", e);
 		}
 		return null;
 	}
