@@ -71,15 +71,15 @@ public class VendaByIdSubmitAction extends BaseAction{
 
 		BigDecimal entradaBig = null;
 		try{entradaBig = new BigDecimal(entrada);}catch(Exception e){}
-		if(entradaBig == null && entradaBig.floatValue() < 0){
-			addActionError("Valor de entrada n�o pode ser menor que zero ou invalido!");
+		if(entradaBig == null || entradaBig.floatValue() < 0){
+			addActionError("Valor de entrada nao pode ser menor que zero ou invalido!");
 			return CATALOGO_ACTION;
 		}
 
 		int intParcelas = -1;
 		try{intParcelas = Integer.parseInt(parcelas);}catch(Exception e){}
 		if(intParcelas < 0){
-			addActionError("Numero de parcelas n�o pode ser menor que zero");			
+			addActionError("Numero de parcelas nao pode ser menor que zero");			
 			return CATALOGO_ACTION;
 		}
 		

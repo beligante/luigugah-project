@@ -15,17 +15,17 @@ public class ProductSearchAction extends BaseAction {
 		List<Produto> produtos = getAplicationEng().getProdutoEng().getAllProdutos();
 		
 		if(CollectionUtils.isEmpty(produtos)){
-			addActionMessage("Não Existem produtos cadastrados!");
+			addActionMessage("Nao Existem produtos cadastrados!");
 		}
 		int contador = 0;
 		for(Produto p : produtos){
 			if(p.getDeletado()){
-				contador++;
+				contador++; 
 			}
 		}
 		
 		if(contador == produtos.size()){
-			addActionMessage("Não Existem produtos cadastrados!");
+			addActionMessage("Nao Existem produtos cadastrados!");
 		}
 		
 		request.setAttribute("produtos", produtos);

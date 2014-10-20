@@ -12,12 +12,18 @@ public class SelectProdutoByIdAction extends BaseAction {
 	
 	private static final String PRODUTO_ACTION = "product";
 	
+	private String id;
+	
 	@Override
 	public String execute() throws Exception {
 		
-		String id = request.getParameter("id");
-		if(StringUtils.isEmpty(id)){
-			return PRODUTO_ACTION;
+		if(StringUtils.isEmpty(id))
+		{
+			if(request.getAttribute("id") == null){
+				return PRODUTO_ACTION;
+			}
+			
+			setId(request.getAttribute("id").toString());
 		}
 		
 		int intId = -1;
@@ -31,7 +37,17 @@ public class SelectProdutoByIdAction extends BaseAction {
 		
 		request.setAttribute("produto", produto);
 		
+		request.setAttribute("isExisteInteresse", getAplicationEng().getInteresseVendaEng().existeInteresseByUserAndProduct(1, produto.getId()));
+		
 		return SUCCESS;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

@@ -96,16 +96,13 @@ public class JurosService {
 	}
 	
 	public BigDecimal getPorcentagemJurosByValorAndQuantidadeParcelas(BigDecimal valorTotal, int quantidadeParcelas) throws NoConfigurationException{
-		if(CollectionUtils.isEmpty(configuracoes)){
-			throw new NoConfigurationException("Erro ao instanciar a classe. É necessário pelo menos uma configuração");
-		}
 		
-		if(valorTotal == null || quantidadeParcelas < 0){
-			return BigDecimal.ZERO;
-		}
-
 		BigDecimal melhorConfiguracao = BigDecimal.ZERO;
 		BigDecimal configuracaoAtual = null;
+		
+		if(valorTotal == null || quantidadeParcelas < 0){
+			return melhorConfiguracao;
+		}
 		
 		for(JurosParcelamento configuracao : configuracoes){
 			configuracaoAtual = null;
