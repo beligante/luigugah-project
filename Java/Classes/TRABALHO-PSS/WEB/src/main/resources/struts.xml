@@ -78,6 +78,7 @@
 		<action name="produto-by-id" 
 			class="com.saei.actions.product.SelectProdutoByIdAction">
 			<result name="success" type="tiles">product.details.page</result>
+			<result name="product" type="chain">product-search</result>
 		</action>
 		
 		<!-- Venda actions -->
@@ -114,6 +115,10 @@
 				class="com.saei.actions.venda.VendaFinalizadaAction">
 			<result name="success" type="tiles">venda.finished.page</result>
 			<result name="catalogo" type="chain">catalog-search</result>
+		</action>
+		<action name="insert-ic-by-id"
+				class="com.saei.actions.venda.InteresseVendaByProductIdAction">
+			<result name="success" type="chain">produto-by-id</result>
 		</action>
 		<action name="sales-intrest-manager"
 				class="com.saei.actions.venda.VendaIntrestManagerAction">

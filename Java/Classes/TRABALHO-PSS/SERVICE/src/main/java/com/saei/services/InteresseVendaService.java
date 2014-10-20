@@ -39,6 +39,24 @@ public class InteresseVendaService {
 		return null;
 	}
 	
+	public InteresseVenda searchInteresseVendaByProductAndUserId(int userId, int productId){
+		try {
+			Criteria c = new Criteria();
+			c.add(BaseInteresseVendaPeer.CLIENTE_ID, userId);
+			c.add(BaseInteresseVendaPeer.PRODUTO_ID, productId);
+			
+			List<InteresseVenda> result = BaseInteresseVendaPeer.doSelect(c);
+			
+			if(CollectionUtils.isNotEmpty(result)){
+				return result.get(0);
+			}
+			
+		} catch (Exception e) {
+			LOG.error("Ocorreu um erro ao buscar o Interesse de Venda: \n", e);
+		}
+		return null;
+	}
+	
 	public InteresseVenda searchInteresseVendaById(int id){
 		try {
 			Criteria c = new Criteria();

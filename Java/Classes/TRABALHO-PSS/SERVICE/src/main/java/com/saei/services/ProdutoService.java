@@ -36,7 +36,7 @@ public class ProdutoService {
 				return BaseProdutoPeer.doSelect(new Criteria());
 			}
 		} catch (Exception e) {
-			LOG.error("Ocorreu um erro ao buscar o produto: \n" + produto.toString(), e);
+			LOG.error("Ocorreu um erro ao buscar os produtos", e);
 		}
 		return null;
 	}

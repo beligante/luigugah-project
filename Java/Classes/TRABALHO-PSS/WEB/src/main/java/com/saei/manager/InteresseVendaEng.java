@@ -3,6 +3,9 @@ package com.saei.manager;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.ObjectUtils;
+
 import com.saei.domain.commons.InteresseVenda;
 import com.saei.domain.commons.InteresseVendaHistorico;
 import com.saei.domain.enums.TipoSituacao;
@@ -73,4 +76,8 @@ public class InteresseVendaEng {
 		return INTERESSE_HISTORICO_SERVICE.searchLastInteresseVendaHistoricoByInteresseVendaId(id);
 	}
 	
+	
+	public boolean existeInteresseByUserAndProduct(int userId, int productId){
+		return (INTERESSE_SERVICE.searchInteresseVendaByProductAndUserId(userId,productId) != null);
+	}
 }
