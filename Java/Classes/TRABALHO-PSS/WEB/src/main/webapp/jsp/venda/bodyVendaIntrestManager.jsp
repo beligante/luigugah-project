@@ -27,7 +27,7 @@
 									<td>${interesse.tipoSituacao}</td>
 									<td>${interesse.interesseVenda.clienteId}</td>
 									<td>${interesse.interesseVenda.produtoId}</td>
-									<td>${interesse.interesseVenda.dataCadastro}</td>
+									<td><fmt:formatDate pattern="dd/MM/yyyy" value="${interesse.interesseVenda.dataCadastro}" /></td>
 									<td>
 										<a href="sales-intrest-manager-update?id=${interesse.interesseVenda.id}" class="btn btn-primary  btn-xs">Editar</a>
 										<a href="sales-intrest-manager-delete?id=${interesse.interesseVenda.id}" class="btn btn-primary  btn-xs">Deletar</a>

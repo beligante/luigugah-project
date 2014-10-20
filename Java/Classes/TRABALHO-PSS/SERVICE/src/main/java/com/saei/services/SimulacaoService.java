@@ -14,6 +14,8 @@ public class SimulacaoService {
 												BigDecimal entrada,
 												int quantidadeParcelas){
 		
+		checkAtributes(valorOriginal, juros, entrada, quantidadeParcelas);
+		
 		BigDecimal valorJuros = valorOriginal
 									.subtract(entrada)
 									.divide(CEM, BigDecimal.ROUND_HALF_UP)
@@ -39,6 +41,29 @@ public class SimulacaoService {
 		simulacao.setValorParcelas(valorParcela.setScale(2, BigDecimal.ROUND_HALF_UP));
 		
 		return simulacao;
+	}
+
+	private static void checkAtributes(BigDecimal valorOriginal,
+			BigDecimal juros, BigDecimal entrada, int quantidadeParcelas) {
+		
+		if(valorOriginal == null){
+			throw new IllegalArgumentException("O Valor Original não pode ser nulo");
+		}
+		
+		if(entrada == null){
+			throw new IllegalArgumentException("O valor de entrada não pode ser nulo");
+		}
+		
+		if(quantidadeParcelas <= 0){
+			throw new IllegalArgumentException("O numero de parcelas não pode ser menor que 0");
+		}
+		
+		if(entrada.compareTo(valorOriginal) > 0 ){
+			throw new IllegalArgumentException("O valor de entrada não pode ser maior que o valor original(total) do produto");
+		}
+		
+		
+		
 	}
 	
 }
