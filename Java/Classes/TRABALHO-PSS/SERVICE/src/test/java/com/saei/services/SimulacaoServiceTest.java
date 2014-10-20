@@ -17,13 +17,23 @@ public class SimulacaoServiceTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
+	public void testeEntradaValorOriginalNaoPodeZero(){
+		SimulacaoService.generateSimulation(new BigDecimal(0), new BigDecimal(2.1), new BigDecimal(2.3), 2);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testeEntradaValorOriginalNaoPodeMenorZero(){
+		SimulacaoService.generateSimulation(new BigDecimal(-2.0), new BigDecimal(2.1), new BigDecimal(2.3), 2);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void testeEntradaValorEntradaNaoPodeSerNulla(){
 		SimulacaoService.generateSimulation(new BigDecimal(2.1), new BigDecimal(2.1), null, 2);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testeEntradaQuantidadeParcelasNaoPodeSerMenorOuIgualQueZero(){
-		SimulacaoService.generateSimulation(new BigDecimal(1.1), new BigDecimal(1.2), new BigDecimal(1.3), 0);
+		SimulacaoService.generateSimulation(new BigDecimal(2.1), new BigDecimal(1.2), new BigDecimal(1.3), 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
