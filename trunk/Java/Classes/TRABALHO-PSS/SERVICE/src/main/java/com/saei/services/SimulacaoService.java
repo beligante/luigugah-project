@@ -50,6 +50,14 @@ public class SimulacaoService {
 			throw new IllegalArgumentException("O Valor Original não pode ser nulo");
 		}
 		
+		if(valorOriginal == new BigDecimal(0).setScale(2, BigDecimal.ROUND_HALF_UP)){
+			throw new IllegalArgumentException("O Valor Original não pode ser 0");
+		}
+		
+		if(valorOriginal.compareTo(new BigDecimal(0)) < 0){
+			throw new IllegalArgumentException("O Valor Original não pode ser menor que 0");
+		}
+		
 		if(entrada == null){
 			throw new IllegalArgumentException("O valor de entrada não pode ser nulo");
 		}
@@ -61,8 +69,6 @@ public class SimulacaoService {
 		if(entrada.compareTo(valorOriginal) > 0 ){
 			throw new IllegalArgumentException("O valor de entrada não pode ser maior que o valor original(total) do produto");
 		}
-		
-		
 		
 	}
 	
