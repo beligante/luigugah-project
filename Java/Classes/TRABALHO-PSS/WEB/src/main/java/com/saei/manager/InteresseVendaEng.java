@@ -80,4 +80,8 @@ public class InteresseVendaEng {
 	public boolean existeInteresseByUserAndProduct(int userId, int productId){
 		return (INTERESSE_SERVICE.searchInteresseVendaByProductAndUserId(userId,productId) != null);
 	}
+	
+	public InteresseVenda getInteresseVendaByUserAndProductId(int userId, int productId){
+		return INTERESSE_SERVICE.searchInteresseVendaByProductAndUserId(userId,productId);
+	}
 }

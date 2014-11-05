@@ -19,7 +19,7 @@
 		</div>
 		<div class="grid_3">
 			<span class="left_line"> 
-				Em cado de duvidas entre em contato pelo e-mail: <br />
+				Em caso de duvidas entre em contato pelo e-mail: <br />
 				<a href="mailto:vendas@carboimport.com.br">sac@saei.com.br</a>
 			</span>
 		</div>
