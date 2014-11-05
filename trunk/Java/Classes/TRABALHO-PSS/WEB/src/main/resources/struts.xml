@@ -53,7 +53,7 @@
 		</action>
 		<action name="cadastro-produto-submit" 
 			class="com.saei.actions.product.CadastroProdutoSubmitAction">
-			<result name="success" type="tiles">product.cadastro.success.page</result>
+			<result name="success" type="chain">product-search</result>
 		</action>
 		<action name="product-search" 
 			class="com.saei.actions.product.ProductSearchAction">

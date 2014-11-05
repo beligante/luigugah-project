@@ -11,12 +11,13 @@ public class CadastroProdutoSubmitAction extends BaseAction{
 	
 	@Override
 	public String execute() throws Exception {
-		if(produto.getDimensoes().compareTo(BigDecimal.ZERO) <= 0){
+		
+		if(produto == null || produto.getDimensoes() == null || produto.getDimensoes().compareTo(BigDecimal.ZERO) <= 0){
 			addActionError("Dimencao do produto nao pode ser menor ou igual a Zero");
 			return SUCCESS;
 		}
 		
-		if(produto.getPreco().compareTo(BigDecimal.ZERO) <= 0){
+		if(produto.getPreco() == null || produto.getPreco().compareTo(BigDecimal.ZERO) <= 0){
 			addActionError("Valor do produto nao pode ser menor ou igual a Zero");
 			return SUCCESS;
 		}

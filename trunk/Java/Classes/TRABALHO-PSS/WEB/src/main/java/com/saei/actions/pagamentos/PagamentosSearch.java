@@ -14,7 +14,7 @@ public class PagamentosSearch extends BaseAction{
 		
 		List<Usuario> usuarios = getAplicationEng().getUsuarioEng().getAllUsuarios();
 		
-		if(CollectionUtils.isNotEmpty(usuarios)){
+		if(CollectionUtils.isEmpty(usuarios)){
 			addActionMessage("Não existem usuarios cadastrados!");
 		}
 		
